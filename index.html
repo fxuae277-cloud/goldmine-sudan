@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/pages.css">
-  <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 
@@ -25,6 +24,10 @@
     <div class="nav-inner">
 
       <div class="nav-right" style="order:3">
+        <div class="nav-lang-switch">
+          <button class="nav-lang-btn active" onclick="setLang('ar')">عربي</button>
+          <button class="nav-lang-btn" onclick="setLang('en')">EN</button>
+        </div>
         <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
           <span class="icon-moon">🌙</span>
           <span class="icon-sun">☀️</span>
@@ -40,12 +43,12 @@
       </div>
 
       <div class="nav-links" id="navLinks" style="order:2">
-        <a class="nav-link active" href="index.html">الرئيسية</a>
-        <a class="nav-link" href="portfolios.html">المحافظ</a>
-        <a class="nav-link" href="dashboard.html">لوحة التحكم</a>
-        <a class="nav-link" href="transactions.html">المعاملات</a>
-        <a class="nav-link" href="settings.html">الإعدادات</a>
-        <a class="nav-link" href="admin.html" style="color:var(--gold)">الإدارة</a>
+        <a class="nav-link active" href="index.html" data-i18n="nav_home">الرئيسية</a>
+        <a class="nav-link" href="portfolios.html" data-i18n="nav_portfolios">المحافظ</a>
+        <a class="nav-link" href="dashboard.html" data-i18n="nav_dashboard">لوحة التحكم</a>
+        <a class="nav-link" href="transactions.html" data-i18n="nav_transactions">المعاملات</a>
+        <a class="nav-link" href="settings.html" data-i18n="nav_settings">الإعدادات</a>
+        <a class="nav-link" href="admin.html" data-i18n="nav_admin" style="color:var(--gold)">الإدارة</a>
       </div>
 
       <a class="nav-logo" href="index.html" style="order:1">
@@ -68,32 +71,34 @@
       <div class="anim-up">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          المنصة تعمل حالياً
+          <span data-i18n="hero_badge">المنصة تعمل حالياً</span>
         </div>
         <h1 class="hero-title">
-          استثمر في<br>
-          <span class="gold-text">ذهب حقيقي</span><br>
-          من السودان
+          <span data-i18n="hero_title_1">استثمر في</span><br>
+          <span class="gold-text" data-i18n="hero_title_2">ذهب حقيقي</span><br>
+          <span data-i18n="hero_title_3">من السودان</span>
         </h1>
-        <p class="hero-sub">
-          منصة استثمارية موثوقة في قطاع تعدين الذهب. عوائد يومية، شفافية كاملة، سحب سريع عبر USDT أو التحويل البنكي.
-        </p>
+        <p class="hero-sub" data-i18n="hero_sub">منصة استثمارية موثوقة في قطاع تعدين الذهب. عوائد يومية، شفافية كاملة، سحب سريع عبر USDT أو التحويل البنكي.</p>
         <div class="hero-buttons">
-          <a class="btn-gold hero-btn" href="register.html">ابدأ الاستثمار الآن ←</a>
-          <a class="btn-outline hero-btn" href="portfolios.html">تصفّح المحافظ</a>
+          <a class="btn-gold btn-lg" href="register.html">
+            <span data-i18n="hero_btn_1">ابدأ الاستثمار الآن</span> ←
+          </a>
+          <a class="btn-outline btn-lg" href="portfolios.html">
+            <span data-i18n="hero_btn_2">تصفح المحافظ</span>
+          </a>
         </div>
         <div class="hero-stats">
           <div>
             <div class="hero-stat-value gold-text">$2.4M+</div>
-            <div class="hero-stat-label">إجمالي الاستثمارات</div>
+            <div class="hero-stat-label" data-i18n="hero_stat_1">إجمالي الاستثمارات</div>
           </div>
           <div>
             <div class="hero-stat-value" style="color:var(--success)">1,240+</div>
-            <div class="hero-stat-label">مستثمر نشط</div>
+            <div class="hero-stat-label" data-i18n="hero_stat_2">مستثمر نشط</div>
           </div>
           <div>
             <div class="hero-stat-value">18.5%</div>
-            <div class="hero-stat-label">متوسط العائد الشهري</div>
+            <div class="hero-stat-label" data-i18n="hero_stat_3">متوسط العائد الشهري</div>
           </div>
         </div>
       </div>
@@ -101,29 +106,29 @@
       <div class="hero-visual anim-up">
         <div class="hero-card-stack">
           <div class="hero-main-card">
-            <p class="hero-main-card__label">إجمالي الأرباح</p>
-            <p class="hero-main-card__value">$4,218.50</p>
-            <p class="hero-main-card__period">آخر 90 يوماً</p>
-            <div class="hero-main-card__tags">
-              <span class="hero-main-card__tag">+18.5%</span>
-              <span class="hero-main-card__tag">🟢 نشط</span>
+            <p class="hero-main-label">إجمالي الأرباح</p>
+            <p class="hero-main-amount">$4,218.50</p>
+            <p class="hero-main-period">آخر 90 يوماً</p>
+            <div class="hero-main-tags">
+              <span class="hero-main-tag">+18.5%</span>
+              <span class="hero-main-tag">🟢 نشط</span>
             </div>
           </div>
           <div class="hero-float-card hero-float-card-1">
-            <div class="hero-float-card__row">
-              <span class="hero-float-card__icon">📈</span>
+            <div class="hero-float-inner">
+              <span class="hero-float-icon">📈</span>
               <div>
-                <p class="hero-float-card__label">ربح اليوم</p>
-                <p class="hero-float-card__value" style="color:var(--success)">+$24.60</p>
+                <p class="hero-float-label">ربح اليوم</p>
+                <p class="hero-float-value hero-float-value--success">+$24.60</p>
               </div>
             </div>
           </div>
           <div class="hero-float-card hero-float-card-2">
-            <div class="hero-float-card__row">
-              <span class="hero-float-card__icon">⛏️</span>
+            <div class="hero-float-inner">
+              <span class="hero-float-icon">⛏️</span>
               <div>
-                <p class="hero-float-card__label">الإنتاج اليوم</p>
-                <p class="hero-float-card__value">12.4g</p>
+                <p class="hero-float-label">الإنتاج اليوم</p>
+                <p class="hero-float-value">12.4g</p>
               </div>
             </div>
           </div>
@@ -140,40 +145,40 @@
 <section class="section section--alt">
   <div class="page">
     <div class="section-header anim-up">
-      <h2 class="section-title">لماذا <span class="gold-text">GoldMine؟</span></h2>
-      <p class="section-sub">6 أسباب تجعل منصتنا الخيار الأفضل لاستثمارك في الذهب</p>
+      <h2 class="section-title"><span data-i18n="why_title">لماذا</span> <span class="gold-text">GoldMine؟</span></h2>
+      <p class="section-sub" data-i18n="why_sub">6 أسباب تجعل منصتنا الخيار الأفضل لاستثمارك في الذهب</p>
     </div>
 
     <div class="grid-3">
       <div class="feature-card anim-up">
-        <div class="feature-icon" style="background:rgba(34,197,94,.08)">⛏️</div>
-        <h3 class="feature-title">ذهب حقيقي</h3>
-        <p class="feature-desc">استثماراتك مدعومة بعمليات تعدين ذهب حقيقية في مناجم السودان. ليس أرقاماً على شاشة.</p>
+        <div class="feature-icon feature-icon--green">⛏️</div>
+        <h3 class="feature-title" data-i18n="why_1_title">ذهب حقيقي</h3>
+        <p class="feature-desc" data-i18n="why_1_desc">استثماراتك مدعومة بعمليات تعدين ذهب حقيقية في مناجم السودان. ليس أرقاماً على شاشة.</p>
       </div>
       <div class="feature-card anim-up">
-        <div class="feature-icon" style="background:rgba(212,168,16,.08)">📊</div>
-        <h3 class="feature-title">شفافية كاملة</h3>
-        <p class="feature-desc">تقارير شهرية من موقع التعدين. صور، أرقام إنتاج، ونتائج مالية موثقة.</p>
+        <div class="feature-icon feature-icon--gold">📊</div>
+        <h3 class="feature-title" data-i18n="why_2_title">شفافية كاملة</h3>
+        <p class="feature-desc" data-i18n="why_2_desc">تقارير شهرية من موقع التعدين. صور، أرقام إنتاج، ونتائج مالية موثقة.</p>
       </div>
       <div class="feature-card anim-up">
-        <div class="feature-icon" style="background:rgba(59,130,246,.08)">💰</div>
-        <h3 class="feature-title">أرباح يومية</h3>
-        <p class="feature-desc">تُحسب الأرباح يومياً وتُضاف تلقائياً لرصيدك. شاهد نمو استثمارك كل يوم.</p>
+        <div class="feature-icon feature-icon--blue">💰</div>
+        <h3 class="feature-title" data-i18n="why_3_title">أرباح يومية</h3>
+        <p class="feature-desc" data-i18n="why_3_desc">تُحسب الأرباح يومياً وتُضاف تلقائياً لرصيدك. شاهد نمو استثمارك كل يوم.</p>
       </div>
       <div class="feature-card anim-up">
-        <div class="feature-icon" style="background:rgba(139,92,246,.08)">🔒</div>
-        <h3 class="feature-title">آمن ومحمي</h3>
-        <p class="feature-desc">تشفير كامل للبيانات، مصادقة بخطوتين، ومراقبة مستمرة لحماية أموالك.</p>
+        <div class="feature-icon feature-icon--purple">🔒</div>
+        <h3 class="feature-title" data-i18n="why_4_title">آمن ومحمي</h3>
+        <p class="feature-desc" data-i18n="why_4_desc">تشفير كامل للبيانات، مصادقة بخطوتين، ومراقبة مستمرة لحماية أموالك.</p>
       </div>
       <div class="feature-card anim-up">
-        <div class="feature-icon" style="background:rgba(236,72,153,.08)">⚡</div>
-        <h3 class="feature-title">سحب سريع</h3>
-        <p class="feature-desc">اسحب أرباحك خلال 24 ساعة عبر USDT أو التحويل البنكي. بدون رسوم.</p>
+        <div class="feature-icon feature-icon--pink">⚡</div>
+        <h3 class="feature-title" data-i18n="why_5_title">سحب سريع</h3>
+        <p class="feature-desc" data-i18n="why_5_desc">اسحب أرباحك خلال 24 ساعة عبر USDT أو التحويل البنكي. بدون رسوم.</p>
       </div>
       <div class="feature-card anim-up">
-        <div class="feature-icon" style="background:rgba(245,158,11,.08)">📱</div>
-        <h3 class="feature-title">سهولة الاستخدام</h3>
-        <p class="feature-desc">واجهة بسيطة وواضحة. استثمر في 3 خطوات فقط بدون تعقيد.</p>
+        <div class="feature-icon feature-icon--orange">📱</div>
+        <h3 class="feature-title" data-i18n="why_6_title">سهولة الاستخدام</h3>
+        <p class="feature-desc" data-i18n="why_6_desc">واجهة بسيطة وواضحة. استثمر في 3 خطوات فقط بدون تعقيد.</p>
       </div>
     </div>
   </div>
@@ -185,27 +190,27 @@
 <section class="section">
   <div class="page">
     <div class="section-header anim-up">
-      <h2 class="section-title">كيف <span class="gold-text">يعمل؟</span></h2>
-      <p class="section-sub">ابدأ استثمارك في 3 خطوات بسيطة</p>
+      <h2 class="section-title"><span data-i18n="how_title">كيف</span> <span class="gold-text">يعمل؟</span></h2>
+      <p class="section-sub" data-i18n="how_sub">ابدأ استثمارك في 3 خطوات بسيطة</p>
     </div>
 
     <div class="grid-3" style="position:relative">
-      <div class="steps-connector"></div>
+      <div class="step-line"></div>
 
-      <div class="step-card glass anim-up">
+      <div class="step-card glass anim-up" style="position:relative;z-index:1">
         <div class="step-num">1</div>
-        <h3 class="step-title">أنشئ حسابك</h3>
-        <p class="step-desc">سجّل ببريدك الإلكتروني في أقل من دقيقة. ثم أكمل التحقق من هويتك.</p>
+        <h3 class="step-title" data-i18n="how_1_title">أنشئ حسابك</h3>
+        <p class="step-desc" data-i18n="how_1_desc">سجّل ببريدك الإلكتروني في أقل من دقيقة. ثم أكمل التحقق من هويتك.</p>
       </div>
-      <div class="step-card glass anim-up">
+      <div class="step-card glass anim-up" style="position:relative;z-index:1">
         <div class="step-num">2</div>
-        <h3 class="step-title">أودع وأستثمر</h3>
-        <p class="step-desc">أودع عبر USDT أو التحويل البنكي، ثم اختر المحفظة التي تناسبك.</p>
+        <h3 class="step-title" data-i18n="how_2_title">أودع وأستثمر</h3>
+        <p class="step-desc" data-i18n="how_2_desc">أودع عبر USDT أو التحويل البنكي، ثم اختر المحفظة التي تناسبك.</p>
       </div>
-      <div class="step-card glass anim-up">
+      <div class="step-card glass anim-up" style="position:relative;z-index:1">
         <div class="step-num">3</div>
-        <h3 class="step-title">تلقّ أرباحك</h3>
-        <p class="step-desc">تُحسب أرباحك يومياً. اسحبها في أي وقت أو أعد استثمارها.</p>
+        <h3 class="step-title" data-i18n="how_3_title">تلقّ أرباحك</h3>
+        <p class="step-desc" data-i18n="how_3_desc">تُحسب أرباحك يومياً. اسحبها في أي وقت أو أعد استثمارها.</p>
       </div>
     </div>
   </div>
@@ -223,68 +228,70 @@
 
     <div class="grid-4">
       <div class="portfolio-card anim-up">
-        <div class="portfolio-card__icon">⛏️</div>
-        <h3 class="portfolio-card__name">محفظة الإنتاج</h3>
-        <p class="portfolio-card__yield">عائد شهري 12-18%</p>
-        <div class="portfolio-card__row">
-          <span class="portfolio-card__row-label">المدة</span>
-          <span class="portfolio-card__row-value">90 يوم</span>
+        <div class="portfolio-card-icon">⛏️</div>
+        <h3 class="portfolio-card-title">محفظة الإنتاج</h3>
+        <p class="portfolio-card-sub">عائد شهري 12-18%</p>
+        <div class="portfolio-card-row">
+          <span class="portfolio-card-label">المدة</span>
+          <span class="portfolio-card-value">90 يوم</span>
         </div>
-        <div class="portfolio-card__row">
-          <span class="portfolio-card__row-label">من</span>
-          <span class="portfolio-card__row-value portfolio-card__row-value--mono">$500</span>
+        <div class="portfolio-card-row">
+          <span class="portfolio-card-label">من</span>
+          <span class="portfolio-card-value mono">$500</span>
         </div>
-        <span class="badge badge-success portfolio-card__badge">مخاطرة منخفضة</span>
+        <span class="badge badge-success">مخاطرة منخفضة</span>
       </div>
 
       <div class="portfolio-card anim-up">
-        <div class="portfolio-card__icon">📈</div>
-        <h3 class="portfolio-card__name">محفظة التداول</h3>
-        <p class="portfolio-card__yield">عائد شهري 10-25%</p>
-        <div class="portfolio-card__row">
-          <span class="portfolio-card__row-label">المدة</span>
-          <span class="portfolio-card__row-value">30 يوم</span>
+        <div class="portfolio-card-icon">📈</div>
+        <h3 class="portfolio-card-title">محفظة التداول</h3>
+        <p class="portfolio-card-sub">عائد شهري 10-25%</p>
+        <div class="portfolio-card-row">
+          <span class="portfolio-card-label">المدة</span>
+          <span class="portfolio-card-value">30 يوم</span>
         </div>
-        <div class="portfolio-card__row">
-          <span class="portfolio-card__row-label">من</span>
-          <span class="portfolio-card__row-value portfolio-card__row-value--mono">$200</span>
+        <div class="portfolio-card-row">
+          <span class="portfolio-card-label">من</span>
+          <span class="portfolio-card-value mono">$200</span>
         </div>
-        <span class="badge badge-warning portfolio-card__badge">مخاطرة متوسطة</span>
+        <span class="badge badge-warning">مخاطرة متوسطة</span>
       </div>
 
       <div class="portfolio-card anim-up">
-        <div class="portfolio-card__icon">🏭</div>
-        <h3 class="portfolio-card__name">تمويل التشغيل</h3>
-        <p class="portfolio-card__yield">عائد شهري 15-22%</p>
-        <div class="portfolio-card__row">
-          <span class="portfolio-card__row-label">المدة</span>
-          <span class="portfolio-card__row-value">180 يوم</span>
+        <div class="portfolio-card-icon">🏭</div>
+        <h3 class="portfolio-card-title">تمويل التشغيل</h3>
+        <p class="portfolio-card-sub">عائد شهري 15-22%</p>
+        <div class="portfolio-card-row">
+          <span class="portfolio-card-label">المدة</span>
+          <span class="portfolio-card-value">180 يوم</span>
         </div>
-        <div class="portfolio-card__row">
-          <span class="portfolio-card__row-label">من</span>
-          <span class="portfolio-card__row-value portfolio-card__row-value--mono">$1,000</span>
+        <div class="portfolio-card-row">
+          <span class="portfolio-card-label">من</span>
+          <span class="portfolio-card-value mono">$1,000</span>
         </div>
-        <span class="badge badge-warning portfolio-card__badge">مخاطرة متوسطة</span>
+        <span class="badge badge-warning">مخاطرة متوسطة</span>
       </div>
 
       <div class="portfolio-card anim-up">
-        <div class="portfolio-card__icon">🗺️</div>
-        <h3 class="portfolio-card__name">محفظة الاستكشاف</h3>
-        <p class="portfolio-card__yield">عائد شهري 20-35%</p>
-        <div class="portfolio-card__row">
-          <span class="portfolio-card__row-label">المدة</span>
-          <span class="portfolio-card__row-value">365 يوم</span>
+        <div class="portfolio-card-icon">🗺️</div>
+        <h3 class="portfolio-card-title">محفظة الاستكشاف</h3>
+        <p class="portfolio-card-sub">عائد شهري 20-35%</p>
+        <div class="portfolio-card-row">
+          <span class="portfolio-card-label">المدة</span>
+          <span class="portfolio-card-value">365 يوم</span>
         </div>
-        <div class="portfolio-card__row">
-          <span class="portfolio-card__row-label">من</span>
-          <span class="portfolio-card__row-value portfolio-card__row-value--mono">$2,000</span>
+        <div class="portfolio-card-row">
+          <span class="portfolio-card-label">من</span>
+          <span class="portfolio-card-value mono">$2,000</span>
         </div>
-        <span class="badge badge-danger portfolio-card__badge">مخاطرة عالية</span>
+        <span class="badge badge-danger">مخاطرة عالية</span>
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:32px" class="anim-up">
-      <a class="btn-gold hero-btn" href="portfolios.html">عرض تفاصيل المحافظ ←</a>
+    <div class="section-header anim-up" style="margin-top:32px;margin-bottom:0">
+      <a class="btn-gold btn>
+
+<!-- ═-lg" href="portfolios.html">عرض تفاصيل المحافظ ←</a>
     </div>
   </div>
 </section>
@@ -301,20 +308,20 @@
 
     <div class="grid-4">
       <div class="glass stat-card anim-up">
-        <p class="stat-value" style="color:var(--gold)">$2.4M</p>
-        <p class="stat-label">إجمالي الاستثمارات</p>
+        <p class="stat-card-value gold-text">$2.4M</p>
+        <p class="stat-card-label">إجمالي الاستثمارات</p>
       </div>
       <div class="glass stat-card anim-up">
-        <p class="stat-value" style="color:var(--success)">1,240</p>
-        <p class="stat-label">مستثمر نشط</p>
+        <p class="stat-card-value" style="color:var(--success)">1,240</p>
+        <p class="stat-card-label">مستثمر نشط</p>
       </div>
       <div class="glass stat-card anim-up">
-        <p class="stat-value">47.2kg</p>
-        <p class="stat-label">ذهب مُنتَج</p>
+        <p class="stat-card-value">47.2kg</p>
+        <p class="stat-card-label">ذهب مُنتَج</p>
       </div>
       <div class="glass stat-card anim-up">
-        <p class="stat-value" style="color:var(--gold)">18.5%</p>
-        <p class="stat-label">متوسط العائد الشهري</p>
+        <p class="stat-card-value gold-text">18.5%</p>
+        <p class="stat-card-label">متوسط العائد الشهري</p>
       </div>
     </div>
   </div>
@@ -338,10 +345,11 @@
           <div class="testimonial-avatar">👨</div>
           <div>
             <p class="testimonial-name">محمد أحمد</p>
-            <p class="testimonial-role">مستثمر منذ 3 أشهر</p>
+            <p class="testimonial-period">مستثمر منذ 3 أشهر</p>
           </div>
         </div>
       </div>
+
       <div class="testimonial-card anim-up">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-text">"السحب سريع جداً. طلبت سحب يوم الخميس ووصلت الأموال يوم السبت. المنصة موثوقة والدعم الفني ممتاز."</p>
@@ -349,10 +357,11 @@
           <div class="testimonial-avatar">👩</div>
           <div>
             <p class="testimonial-name">فاطمة علي</p>
-            <p class="testimonial-role">مستثمرة منذ 5 أشهر</p>
+            <p class="testimonial-period">مستثمرة منذ 5 أشهر</p>
           </div>
         </div>
       </div>
+
       <div class="testimonial-card anim-up">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-text">"بدأت بمبلغ صغير في محفظة التداول. خلال شهر تضاعف رصيدي تقريباً. التقارير الشهرية تعطيني ثقة كاملة."</p>
@@ -360,61 +369,17 @@
           <div class="testimonial-avatar">👨</div>
           <div>
             <p class="testimonial-name">عمر حسن</p>
-            <p class="testimonial-role">مستثمر منذ 2 أشهر</p>
+            <p class="testimonial-period">مستثمر منذ 2 أشهر</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     الأسئلة الشائعة
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section">
-  <div class="page">
-    <div class="section-header anim-up">
-      <h2 class="section-title">الأسئلة <span class="gold-text">الشائعة</span></h2>
-      <p class="section-sub">إجابات على أكثر الأسئلة شيوعاً</p>
-    </div>
-
-    <div class="faq-list anim-up">
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>كيف أستثمر في المنصة؟</span>
-          <span class="faq-arrow">▼</span>
-        </div>
-        <div class="faq-answer">
-          <p>أنشئ حساباً مجانياً، أكمل التحقق من هويتك، ثم أودع عبر USDT أو التحويل البنكي. بعد ذلك اختر المحفظة المناسبة وابدأ الاستثمار. تُحسب أرباحك يومياً وتُضاف تلقائياً لرصيدك.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>ما هي طرق الدفع المتاحة؟</span>
-          <span class="faq-arrow">▼</span>
-        </div>
-        <div class="faq-answer">
-          <p>نقبل الدفع عبر USDT (شبكة TRC20) والتحويل البنكي. الإيداع عبر USDT فوري وبدون رسوم. التحويل البنكي يستغرق 1-24 ساعة عمل.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>متى أستلم أرباحي؟</span>
-          <span class="faq-arrow">▼</span>
-        </div>
-        <div class="faq-answer">
-          <p>تُحسب الأرباح يومياً وتُضاف إلى رصيدك تلقائياً. يمكنك سحب أرباحك في أي وقت بعد انتهاء فترة الاستثمار أو إعادة استثمارها للنمو المركب.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">
-          <span>هل الاستثمار آمن؟</span>
-          <span class="faq-arrow">▼</span>
-        </div>
-        <div class="faq-answer">
+</section════════="faq-answer">
           <p>استثماراتك مدعومة بعمليات تعدين ذهب حقيقية. نقدم تقارير شفافة شهرية من موقع التعدين. مع ذلك، الاستثمار ينطوي على مخاطر وننصحك باستثمار ما يمكنك تحمل خسارته فقط.</p>
         </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span>ما هو الحد الأدنى للاستثمار؟</span>
@@ -424,6 +389,7 @@
           <p>الحد الأدنى يختلف حسب المحفظة. محفظة التداول تبدأ من $200، ومحفظة الإنتاج من $500، وتمويل التشغيل من $1,000، ومحفظة الاستكشاف من $2,000.</p>
         </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span>كم تستغرق عملية السحب؟</span>
@@ -433,6 +399,7 @@
           <p>السحب عبر USDT يتم خلال 24 ساعة عمل. التحويل البنكي يستغرق 1-3 أيام عمل إضافية. لا توجد رسوم على السحب.</p>
         </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span>هل يمكنني الاستثمار في أكثر من محفظة؟</span>
@@ -442,6 +409,7 @@
           <p>نعم، يمكنك الاستثمار في أكثر من محفظة في نفس الوقت. هذا يساعدك على تنويع محفظتك وتوزيع المخاطر.</p>
         </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <span>ما هو برنامج الإحالة؟</span>
@@ -451,6 +419,7 @@
           <p>شارك رابط الإحالة الخاص بك مع أصدقائك. عندما يستثمرون، تحصل على مكافأة بنسبة 5% من قيمة استثمارهم الأول. المكافآت تُضاف فوراً لرصيدك.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -464,8 +433,8 @@
       <h2 class="cta-title">جاهز لبدء <span class="gold-text">استثمارك؟</span></h2>
       <p class="cta-sub">انضم إلى أكثر من 1,240 مستثمر يحصلون على أرباح يومية من الذهب الحقيقي.</p>
       <div class="cta-buttons">
-        <a class="btn-gold cta-btn" href="register.html">إنشاء حساب مجاني ←</a>
-        <a class="btn-outline cta-btn" href="login.html">تسجيل الدخول</a>
+        <a class="btn-gold btn-xl" href="register.html">إنشاء حساب مجاني ←</a>
+        <a class="btn-outline btn-xl" href="login.html">تسجيل الدخول</a>
       </div>
     </div>
   </div>
@@ -476,19 +445,21 @@
      ═══════════════════════════════════════════════════════════════ -->
 <footer class="site-footer">
   <div class="page">
+
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
           <div class="footer-brand-icon">G</div>
-          <span class="footer-brand-name"><span class="gold-text">Gold</span>Mine السودان</span>
+          <span class="footer-brand-text"><span class="gold-text">Gold</span>Mine السودان</span>
         </div>
         <p class="footer-desc">منصة استثمارية رائدة في قطاع تعدين الذهب بالسودان. نوفر فرص استثمار آمنة وشفافة مع عوائد يومية.</p>
         <div class="footer-socials">
-          <a href="#" class="footer-social-link">📱</a>
-          <a href="#" class="footer-social-link">💬</a>
-          <a href="#" class="footer-social-link">🐦</a>
+          <a href="#" class="footer-social">📱</a>
+          <a href="#" class="footer-social">💬</a>
+          <a href="#" class="footer-social">🐦</a>
         </div>
       </div>
+
       <div class="footer-col">
         <h4>المنصة</h4>
         <a class="footer-link" href="portfolios.html">المحافظ الاستثمارية</a>
@@ -497,49 +468,52 @@
         <a class="footer-link" href="deposit.html">الإيداع</a>
         <a class="footer-link" href="withdraw.html">السحب</a>
       </div>
+
       <div class="footer-col">
         <h4>الحساب</h4>
         <a class="footer-link" href="register.html">إنشاء حساب</a>
         <a class="footer-link" href="login.html">تسجيل الدخول</a>
         <a class="footer-link" href="forgot-password.html">نسيت كلمة المرور</a>
         <a class="footer-link" href="settings.html">الإعدادات</a>
+        <a class="footer-link" href="faq.html">الأسئلة الشائعة</a>
       </div>
+
       <div class="footer-col">
         <h4>قانوني</h4>
         <a class="footer-link" href="privacy.html">سياسة الخصوصية</a>
         <a class="footer-link" href="terms.html">الشروط والأحكام</a>
       </div>
     </div>
+
     <div class="footer-bottom">
       <p>© 2025 منجم الذهب السودان. جميع الحقوق محفوظة.</p>
       <div class="footer-bottom-links">
-        <a href="privacy.html" class="footer-bottom-link">الخصوصية</a>
-        <a href="terms.html" class="footer-bottom-link">الشروط</a>
+        <a href="privacy.html" class="footer-link">الخصوصية</a>
+        <a href="terms.html" class="footer-link">الشروط</a>
       </div>
     </div>
+
   </div>
 </footer>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<!-- Scripts -->
 <script src="js/theme.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/app.js"></script>
+<script src="js/export.js"></script>
 <script>
-function toggleFaq(el) {
-  const answer = el.nextElementSibling;
-  const arrow = el.querySelector('.faq-arrow');
-  const isOpen = answer.classList.contains('open');
-
-  document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-  document.querySelectorAll('.faq-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
-
-  if (!isOpen) {
-    answer.classList.add('open');
-    arrow.style.transform = 'rotate(180deg)';
+  function toggleFaq(el) {
+    const answer = el.nextElementSibling;
+    const arrow = el.querySelector('.faq-arrow');
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
+    if (!isOpen) {
+      answer.classList.add('open');
+      arrow.style.transform = 'rotate(180deg)';
+    }
   }
-}
 </script>
 </body>
 </html>
