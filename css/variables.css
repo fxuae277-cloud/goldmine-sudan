@@ -1,9 +1,70 @@
+/* ═══════════════════════════════════════════════════════════════
+   المتغيرات — الثيم الغامق (الافتراضي)
+   ═══════════════════════════════════════════════════════════════ */
 :root {
-  --primary-bg: #000;
-  --primary-text: #fff;
+  --bg: #0a0a12;
+  --bg2: #13131f;
+  --bg3: #1e1e2e;
+  --bg4: #282840;
+  --card-bg: rgba(30, 30, 46, .6);
+  --card-bg-hover: rgba(212, 168, 16, .2);
+  --card-border: rgba(212, 168, 16, .1);
+  --gold: #d4a810;
+  --gold-light: #f5e08e;
+  --gold-dark: #7a5f0a;
+  --gold-mid: #e8c01a;
+  --gold-glow: rgba(212, 168, 16, .04);
+  --gold-glow2: rgba(212, 168, 16, .02);
+  --text: #f0ece4;
+  --text2: #a3a3b5;
+  --text3: #72728a;
+  --input-bg: rgba(10, 10, 18, .8);
+  --input-border: rgba(212, 168, 16, .1);
+  --table-hover: rgba(212, 168, 16, .03);
+  --table-border: rgba(212, 168, 16, .04);
+  --nav-bg: rgba(10, 10, 18, .85);
+  --nav-scrolled: rgba(10, 10, 18, .95);
+  --sidebar-bg: rgba(19, 19, 31, .8);
+  --section-alt-bg: rgba(19, 19, 31, .4);
+  --stat-inner-bg: rgba(10, 10, 18, .5);
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --radius: 16px;
+  --shadow: rgba(0, 0, 0, .2);
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   الثيم الفاتح
+   ═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] {
-  --primary-bg: #fff;
-  --primary-text: #000;
+  --bg: #faf8f2;
+  --bg2: #f2efe6;
+  --bg3: #ffffff;
+  --bg4: #e8e4da;
+  --card-bg: rgba(255, 255, 255, .85);
+  --card-bg-hover: rgba(212, 168, 16, .08);
+  --card-border: rgba(212, 168, 16, .15);
+  --gold: #b8860b;
+  --gold-light: #d4a810;
+  --gold-dark: #8b6914;
+  --gold-mid: #c9950e;
+  --gold-glow: rgba(212, 168, 16, .06);
+  --gold-glow2: rgba(212, 168, 16, .03);
+  --text: #1a1a2e;
+  --text2: #555566;
+  --text3: #888899;
+  --input-bg: rgba(255, 255, 255, .9);
+  --input-border: rgba(212, 168, 16, .2);
+  --table-hover: rgba(212, 168, 16, .04);
+  --table-border: rgba(212, 168, 16, .08);
+  --nav-bg: rgba(250, 248, 242, .9);
+  --nav-scrolled: rgba(250, 248, 242, .97);
+  --sidebar-bg: rgba(255, 255, 255, .95);
+  --section-alt-bg: rgba(242, 239, 230, .5);
+  --stat-inner-bg: rgba(242, 239, 230, .6);
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --shadow: rgba(0, 0, 0, .08);
 }
