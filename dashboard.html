@@ -35,140 +35,30 @@
       </div>
       <div class="nav-links" id="navLinks" style="order:2">
         <a class="nav-link" href="index.html">الرئيسية</a>
-        <a class="nav-link" hrefa class="nav="portfolios.html">المحافظ</a>
-        <-link active" href="dashboard.html">لوحة التحكم</a>
-        <a class="nav-link" href="transactions.html">المعاملات</a>
-        <a class="nav-link" href="settings.html">الإعدادات</a>
-        <a class="nav-link" href="admin.html" style="color:var(--gold)">الإدارة</a>
-      </div>
-      <a class="nav-logo" href="index.html" style="order:1">
-        <div class="nav-logo-icon">G</div>
-        <span><span class="gold-text">Gold</span>Mine</span>
-      </a>
-    </div>
-  </div>
-</nav>
-
-<!-- المحتوى -->
-<div class="page dashboard-page">
-
-  <!-- ═══════════════════════════════════════════
-       الشريط الجانبي
-       ═══════════════════════════════════════════ -->
-  <aside class="sidebar">
-    <div class="sidebar-card">
-      <div class="sidebar-user">
-        <div class="sidebar-avatar">أ</div>
-        <div>
-          <p class="sidebar-name">أحمد حسن</p>
-          <p class="sidebar-email">ahmed@example.com</p>
-        </div>
-      </div>
-      <nav class="sidebar-nav">
-        <a class="sidebar-link active" href="dashboard.html">
-          <span class="sidebar-link-icon">📊</span>
-          نظرة عامة
-        </a>
-        <a class="sidebar-link" href="portfolios.html">
-          <span class="sidebar-link-icon">💰</span>
-          المحافظ
-        </a>
-        <a class="sidebar-link" href="transactions.html">
-          <span class="sidebar-link-icon">📋</span>
-          المعاملات
-        </a>
-        <a class="sidebar-link" href="deposit.html">
-          <span class="sidebar-link-icon">📥</span>
-          الإيداع
-        </a>
-        <a class="sidebar-link" href="withdraw.html">
-          <span class="sidebar-link-icon">📤</span>
-          السحب
-        </a>
-        <div class="sidebar-divider"></div>
-        <a class="sidebar-link" href="settings.html">
-          <span class="sidebar-link-icon">⚙️</span>
-          الإعدادات
-        </a>
-        <a class="sidebar-link" href="faq.html">
-          <span class="sidebar-link-icon">❓</span>
-          المساعدة
-        </a>
-      </nav>
-    </div>
-  </aside>
-
-  <!-- ═══════════════════════════════════════════
-       المحتوى الرئيسي
-       ═══════════════════════════════════════════ -->
-  <main>
-
-    <!-- العنوان -->
-    <div style="margin-bottom:24px" class="anim-up">
-      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800">
-        مرحباً، <span class="gold-text">أحمد</span>
-      </h1>
-      <p style="color:var(--text2);font-size:14px;margin-top:4px">هذه نظرة عامة على حسابك <!--  واستثماراتك═══════════════════════════════════════════
-         بطاقات الإحصائيات
-         ═══════════════════════════════════════════ -->
-    <div class="stat-grid anim-up">
-      <div class="stat-box">
-        <p class="stat-box-label">الرصيد الإجمالي</p>
-        <p class="stat-box-value gold-text">$24,580.00</p>
-        <p class="stat-box-change stat-box-change--up">+$421.80 هذا الشهر</p>
-      </div>
-      <div class="stat-box">
-        <p class="stat-box-label">الأرباح اليومية</p>
-        <p class="stat-box-value" style="color:var(--success)">$24.60</p>
-        <p class="stat-box-change stat-box-change--up">+0.1% عن أمس</p>
-      </div>
-      <div class="stat-box">
-        <p class="stat-box-label">إجمالي الأرباح</p>
-        <p class="stat-box-value">$4,218.50</p>
-        <p class="stat-box-change stat-box-change--up">+18.5% منذ البداية</p>
-      </div>
-      <div class="stat-box">
-        <p class="stat-box-label">الاستثمارات النشطة</p>
-        <p class="stat-box-value">3</p>
-        <p class="stat-box-change">محفوظة نشطة</p>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         الرسم البياني
-         ═══════════════════════════════════════════ -->
-    <div class="chart-container anim-up" style="margin-bottom:24px">
-      <div class="chart-header">
-        <div>
-          <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">الأرباح <span class="gold-text">اليومية</span></h3>
-          <p style="font-size:13px;color:var(--text3);margin-top:4px">آخر 30 يوماً</p>
-        </div>
-        <div class="chart-periods">
-          <button class="chart-period" onclick="setChartPeriod(this)">7 أيام</button>
-          <button class="chart-period active" onclick="setChartPeriod(this)">30 يوم</button>
+        <a class="nav-link" href="portfolios.html">المحافظ</a>
+        <a class="nav-link active" href="dashboard.html">لوحة التحكم</a>
+        <a class="nav-link" href="transactions.html">المعاملات</a class="nav-link</button>
           <button class="chart-period" onclick="setChartPeriod(this)">90 يوم</button>
         </div>
       </div>
       <canvas id="profitChart" height="200"></canvas>
     </div>
 
-    <!--</p>
-    </div>
-
-    ═══════════════════════════════════════════
-         الاستثمارات النشطة
-         ═══════════════════════════════════════════ -->
-    <div class="glass anim-up" style="margin-bottom:24px;overflow:hidden">
-      <div style="padding:20px 24px;border-bottom:1px solid var(--card-border);display:flex;justify-content:space-between;align-items:center">
-        <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">الاستثمارات <span class="gold-text">النشطة</span></h3>
-        <a href="portfolios.html" style="font-size:13px;color:var(--gold);text-decoration:none;font-weight:600">استثمار جديد ←</a>
+    <!-- الاستثمارات النشطة -->
+    <div class="glass anim-up mb-24" style="overflow:hidden">
+      <div class="card-header">
+        <h3>الاستثمارات <span class="gold-text">النشطة</span></h3>
+        <a href="portfolios.html" class="card-header-link">استثمار جديد ←</a>
       </div>
-      <div style="display:flex;gap:8px;padding:0 24px 16px;flex-wrap:wrap;margin-top:16px">
-        <button onclick="exportToPDF('investTable','الاستثمارات النشطة')" style="padding:8px 16px;border-radius:8px;border:1px solid var(--card-border);background:var(--stat-inner-bg);color:var(--gold);font-weight:600;cursor:pointer;font-family:inherit;font-size:12px;transition:all .2s;display:flex;align-items:center;gap:6px">
+      <div class="export-bar">
+        <button class="export-btn" onclick="exportToPDF('investTable','الاستثمارات النشطة')">
           📄 PDF
         </button>
-        <button onclick="exportToExcel('investTable','investments')" style="padding:8px 16px;border-radius:8px;border:1px solid var(--card-border);background:var(--stat-inner-bg);color:var(--gold);font-weight:600;cursor:pointer;font-family:inherit;font-size:12px;transition:all .2s;display:flex;align-items:center;gap:6px">
+        <button class="export-btn" onclick="exportToExcel('investTable','investments')">
           📊 Excel
+        </button>
+        <button class="export-btn" onclick="exportToCSV('investTable','investments')">
+          📁 CSV
         </button>
       </div>
       <div class="table-wrap">
@@ -180,142 +70,131 @@
               <th>العائد اليومي</th>
               <th>إجمالي الأرباح</th>
               <th>الحالة</th>
+              <th>إجراء</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <div style="display:flex;align-items:center;gap:8px">
+                <div class="table-portfolio-cell">
                   <span>⛏️</span>
-                  <span style="font-weight:600">محفظة الإنتاج</span>
+                  <span>محفظة الإنتاج</span>
                 </div>
               </td>
-              <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$12,000.00</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:var(--success);direction:ltr">+$24.60</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:var(--success);direction:ltr">+$2,460.00</td>
+              <td class="table-amount">$12,000.00</td>
+              <td class="table-amount-success">+$24.60</td>
+              <td class="table-amount-success">+$2,460.00</td>
               <td><span class="badge badge-success">نشط</span></td>
+              <td><button class="table-action">تفاصيل</button></td>
             </tr>
             <tr>
               <td>
-                <div style="display:flex;align-items:center;gap:8px">
+                <div class="table-portfolio-cell">
                   <span>📈</span>
-                  <span style="font-weight:600">محفظة التداول</span>
+                  <span>محفظة التداول</span>
                 </div>
               </td>
-              <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,000.00</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:var(--success);direction:ltr">+$8.22</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:var(--success);direction:ltr">+$822.00</td>
+              <td class="table-amount">$5,000.00</td>
+              <td class="table-amount-success">+$8.22</td>
+              <td class="table-amount-success">+$822.00</td>
               <td><span class="badge badge-success">نشط</span></td>
+              <td><button class="table-action">تفاصيل</button></td>
             </tr>
             <tr>
               <td>
-                <div style="display:flex;align-items:center;gap:8px">
+                <div class="table-portfolio-cell">
                   <span>🏭</span>
-                  <span style="font-weight:600">تمويل التشغيل</span>
+                  <span>تمويل التشغيل</span>
                 </div>
               </td>
-              <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$7,580.00</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:var(--success);direction:ltr">+$12.36</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:var(--success);direction:ltr">+$936.50</td>
+              <td class="table-amount">$7,580.00</td>
+              <td class="table-amount-success">+$12.36</td>
+              <td class="table-amount-success">+$936.50</td>
               <td><span class="badge badge-success">نشط</span></td>
+              <td><button class="table-action">تفاصيل</button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════
-         التقارير الشفافة
-         ═══════════════════════════════════════════ -->
-    <div class="anim-up" style="margin-bottom:24px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-        <div>
-          <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">تقارير <span class="gold-text">الشفافية</span></h3>
-          <p style="font-size:13px;color:var(--text3);margin-top:4px">تقارير حية من مواقع التعدين</p>
+    <!-- التقارير الشفافة -->
+    <div class="anim-up mb-24">
+      <div class="section-title-bar">
+        <div class="section-title-bar-left">
+          <h3>تقارير <span class="gold-text">الشفافية</span></h3>
+          <p class="section-title-bar-sub">تقارير حية من مواقع التعدين</p>
         </div>
         <span class="badge badge-success">محدّث الآن</span>
       </div>
 
       <div class="grid-3">
-
-        <!-- تقرير 1 -->
-        <div class="glass" style="padding:20px;border-radius:14px">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div class="report-card">
+          <div class="report-card-header">
             <span class="badge badge-success">يناير 2025</span>
-            <span style="font-size:12px;color:var(--text3)">PDF</span>
+            <span class="text-muted text-xs">PDF</span>
           </div>
-          <h4 style="font-family:'Cairo',serif;font-size:15px;font-weight:700;margin-bottom:6px">تقرير الإنتاج الشهري</h4>
-          <p style="font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:12px">إنتاج 2.8 كيلو ذهب من منجم وادي النيل. معدل نمو 12% عن الشهر السابق.</p>
-          <div style="display:flex;gap:8px;margin-bottom:12px">
-            <span style="font-size:11px;color:var(--text3)">📊 12 صفحة</span>
-            <span style="font-size:11px;color:var(--text3)">📁 3.2 MB</span>
+          <h4 class="report-card-title">تقرير الإنتاج الشهري</h4>
+          <p class="report-card-desc">إنتاج 2.8 كيلو ذهب من منجم وادي النيل. معدل نمو 12% عن الشهر السابق.</p>
+          <div class="report-card-meta">
+            <span>📊 12 صفحة</span>
+            <span>📁 3.2 MB</span>
           </div>
-          <button style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--card-border);background:var(--stat-inner-bg);color:var(--gold);font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;transition:all .2s">
-            تحميل التقرير
-          </button>
+          <button class="report-card-btn">تحميل التقرير</button>
         </div>
 
-        <!-- تقرير 2 -->
-        <div class="glass" style="padding:20px;border-radius:14px">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div class="report-card">
+          <div class="report-card-header">
             <span class="badge badge-success">يناير 2025</span>
-            <span style="font-size:12px;color:var(--text3)">PDF</span>
+            <span class="text-muted text-xs">PDF</span>
           </div>
-          <h4 style="font-family:'Cairo',serif;font-size:15px;font-weight:700;margin-bottom:6px">تقرير الاستكشاف</h4>
-          <p style="font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:12px">نتائج حفر 3 مواقع جديدة في منطقة جبل الذهب. احتياطيات مقدرة بـ 15 كيلو ذهب.</p>
-          <div style="display:flex;gap:8px;margin-bottom:12px">
-            <span style="font-size:11px;color:var(--text3)">📊 8 صفحات</span>
-            <span style="font-size:11px;color:var(--text3)">📁 5.1 MB</span>
+          <h4 class="report-card-title">تقرير الاستكشاف</h4>
+          <p class="report-card-desc">نتائج حفر 3 مواقع جديدة في منطقة جبل الذهب. احتياطيات مقدرة بـ 15 كيلو ذهب.</p>
+          <div class="report-card-meta">
+            <span>📊 8 صفحات</span>
+            <span>📁 5.1 MB</span>
           </div>
-          <button style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--card-border);background:var(--stat-inner-bg);color:var(--gold);font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;transition:all .2s">
-            تحميل التقرير
-          </button>
+          <button class="report-card-btn">تحميل التقرير</button>
         </div>
 
-        <!-- تقرير 3 -->
-        <div class="glass" style="padding:20px;border-radius:14px">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div class="report-card">
+          <div class="report-card-header">
             <span class="badge badge-gold">ديسمبر 2024</span>
-            <span style="font-size:12px;color:var(--text3)">PDF</span>
+            <span class="text-muted text-xs">PDF</span>
           </div>
-          <h4 style="font-family:'Cairo',serif;font-size:15px;font-weight:700;margin-bottom:6px">التقرير المالي السنوي</h4>
-          <p style="font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:12px">إيرادات إجمالية $2.4M. توزيع أرباح بنسبة 18.5% للمستثمرين. نمو 34% سنوياً.</p>
-          <div style="display:flex;gap:8px;margin-bottom:12px">
-            <span style="font-size:11px;color:var(--text3)">📊 24 صفحة</span>
-            <span style="font-size:11px;color:var(--text3)">📁 8.7 MB</span>
+          <h4 class="report-card-title">التقرير المالي السنوي</h4>
+          <p class="report-card-desc">إيرادات إجمالية $2.4M. توزيع أرباح بنسبة 18.5% للمستثمرين. نمو 34% سنوياً.</p>
+          <div class="report-card-meta">
+            <span>📊 24 صفحة</span>
+            <span>📁 8.7 MB</span>
           </div>
-          <button style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--card-border);background:var(--stat-inner-bg);color:var(--gold);font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;transition:all .2s">
-            تحميل التقرير
-          </button>
+          <button class="report-card-btn">تحميل التقرير</button>
         </div>
-
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════
-         صور من موقع التعدين
-         ═══════════════════════════════════════════ -->
+    <!-- صور من موقع التعدين -->
     <div class="anim-up">
-      <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800;margin-bottom:16px">صور من موقع <span class="gold-text">التعدين</span></h3>
+      <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800" class="mb-16">صور من موقع <span class="gold-text">التعدين</span></h3>
       <div class="grid-4">
-        <div style="background:var(--stat-inner-bg);border-radius:12px;padding:40px 16px;text-align:center;border:1px dashed var(--card-border)">
-          <p style="font-size:32px;margin-bottom:8px">⛏️</p>
-          <p style="font-size:12px;color:var(--text3)">منجم وادي النيل</p>
+        <div class="mining-photo">
+          <p class="mining-photo-icon">⛏️</p>
+          <p class="mining-photo-label">منجم وادي النيل</p>
         </div>
-        <div style="background:var(--stat-inner-bg);border-radius:12px;padding:40px 16px;text-align:center;border:1px dashed var(--card-border)">
-          <p style="font-size:32px;margin-bottom:8px">🏭</p>
-          <p style="font-size:12px;color:var(--text3)">محطة التكرير</p>
+        <div class="mining-photo">
+          <p class="mining-photo-icon">🏭</p>
+          <p class="mining-photo-label">محطة التكرير</p>
         </div>
-        <div style="background:var(--stat-inner-bg);border-radius:12px;padding:40px 16px;text-align:center;border:1px dashed var(--card-border)">
-          <p style="font-size:32px;margin-bottom:8px">🗺️</p>
-          <p style="font-size:12px;color:var(--text3)">منطقة الاستكشاف</p>
+        <div class="mining-photo">
+          <p class="mining-photo-icon">🗺️</p>
+          <p class="mining-photo-label">منطقة الاستكشاف</p>
         </div>
-        <div style="background:var(--stat-inner-bg);border-radius:12px;padding:40px 16px;text-align:center;border:1px dashed var(--card-border)">
-          <p style="font-size:32px;margin-bottom:8px">📊</p>
-          <p style="font-size:12px;color:var(--text3)">غرفة المراقبة</p>
+        <div class="mining-photo">
+          <p class="mining-photo-icon">📊</p>
+          <p class="mining-photo-label">غرفة المراقبة</p>
         </div>
       </div>
-      <p style="font-size:11px;color:var(--text3);margin-top:8px;text-align:center">أضف صوراً حقيقية من موقع التعدين هنا</p>
+      <p class="text-muted text-xs text-center" style="margin-top:8px">أضف صوراً حقيقية من موقع التعدين هنا</p>
     </div>
 
   </main>
