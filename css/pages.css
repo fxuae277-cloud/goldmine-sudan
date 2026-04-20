@@ -215,7 +215,8 @@
 }
 .hero-float-card {
   position: absolute;
-  background solid var(--card-border);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   backdrop-filter: blur(20px);
   border-radius: 14px;
   padding: 14px 18px;
@@ -314,8 +315,7 @@
 .feature-icon--gold { background: rgba(212,168,16,.08); }
 .feature-icon--blue { background: rgba(59,130,246,.08); }
 .feature-icon--purple { background: rgba(139,92,246,.08); }
-.feature-icon--pink { background: rgba(236,72بي (Sidebar)
-,153,.08); }
+.feature-icon--pink { background: rgba(236,72,153,.08); }
 .feature-icon--orange { background: rgba(245,158,11,.08); }
 .feature-title {
   font-family: 'Cairo', serif;
@@ -346,8 +346,228 @@
   align-items: center;
   justify-content: center;
   font-family: 'JetBrains Mono', monospace;
-  font-weight:: var(--card-bg);
-  border: 1px 700 16px;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0 auto 16px;
+}
+.step-title {
+  font-family: 'Cairo', serif;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.step-desc {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   بطاقة محفظة
+   ─────────────────────────────────────────────────────────────── */
+.portfolio-card {
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  transition: all .3s;
+}
+.portfolio-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212,168,16,.3);
+  box-shadow: 0 12px 40px rgba(212,168,16,.08);
+}
+.portfolio-card-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+.portfolio-card-title {
+  font-family: 'Cairo', serif;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.portfolio-card-sub {
+  font-size: 14px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.portfolio-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--table-border);
+}
+.portfolio-card-label {
+  font-size: 13px;
+  color: var(--text3);
+}
+.portfolio-card-value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   شارة (Badge)
+   ─────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+.badge-success {
+  background: rgba(34,197,94,.1);
+  color: var(--success);
+}
+.badge-warning {
+  background: rgba(245,158,11,.1);
+  color: var(--warning);
+}
+.badge-danger {
+  background: rgba(239,68,68,.1);
+  color: var(--danger);
+}
+
+/* ───────────────────────────────────────────────────────────────
+   بطاقة شهادة (Testimonial)
+   ─────────────────────────────────────────────────────────────── */
+.testimonial-card {
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+}
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 16px;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+.testimonial-text {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--stat-inner-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.testimonial-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+.testimonial-period {
+  font-size: 12px;
+  color: var(--text3);
+}
+
+/* ───────────────────────────────────────────────────────────────
+   الأسئلة الشائعة (FAQ)
+   ─────────────────────────────────────────────────────────────── */
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.faq-item {
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background: var(--card-bg);
+  overflow: hidden;
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background .2s;
+}
+.faq-question:hover {
+  background: var(--stat-inner-bg);
+}
+.faq-arrow {
+  font-size: 12px;
+  transition: transform .3s;
+  color: var(--gold);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease, padding .3s ease;
+}
+.faq-answer.open {
+  max-height: 300px;
+  padding: 0 20px 16px;
+}
+.faq-answer p {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.8;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   تذييل (Footer)
+   ─────────────────────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--card-border);
+  padding: 60px 0 24px;
+  margin-top: 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-col h4 {
+  font-family: 'Cairo', serif;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+.footer-link {
+  display: block;
+  font-size: 14px;
+  color: var(--text3);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color .2s;
+}
+.footer-link:hover {
+  color: var(--gold);
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--card-border);
+  font-size: 13px;
+  color: var(--text3);
+}
+.footer-bottom-links {
+  display: flex;
+  gap: 16px;
 }
 .footer-brand {
   display: flex;
@@ -449,8 +669,29 @@
 }
 
 /* ───────────────────────────────────────────────────────────────
-   الشريط الجان   ─────────2px;
+   الشريط الجانبي (Sidebar)
+   ─────────────────────────────────────────────────────────────── */
+.sidebar {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+.sidebar-balance {
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  margin-bottom: 16px;
+}
+.sidebar-balance-label {
+  font-size: 12px;
   color: var(--text3);
+  margin-bottom: 4px;
+}
+.sidebar-balance-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 24px;
+  font-weight: 700;
   direction: ltr;
 }
 .sidebar-nav {
@@ -844,6 +1085,191 @@ tbody tr:hover {
 }
 
 /* ───────────────────────────────────────────────────────────────
+   CTA Section
+   ─────────────────────────────────────────────────────────────── */
+.cta-section {
+  padding: 80px 0;
+}
+.cta-box {
+  background: linear-gradient(135deg, var(--gold), var(--gold-mid));
+  border-radius: 24px;
+  padding: 60px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+}
+.cta-box::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: -20%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+}
+.cta-title {
+  font-family: 'Cairo', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: #0a0a12;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.cta-sub {
+  font-size: 16px;
+  color: rgba(10,10,18,.7);
+  margin-bottom: 32px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Form Elements (Login / Register)
+   ─────────────────────────────────────────────────────────────── */
+.form-group {
+  margin-bottom: 20px;
+}
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color .2s;
+  direction: ltr;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212,168,16,.1);
+}
+.form-input::placeholder {
+  color: var(--text3);
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text2);
+  cursor: pointer;
+}
+.form-checkbox input {
+  accent-color: var(--gold);
+}
+.form-link {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: opacity .2s;
+}
+.form-link:hover {
+  opacity: .7;
+}
+.form-divider {
+  text-align: center;
+  color: var(--text3);
+  font-size: 13px;
+  margin: 24px 0;
+  position: relative;
+}
+.form-divider::before,
+.form-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: var(--card-border);
+}
+.form-divider::before { right: 0; }
+.form-divider::after { left: 0; }
+
+/* ───────────────────────────────────────────────────────────────
+   Deposit / Withdraw Pages
+   ─────────────────────────────────────────────────────────────── */
+.amount-input-wrap {
+  position: relative;
+}
+.amount-input-wrap .form-input {
+  padding-left: 60px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+.amount-input-wrap .amount-prefix {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.amount-presets {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.amount-preset {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: transparent;
+  color: var(--text2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .2s;
+}
+.amount-preset:hover {
+  border-color: rgba(212,168,16,.3);
+  color: var(--gold);
+}
+
+/* ───────────────────────────────────────────────────────────────
    متجاوب (Responsive)
    ─────────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
@@ -851,7 +1277,7 @@ tbody tr:hover {
   .sidebar { position: static; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 768="nav-link activepx) {
+@media (max-width: 768px) {
   .hero-content { grid-template-columns: 1fr; gap: 40px; }
   .hero-title { font-size: 34px; }
   .hero-visual { order: -1; }
@@ -864,6 +1290,7 @@ tbody tr:hover {
   .export-bar { padding: 0 16px 12px; }
   .card-header { padding: 16px; flex-direction: column; gap: 8px; align-items: flex-start; }
   .section-title-bar { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .footer-grid { grid-template-columns: 1fr; }
