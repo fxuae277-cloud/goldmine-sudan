@@ -12,6 +12,230 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/pages.css">
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       أنماط خاصة بصفحة الإعدادات
+       ═══════════════════════════════════════════════════════════════ -->
+  <style>
+    /* ── عناوين الأقسام ────────────────────────────────────────── */
+    .section-title {
+      font-family: 'Cairo', serif;
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0;
+    }
+    .section-title--with-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .section-title--with-desc {
+      margin-bottom: 8px;
+    }
+
+    /* ── صناديق الأقسام ────────────────────────────────────────── */
+    .section-box {
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .section-box:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── حقول النماذج ───────────────────────────────────────────── */
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text2);
+      margin-bottom: 8px;
+    }
+    .form-field {
+      margin-bottom: 16px;
+    }
+    .form-field--last {
+      margin-bottom: 24px;
+    }
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .input-ltr {
+      direction: ltr;
+    }
+    .input-file {
+      padding: 10px;
+    }
+
+    /* ── شبكة ألوان المعاينة ───────────────────────────────────── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .color-swatch {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .color-swatch__dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      margin: 0 auto 8px;
+    }
+    .color-swatch__dot--gold {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .color-swatch__dot--text {
+      background: var(--text);
+    }
+    .color-swatch__dot--card {
+      background: var(--card-bg);
+    }
+    .color-swatch__label {
+      font-size: 10px;
+      color: var(--text3);
+    }
+
+    /* ── أزرار تبديل الثيم ──────────────────────────────────────── */
+    .theme-btns {
+      display: flex;
+      gap: 8px;
+    }
+    .theme-btn {
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: 2px solid var(--card-border);
+      background: transparent;
+      color: var(--text2);
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      transition: all .3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .theme-btn--active {
+      border-color: var(--gold);
+      background: rgba(212, 168, 16, .1);
+      color: var(--gold);
+    }
+
+    /* ── بطاقة اختيار المظهر ────────────────────────────────────── */
+    .theme-picker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background: var(--stat-inner-bg);
+      border-radius: 12px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .theme-picker__info p:first-child {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .theme-picker__info p:last-child {
+      font-size: 13px;
+      color: var(--text3);
+    }
+
+    /* ── إحصائيات الإحالة ──────────────────────────────────────── */
+    .ref-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .ref-stats__item {
+      text-align: center;
+    }
+    .ref-stats__label {
+      font-size: 11px;
+      color: var(--text3);
+      margin-bottom: 4px;
+    }
+    .ref-stats__value {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 20px;
+      direction: ltr;
+    }
+
+    /* ── صف رابط الإحالة ────────────────────────────────────────── */
+    .ref-row {
+      display: flex;
+      gap: 12px;
+    }
+    .ref-input {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      direction: ltr;
+    }
+
+    /* ── قائمة الإشعارات ────────────────────────────────────────── */
+    .notif-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .notif-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .notif-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .notif-item__title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .notif-item__desc {
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    /* ── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .form-row-2 {
+        grid-template-columns: 1fr;
+      }
+      .color-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .ref-stats {
+        grid-template-columns: 1fr;
+      }
+      .ref-row {
+        flex-direction: column;
+      }
+      .theme-btns {
+        flex-direction: column;
+      }
+      .theme-picker {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -22,7 +246,6 @@
   <div class="page">
     <div class="nav-inner">
 
-      <!-- يسار -->
       <div class="nav-right" style="order:3">
         <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
           <span class="icon-moon">🌙</span>
@@ -38,7 +261,6 @@
         </button>
       </div>
 
-      <!-- الوسط -->
       <div class="nav-links" id="navLinks" style="order:2">
         <a class="nav-link" href="index.html">الرئيسية</a>
         <a class="nav-link" href="portfolios.html">المحافظ</a>
@@ -48,7 +270,6 @@
         <a class="nav-link" href="admin.html" style="color:var(--gold)">الإدارة</a>
       </div>
 
-      <!-- يمين -->
       <a class="nav-logo" href="index.html" style="order:1">
         <div class="nav-logo-icon">G</div>
         <span><span class="gold-text">Gold</span>Mine</span>
@@ -63,40 +284,40 @@
      ═══════════════════════════════════════════════════════════════ -->
 <div class="page inner-page">
 
-  <!-- العنوان -->
-  <h1 style="font-family:'Cairo',serif;font-size:32px;font-weight:800;margin-bottom:32px" class="anim-up">
+  <!-- عنوان الصفحة -->
+  <h1 class="section-title anim-up" style="font-size:32px;margin-bottom:32px">
     <span class="gold-text">الإعدادات</span>
   </h1>
 
   <!-- ═══════════════════════════════════════════════════════════
        الملف الشخصي
        ═══════════════════════════════════════════════════════════ -->
-  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
-    <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:24px">الملف الشخصي</h2>
+  <div class="glass section-box anim-up">
+    <h2 class="section-title">الملف الشخصي</h2>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+    <div class="form-row-2">
       <div>
-        <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">الاسم الأول</label>
+        <label class="form-label">الاسم الأول</label>
         <input class="input" value="أحمد">
       </div>
       <div>
-        <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">اسم العائلة</label>
+        <label class="form-label">اسم العائلة</label>
         <input class="input" value="حسن">
       </div>
     </div>
 
-    <div style="margin-bottom:16px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">البريد الإلكتروني</label>
-      <input class="input" type="email" value="ahmed@example.com" style="direction:ltr">
+    <div class="form-field">
+      <label class="form-label">البريد الإلكتروني</label>
+      <input class="input input-ltr" type="email" value="ahmed@example.com">
     </div>
 
-    <div style="margin-bottom:16px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">رقم الهاتف</label>
-      <input class="input" value="+249 912 345 678" style="direction:ltr">
+    <div class="form-field">
+      <label class="form-label">رقم الهاتف</label>
+      <input class="input input-ltr" value="+249 912 345 678">
     </div>
 
-    <div style="margin-bottom:24px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">اللغة</label>
+    <div class="form-field form-field--last">
+      <label class="form-label">اللغة</label>
       <select class="input">
         <option>العربية</option>
         <option>English</option>
@@ -109,50 +330,37 @@
   <!-- ═══════════════════════════════════════════════════════════
        إعدادات المظهر
        ═══════════════════════════════════════════════════════════ -->
-  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
-    <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:24px">إعدادات المظهر</h2>
+  <div class="glass section-box anim-up">
+    <h2 class="section-title">إعدادات المظهر</h2>
 
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:20px;background:var(--stat-inner-bg);border-radius:12px;flex-wrap:wrap;gap:16px">
-      <div>
-        <p style="font-size:15px;font-weight:700;margin-bottom:4px">وضع الموقع</p>
-        <p style="font-size:13px;color:var(--text3)">اختر بين الوضع الفاتح والأسود</p>
+    <div class="theme-picker">
+      <div class="theme-picker__info">
+        <p>وضع الموقع</p>
+        <p>اختر بين الوضع الفاتح والأسود</p>
       </div>
-
-      <div style="display:flex;gap:8px">
-        <button
-          onclick="setTheme('light')"
-          id="btnLight"
-          style="padding:12px 24px;border-radius:10px;border:2px solid var(--gold);background:rgba(212,168,16,.1);color:var(--gold);font-weight:700;cursor:pointer;font-family:inherit;font-size:14px;transition:all .3s;display:flex;align-items:center;gap:8px"
-        >
-          ☀️ فاتح
-        </button>
-        <button
-          onclick="setTheme('dark')"
-          id="btnDark"
-          style="padding:12px 24px;border-radius:10px;border:2px solid var(--card-border);background:transparent;color:var(--text2);font-weight:700;cursor:pointer;font-family:inherit;font-size:14px;transition:all .3s;display:flex;align-items:center;gap:8px"
-        >
-          ⚫ أسود
-        </button>
+      <div class="theme-btns">
+        <button class="theme-btn theme-btn--active" id="btnLight" onclick="setTheme('light')">☀️ فاتح</button>
+        <button class="theme-btn" id="btnDark" onclick="setTheme('dark')">⚫ أسود</button>
       </div>
     </div>
 
     <!-- معاينة الألوان -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px">
-      <div style="background:var(--bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;text-align:center">
-        <div style="width:24px;height:24px;border-radius:50%;background:var(--bg);border:1px solid var(--card-border);margin:0 auto 8px"></div>
-        <p style="font-size:10px;color:var(--text3)">الخلفية</p>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-swatch__dot"></div>
+        <p class="color-swatch__label">الخلفية</p>
       </div>
-      <div style="background:var(--bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;text-align:center">
-        <div style="width:24px;height:24px;border-radius:50%;background:var(--gold);margin:0 auto 8px"></div>
-        <p style="font-size:10px;color:var(--text3)">الذهبي</p>
+      <div class="color-swatch">
+        <div class="color-swatch__dot color-swatch__dot--gold"></div>
+        <p class="color-swatch__label">الذهبي</p>
       </div>
-      <div style="background:var(--bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;text-align:center">
-        <div style="width:24px;height:24px;border-radius:50%;background:var(--text);border:1px solid var(--card-border);margin:0 auto 8px"></div>
-        <p style="font-size:10px;color:var(--text3)">النص</p>
+      <div class="color-swatch">
+        <div class="color-swatch__dot color-swatch__dot--text"></div>
+        <p class="color-swatch__label">النص</p>
       </div>
-      <div style="background:var(--bg);border:1px solid var(--6px;text-align:center">
-        <div style="width:24px;height:24px;border-radius:50%;background:var(--card-bg);border:1px solid var(--card-border);margin:0 auto 8px"></div>
-        <p style="font-size:10px;color:var(--text3)">البطاقات</p>
+      <div class="color-swatch">
+        <div class="color-swatch__dot color-swatch__dot--card"></div>
+        <p class="color-swatch__label">البطاقات</p>
       </div>
     </div>
   </div>
@@ -160,25 +368,25 @@
   <!-- ═══════════════════════════════════════════════════════════
        التحقق من الهوية
        ═══════════════════════════════════════════════════════════ -->
-  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-      <h2 style="font-familycard-border);border-radius:10px;padding:1:'Cairo',serif;font-size:20px;font-weight:800">التحقق من الهوية</h2>
+  <div class="glass section-box anim-up">
+    <div class="section-title--with-badge">
+      <h2 class="section-title">التحقق من الهوية</h2>
       <span class="badge badge-warning">قيد الانتظار</span>
     </div>
 
-    <div style="margin-bottom:16px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">وثيقة الهوية (جواز سفر / هوية وطنية)</label>
-      <input type="file" class="input" style="padding:10px">
+    <div class="form-field">
+      <label class="form-label">وثيقة الهوية (جواز سفر / هوية وطنية)</label>
+      <input type="file" class="input input-file">
     </div>
 
-    <div style="margin-bottom:16px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">إثبات العنوان</label>
-      <input type="file" class="input" style="padding:10px">
+    <div class="form-field">
+      <label class="form-label">إثبات العنوان</label>
+      <input type="file" class="input input-file">
     </div>
 
-    <div style="margin-bottom:24px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">سيلفي مع الهوية</label>
-      <input type="file" class="input" style="padding:10px">
+    <div class="form-field form-field--last">
+      <label class="form-label">سيلفي مع الهوية</label>
+      <input type="file" class="input input-file">
     </div>
 
     <button class="btn-gold" onclick="showToast('تم رفع المستندات بنجاح!','success')">رفع المستندات</button>
@@ -187,21 +395,21 @@
   <!-- ═══════════════════════════════════════════════════════════
        الأمان
        ═══════════════════════════════════════════════════════════ -->
-  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
-    <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:24px">الأمان</h2>
+  <div class="glass section-box anim-up">
+    <h2 class="section-title">الأمان</h2>
 
-    <div style="margin-bottom:16px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">كلمة المرور الحالية</label>
+    <div class="form-field">
+      <label class="form-label">كلمة المرور الحالية</label>
       <input class="input" type="password" placeholder="أدخل كلمة المرور الحالية">
     </div>
 
-    <div style="margin-bottom:16px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">كلمة المرور الجديدة</label>
+    <div class="form-field">
+      <label class="form-label">كلمة المرور الجديدة</label>
       <input class="input" type="password" placeholder="٨ أحرف على الأقل">
     </div>
 
-    <div style="margin-bottom:24px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">تأكيد كلمة المرور الجديدة</label>
+    <div class="form-field form-field--last">
+      <label class="form-label">تأكيد كلمة المرور الجديدة</label>
       <input class="input" type="password" placeholder="أعد كتابة كلمة المرور">
     </div>
 
@@ -211,66 +419,66 @@
   <!-- ═══════════════════════════════════════════════════════════
        برنامج الإحالة
        ═══════════════════════════════════════════════════════════ -->
-  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
-    <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">برنامج الإحالة</h2>
+  <div class="glass section-box anim-up">
+    <h2 class="section-title section-title--with-desc">برنامج الإحالة</h2>
     <p style="font-size:14px;color:var(--text2);margin-bottom:16px">شارك رابط الإحالة الخاص بك واحصل على مكافآت عند استثمار المستخدمين الجدد.</p>
 
-    <div style="display:flex;gap:12px">
-      <input class="input" value="https://goldmine.sd/register?ref=GMAH7X2K" readonly style="font-family:'JetBrains Mono',monospace;font-size:13px;direction:ltr">
+    <div class="ref-row">
+      <input class="input ref-input" value="https://goldmine.sd/register?ref=GMAH7X2K" readonly>
       <button class="btn-outline btn-sm" onclick="showToast('تم نسخ رابط الإحالة!','success')" style="white-space:nowrap">نسخ</button>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
-      <div class="portfolio-stat-box" style="text-align:center">
-        <p style="font-size:11px;color:var(--text3);margin-bottom:4px">إجمالي الإحالات</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;direction:ltr">12</p>
+    <div class="ref-stats">
+      <div class="portfolio-stat-box ref-stats__item">
+        <p class="ref-stats__label">إجمالي الإحالات</p>
+        <p class="ref-stats__value">12</p>
       </div>
-      <div class="portfolio-stat-box" style="text-align:center">
-        <p style="font-size:11px;color:var(--text3);margin-bottom:4px">نشطون</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;color:var(--success);direction:ltr">8</p>
+      <div class="portfolio-stat-box ref-stats__item">
+        <p class="ref-stats__label">نشطون</p>
+        <p class="ref-stats__value" style="color:var(--success)">8</p>
       </div>
-      <div class="portfolio-stat-box" style="text-align:center">
-        <p style="font-size:11px;color:var(--text3);margin-bottom:4px">مكافآت مكتسبة</p>
-        <p style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:20px;color:var(--gold);direction:ltr">$480</p>
+      <div class="portfolio-stat-box ref-stats__item">
+        <p class="ref-stats__label">مكافآت مكتسبة</p>
+        <p class="ref-stats__value" style="color:var(--gold)">$480</p>
       </div>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════
-       الإشعارات
+       إعدادات الإشعارات
        ═══════════════════════════════════════════════════════════ -->
-  <div class="glass anim-up" style="padding:32px">
-    <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:24px">إعدادات الإشعارات</h2>
+  <div class="glass section-box anim-up">
+    <h2 class="section-title">إعدادات الإشعارات</h2>
 
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--card-border)">
+    <div class="notif-list">
+      <div class="notif-item">
         <div>
-          <p style="font-size:14px;font-weight:600">إشعارات الأرباح</p>
-          <p style="font-size:12px;color:var(--text3)">تنبيه عند إضافة أرباح يومية</p>
+          <p class="notif-item__title">إشعارات الأرباح</p>
+          <p class="notif-item__desc">تنبيه عند إضافة أرباح يومية</p>
         </div>
         <div class="toggle on" onclick="this.classList.toggle('on')"></div>
       </div>
 
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--card-border)">
+      <div class="notif-item">
         <div>
-          <p style="font-size:14px;font-weight:600">إشعارات الإيداع والسحب</p>
-          <p style="font-size:12px;color:var(--text3)">تنبيه عند الموافقة أو الرفض</p>
+          <p class="notif-item__title">إشعارات الإيداع والسحب</p>
+          <p class="notif-item__desc">تنبيه عند الموافقة أو الرفض</p>
         </div>
         <div class="toggle on" onclick="this.classList.toggle('on')"></div>
       </div>
 
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--card-border)">
+      <div class="notif-item">
         <div>
-          <p style="font-size:14px;font-weight:600">تقارير جديدة</p>
-          <p style="font-size:12px;color:var(--text3)">تنبيه عند نشر تقرير شفافية جديد</p>
+          <p class="notif-item__title">تقارير جديدة</p>
+          <p class="notif-item__desc">تنبيه عند نشر تقرير شفافية جديد</p>
         </div>
         <div class="toggle on" onclick="this.classList.toggle('on')"></div>
       </div>
 
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0">
+      <div class="notif-item">
         <div>
-          <p style="font-size:14px;font-weight:600">إشعارات البريد الإلكتروني</p>
-          <p style="font-size:12px;color:var(--text3)">إرسال نسخة من الإشعارات للبريد</p>
+          <p class="notif-item__title">إشعارات البريد الإلكتروني</p>
+          <p class="notif-item__desc">إرسال نسخة من الإشعارات للبريد</p>
         </div>
         <div class="toggle" onclick="this.classList.toggle('on')"></div>
       </div>
@@ -279,14 +487,10 @@
 
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     Toast
-     ═══════════════════════════════════════════════════════════════ -->
+<!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     Scripts
-     ═══════════════════════════════════════════════════════════════ -->
+<!-- Scripts -->
 <script src="js/theme.js"></script>
 <script src="js/app.js"></script>
 </body>
