@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الخصوصية — منجم الذهب</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    .legal-section h2 {
+      font-family: 'Cairo', serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--gold);
+      margin: 32px 0 12px;
+    }
+    .legal-section h2:first-child {
+      margin-top: 0;
+    }
+    .legal-section p {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 2;
+      margin-bottom: 12px;
+    }
+    .legal-section ul {
+      padding-right: 20px;
+      margin-bottom: 16px;
+    }
+    .legal-section li {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 2;
+      margin-bottom: 4px;
+    }
+    .legal-section li::marker {
+      color: var(--gold);
+    }
+    .toc-link {
+      display: block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all .2s;
+    }
+    .toc-link:hover {
+      background: var(--stat-inner-bg);
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+<!-- شريط التنقل -->
+<nav class="navbar" id="navbar">
+  <div class="page">
+    <div class="nav-inner">
+      <div class="nav-right" style="order:3">
+        <div class="theme-toggle" onclick="toggleTheme()">
+          <span class="icon-moon">🌙</span>
+          <span class="icon-sun">☀️</span>
+          <div class="toggle-knob"></div>
+        </div>
+        <a class="btn-gold btn-sm" href="login.html">تسجيل الدخول</a>
+        <button class="mobile-toggle" onclick="toggleMobile()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="nav-links" id="navLinks" style="order:2">
+        <a class="nav-link" href="index.html">الرئيسية</a>
+        <a class="nav-link" href="portfolios.html">المحافظ</a>
+      </div>
+      <a class="nav-logo" href="index.html" style="order:1">
+        <div class="nav-logo-icon">G</div>
+        <span><span class="gold-text">Gold</span>Mine</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- المحتوى -->
+<div class="page inner-page" style="max-width:820px">
+
+  <div style="margin-bottom:40px" class="anim-up">
+    <h1 style="font-family:'Cairo',serif;font-size:36px;font-weight:800;margin-bottom:8px">
+      سياسة <span class="gold-text">الخصوصية</span>
+    </h1>
+    <p style="color:var(--text3);font-size:13px">آخر تحديث: 1 فبراير 2025</p>
+  </div>
+
+  <!-- فهرس المحتويات -->
+  <div class="glass anim-up" style="padding:24px;margin-bottom:24px">
+    <h3 style="font-family:'Cairo',serif;font-size:16px;font-weight:800;margin-bottom:12px">فهرس المحتويات</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+      <a class="toc-link" href="#p1">١. مقدمة</a>
+      <a class="toc-link" href="#p2">٢. المعلومات التي نجمعها</a>
+      <a class="toc-link" href="#p3">٣. كيف نستخدم معلوماتك</a>
+      <a class="toc-link" href="#p4">٤. مشاركة المعلومات</a>
+      <a class="toc-link" href="#p5">٥. حماية البيانات</a>
+      <a class="toc-link" href="#p6">٦. ملفات تعريف الارتباط</a>
+      <a class="toc-link" href="#p7">٧. حقوقك</a>
+      <a class="toc-link" href="#p8">٨. الاحتفاظ بالبيانات</a>
+      <a class="toc-link" href="#p9">٩. نقل البيانات</a>
+      <a class="toc-link" href="#p10">١٠. خصوصية الأطفال</a>
+      <a class="toc-link" href="#p11">١١. التغييرات على السياسة</a>
+      <a class="toc-link" href="#p12">١٢. اتصل بنا</a>
+    </div>
+  </div>
+
+  <!-- نص السياسة -->
+  <div class="glass legal-section anim-up" style="padding:40px">
+
+    <h2 id="p1">١. مقدمة</h2>
+    <p>نحن في شركة منجم الذهب السودان ("الشركة"، "نحن"، "لنا") نولي أهمية كبيرة لحماية خصوصيتك和个人ية بياناتك. توضح هذه السياسة بالتفصيل أنواع المعلومات التي نجمعها، وكيف نستخدمها، وما هي التدابير التي نتخذها لحمايتها.</p>
+    <p>باستخدامك لمنصتنا الاستثمارية ("المنصة"، "الموقع")، فإنك توافق على الممارسات الموضحة في هذه السياسة. إذا كنت لا توافق على أي جزء، يرجى التوقف عن استخدام المنصة.</p>
+
+    <h2 id="p2">٢. المعلومات التي نجمعها</h2>
+    <p>نقوم بجمع الأنواع التالية من المعلومات عند استخدامك للمنصة:</p>
+
+    <p><strong>أ) المعلومات الشخصية:</strong></p>
+    <ul>
+      <li>الاسم الكامل (الاسم الأول واسم العائلة)</li>
+      <li>عنوان البريد الإلكتروني</li>
+      <li>رقم الهاتف المحمول</li>
+      <li>تاريخ الميلاد</li>
+      <li>العنوان الوطني</li>
+      <li>الجنسية</li>
+    </ul>
+
+    <p><strong>ب) معلومات التحقق من الهوية:</strong></p>
+    <ul>
+      <li>صور جواز السفر أو الهوية الوطنية</li>
+      <li>صورة سيلفي مع وثيقة الهوية</li>
+      <li>إثبات العنوان (فاتورة كهرباء أو كشف حساب بنكي)</li>
+      <li>رقم الوثيقة وتاريخ انتهائها</li>
+    </ul>
+
+    <p><strong>ج) المعلومات المالية:</strong></p>
+    <ul>
+      <li>سجل الإيداعات والسحوبات</li>
+      <li>أرصدة المحافظ الاستثمارية</li>
+      <li>سجل الأرباح الموزعة</li>
+      <li>عناوين المحافظ الرقمية</li>
+      <li>معلومات الحساب البنكي (للسحب)</li>
+    </ul>
+
+    <p><strong>د) المعلومات التقنية:</strong></p>
+    <ul>
+      <li>عنوان بروتوكول الإنترنت (IP)</li>
+      <li>نوع المتصفح وإصداره</li>
+      <li>نظام التشغيل</li>
+      <li>دقة الشاشة</li>
+      <li>المنطقة الزمنية</li>
+      <li>سجل زيارات الصفحات وأوقاتها</li>
+    </ul>
+
+    <p><strong>هـ) معلومات الاتصال:</strong></p>
+    <ul>
+      <li>رسائل الدعم الفني التي ترسلها</li>
+      <li>ملاحظاتك واستفساراتك</li>
+      <li>تقييماتك للمنصة</li>
+    </ul>
+
+    <h2 id="p3">٣. كيف نستخدم معلوماتك</h2>
+    <p>نستخدم المعلومات التي نجمعها للأغراض التالية:</p>
+    <ul>
+      <li>إنشاء وإدارة حسابك على المنصة</li>
+      <li>التحقق من هويتك ومنع الاحتيال وغسيل الأموال</li>
+      <li>معالجة طلبات الإيداع والسحب والاستثمار</li>
+      <li>حساب وتوزيع الأرباح على محافظك</li>
+      <li>إرسال إشعارات حول حسابك ومعاملاتك واستثماراتك</li>
+      <li>تقديم الدعم الفني والرد على استفساراتك</li>
+      <li>تحليل استخدام المنصة لتحسين خدماتنا</li>
+      <li>إرسال تحديثات حول相關服務 والمنتجات الجديدة (بموافقتك)</li>
+      <li>الامتثال للمتطلبات القانونية والتنظيمية</li>
+      <li>كشف ومنع الأنشطة الاحتيالية أو المشبوهة</li>
+      <li>إعداد التقارير الداخلية والإحصائيات</li>
+    </ul>
+
+    <h2 id="p4">٤. مشاركة المعلومات</h2>
+    <p>نحن لا نبيع أو نؤجر أو نتاجر ببياناتك الشخصية. قد نشارك معلوماتك في الحالات المحدودة التالية:</p>
+    <ul>
+      <li><strong>مقدمو الخدمات:</strong> مع شركات تساعدنا في تشغيل المنصة مثل خدمات الاستضافة والدفع والدعم الفني، وذلك بموجب اتفاقيات سرية صارمة</li>
+      <li><strong>المتطلبات القانونية:</strong> عند الطلب من المحاكم أو الجهات الحكومية أو التنظيمية المختصة بموجب أمر قضائي أو قانون ساري</li>
+      <li><strong>حماية الحقوق:</strong> لحماية حقوقنا أو ممتلكاتنا أو سلامة مستخدمينا أو الجمهور</li>
+      <li><strong>نقل الأعمال:</strong> في حالة الاندماج أو الاستحواذ أو بيع أصول الشركة، سيتم نقل البيانات إلى الكيان الجديد مع الحفاظ على نفس مستوى الحماية</li>
+      <li><strong>بموافقتك:</strong> في أي حالة أخرى يتم إخطارك والحصول على موافقتك الصريحة</li>
+    </ul>
+
+    <h2 id="p5">٥. حماية البيانات</h2>
+    <p>نتخذ إجراءات أمنية تقنية وتنظيمية صارمة لحماية بياناتك من الوصول غير المصرح به أو التعديل أو الإفصاح أو الإتلاف:</p>
+    <ul>
+      <li><strong>التشفير:</strong> تشفير جميع البيانات الحساسة أثناء النقل (TLS 1.3) وفي الراحة (AES-256)</li>
+      <li><strong>الاتصال الآمن:</strong> استخدام بروتوكول HTTPS لجميع الاتصالات مع المنصة</li>
+      <li><strong>كلمات المرور:</strong> تخزين كلمات المرور بشكل مشفر باستخدام خوارزميات قوية (bcrypt)</li>
+      <li><strong>المصادقة الثنائية:</strong> دعم المصادقة بخطوتين (2FA) لحماية حسابك</li>
+      <li><strong>المراقبة:</strong> مراقبة مستمرة للأنشطة المشبوهة والمحاولات غير المصرح بها</li>
+      <li><strong>الوصول المحدود:</strong> تحديد الوصول للبيانات الشخصية للموظفين الذين يحتاجونها فقط لأداء عملهم</li>
+      <li><strong>النسخ الاحتياطي:</strong> نسخ احتياطي منتظم ومشفر لجميع البيانات</li>
+      <li><strong>التدقيق:</strong> مراجعات أمنية دورية واختبارات اختراق منتظمة</li>
+    </ul>
+    <p>مع ذلك، لا يمكننا ضمان الأمان المطلق لأي نظام متصل بالإنترنت. أنت مسؤول عن الحفاظ على سرية بيانات الدخول الخاصة بك.</p>
+
+    <h2 id="p6">٦. ملفات تعريف الارتباط (Cookies)</h2>
+    <p>نستخدم ملفات تعريف الارتباط والتقنيات المشابهة لتحسين تجربتك على المنصة:</p>
+    <ul>
+      <li><strong>ملفات ضرورية:</strong> لتشغيل المنصة بشكل صحيح (تسجيل الدخول، تذكر الجلسة)</li>
+      <li><strong>ملفات تحليلية:</strong> لفهم كيفية استخدام المنصة وتحسينها</li>
+      <li><strong>ملفات وظيفية:</strong> لتذكر تفضيلاتك مثل اللغة والوضع (فاتح/غامق)</li>
+    </ul>
+    <p>يمكنك التحكم في ملفات تعريف الارتباط من خلال إعدادات متصفحك. لاحظ أن تعطيل بعض الملفات قد يؤثر على وظائف المنصة.</p>
+
+    <h2 id="p7">٧. حقوقك</h2>
+    <p>لديك الحقوق التالية فيما يتعلق ببياناتك الشخصية:</p>
+    <ul>
+      <li><strong>الحق في الوصول:</strong> طلب نسخة من جميع البيانات الشخصية التي نحتفظ بها عنك</li>
+      <li><strong>الحق في التصحيح:</strong> طلب تصحيح أي معلومات غير دقيقة أو غير مكتملة</li>
+      <li><strong>الحق في الحذف:</strong> طلب حذف بياناتك الشخصية (مع مراعاة الالتزامات القانونية للاحتفاظ ببعض البيانات)</li>
+      <li><strong>الحق في التقييد:</strong> طلب تقييد معالجة بياناتك في ظروف معينة</li>
+      <li><strong>الحق في الاعتراض:</strong> الاعتراض على معالجة بياناتك لأغراض التسويق المباشر</li>
+      <li><strong>الحق في النقل:</strong> طلب نقل بياناتك إلى مزود خدمة آخر بصيغة منظمة وقابلة للقراءة آلياً</li>
+      <li><strong>الحق في سحب الموافقة:</strong> سحب موافقتك على معالجة بياناتك في أي وقت</li>
+    </ul>
+    <p>لممارسة أي من هذه الحقوق، تواصل معنا عبر البريد الإلكتروني privacy@goldmine.sd. سنرد على طلبك خلال ٣٠ يوماً عمل.</p>
+
+    <h2 id="p8">٨. الاحتفاظ بالبيانات</h2>
+    <p>نحتفظ ببياناتك الشخصية وفقاً للفترات التالية:</p>
+    <ul>
+      <li><strong>بيانات الحساب:</strong> طالما كان حسابك نشطاً</li>
+      <li><strong>البيانات المالية:</strong> ٧ سنوات بعد آخر معاملة (وفقاً لمتطلبات مكافحة غسيل الأموال)</li>
+      <li><strong>بيانات التحقق من الهوية:</strong> ٥ سنوات بعد إغلاق الحساب</li>
+      <li><strong>سجلات الدعم الفني:</strong> ٣ سنوات بعد إغلاق التذكرة</li>
+      <li><strong>البيانات التقنية:</strong> ١٢ شهراً من تاريخ الجمع</li>
+    </ul>
+    <p>بعد انتهاء فترة الاحتفاظ، يتم حذف البيانات بشكل آمن ونهائي.</p>
+
+    <h2 id="p9">٩. نقل البيانات</h2>
+    <p>قد يتم نقل بياناتك ومعالجتها في دول خارج السودان. في هذه الحالات، نضمن:</p>
+    <ul>
+      <li>تطبيق نفس مستوى الحماية الموضح في هذه السياسة</li>
+      <li>الامتثال للقوانين المحلية والدولية المعمول بها</li>
+      <li>توقيع اتفاقيات حماية بيانات مع جميع الأطراف المعنية</li>
+    </ul>
+
+    <h2 id="p10">١٠. خصوصية الأطفال</h2>
+    <p>المنصة غير موجهة للأشخاص الذين تقل أعمارهم عن ١٨ عاماً. لا نجمع بيانات شخصية عن الأطفال عن علم. إذا علمنا أننا جمعنا بيانات عن طفل دون موافقة ولي الأمر، سنتخذ خطوات فورية لحذف هذه البيانات. إذا كنت تعتقد أن طفلاً قدم لنا معلومات شخصية، يرجى التواصل معنا فوراً.</p>
+
+    <h2 id="p11">١١. التغييرات على هذه السياسة</h2>
+    <p>قد نقوم بتحديث هذه السياسة من وقت لآخر لتعكس التغييرات في ممارساتنا أو القوانين المعمول بها. عند إجراء تغييرات جوهرية:</p>
+    <ul>
+      <li>نشر النسخة المحدثة على هذه الصفحة</li>
+      <li>تحديث تاريخ "آخر تحديث" في أعلى الصفحة</li>
+      <li>إرسال إشعار بالبريد الإلكتروني للتغييرات المهمة</li>
+      <li>عرض إشعار بارز على المنصة لمدة ٣٠ يوماً</li>
+    </ul>
+    <p>ننصحك بمراجعة هذه السياسة دورياً. استمرارك في استخدام المنصة بعد نشر التغييرات يعني موافقتك عليها.</p>
+
+    <h2 id="p12">١٢. اتصل بنا</h2>
+    <p>إذا كان لديك أي أسئلة أو مخاوف أو طلبات تتعلق بسياسة الخصوصية أو معالجة بياناتك الشخصية، يمكنك التواصل معنا:</p>
+    <ul>
+      <li>مسؤول حماية البيانات: privacy@goldmine.sd</li>
+      <li>البريد العام: info@goldmine.sd</li>
+      <li>الهاتف: +249 123 456 789</li>
+      <li>العنوان: شارع النيل، الخرطوم، السودان</li>
+      <li>ساعات العمل: الأحد - الخميس، ٨ صباحاً - ٥ مساءً</li>
+    </ul>
+    <p>نسعى للرد على جميع الاستفسارات خلال ٤٨ ساعة عمل.</p>
+
+  </div>
+
+  <!-- روابط ذات صلة -->
+  <div style="display:flex;gap:16px;margin-top:32px;justify-content:center" class="anim-up">
+    <a href="terms.html" class="glass" style="padding:16px 24px;border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:8px">
+      <span>📋</span>
+      <span style="font-size:14px;font-weight:600">الشروط والأحكام</span>
+    </a>
+    <a href="index.html" class="glass" style="padding:16px 24px;border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:8px">
+      <span>🏠</span>
+      <span style="font-size:14px;font-weight:600">الصفحة الرئيسية</span>
+    </a>
+  </div>
+
+</div>
+
+<!-- التذييل -->
+<footer class="site-footer" style="margin-top:60px">
+  <div class="page">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:1px solid var(--card-border);flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0a0a12">G</div>
+        <span style="font-family:'Cairo',serif;font-size:16px;font-weight:800"><span class="gold-text">Gold</span>Mine السودان</span>
+      </div>
+      <div style="display:flex;gap:24px">
+        <a href="privacy.html" style="font-size:13px;color:var(--text3);text-decoration:none">سياسة الخصوصية</a>
+        <a href="terms.html" style="font-size:13px;color:var(--text3);text-decoration:none">الشروط والأحكام</a>
+      </div>
+      <p style="font-size:13px;color:var(--text3)">© 2025 منجم الذهب السودان. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/theme.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
