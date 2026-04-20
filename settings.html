@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الإعدادات — منجم الذهب</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="page">
+    <div class="nav-inner">
+      <div class="nav-right" style="order:3">
+        <div class="theme-toggle" onclick="toggleTheme()"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span><div class="toggle-knob"></div></div>
+        <div class="nav-balance">$24,580.00</div>
+        <a class="btn-gold btn-sm" href="login.html">تسجيل الدخول</a>
+      </div>
+      <div class="nav-links" id="navLinks" style="order:2">
+        <aية</a>
+        <a class="nav-link" href="portfolios.html">المحافظ</a>
+        <a class="nav-link" href="dashboard.html">لوحة التحكم class="nav-link" href="index.html">الرئيس</a>
+        <a class="nav-link" href="transactions.html">المعاملات</a>
+        <a class="nav-link active" href="settings.html">الإعدادات</a>
+        <a class="nav-link" href="admin.html" style="color:var(--gold)">الإدارة</a>
+      </div>
+      <a class="nav-logo" href="index.html" style="order:1">
+        <div class="nav-logo-icon">G</div>
+        <span><span class="gold-text">Gold</span>Mine</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="page inner-page">
+  <h1 style="font-family:'Cairo',serif;font-size:32px;font-weight:800;margin-bottom:32px" class="anim-up"><span class="gold-text">الإعدادات</span></h1>
+
+  <!-- الملف الشخصي -->
+  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
+    <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:24px">الملف الشخصي</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">الاسم الأول</label><input class="input" value="أحمد"></div>
+      <div><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">اسم العائلة</label><input class="input" value="حسن"></div>
+    </div>
+    <div style="margin-bottom:16px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">رقم الهاتف</label><input class="input" value="+249 912 345 678"></div>
+    <div style="margin-bottom:24px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">اللغة</label><select class="input"><option>العربية</option><option>English</option></select></div>
+    <button class="btn-gold" onclick="showToast('تم حفظ التغييرات بنجاح!','success')">حفظ التغييرات</button>
+  </div>
+
+  <!-- إعدادات المظهر -->
+  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
+    <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:24px">إعدادات المظهر</h2>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:var(--stat-inner-bg);border-radius:12px">
+      <div>
+        <p style="font-size:14px;font-weight:700;margin-bottom:4px">وضع الموقع</p>
+        <p style="font-size:12px;color:var(--text3)">اختر بين الوضع الفاتح والغامق</p>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button onclick="setTheme('dark')" id="btnDark" style="padding:10px 20px;border-radius:10px;border:2px solid var(--gold);background:rgba(212,168,16,.1);color:var(--gold);font-weight:700;cursor:pointer;font-family:inherit;font-size:13px;transition:all .3s">🌙 غامق</button>
+        <button onclick="setTheme('light')" id="btnLight" style="padding:10px 20px;border-radius:10px;border:2px solid var(--card-border);background:transparent;color:var(--text2);font-weight:700;cursor:pointer;font-family:inherit;font-size:13px;transition:all .3s">☀️ فاتح</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- التحقق من الهوية -->
+  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+      <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800">التحقق من الهوية</h2>
+      <span class="badge badge-warning">قيد الانتظار</span>
+    </div>
+    <div style="margin-bottom:16px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">وثيقة الهوية</label><input type="file" class="input" style="padding:10px"></div>
+    <div style="margin-bottom:16px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">إثبات العنوان</label><input type="file" class="input" style="padding:10px"></div>
+    <div style="margin-bottom:24px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">سيلفي مع الهوية</label><input type="file" class="input" style="padding:10px"></div>
+    <button class="btn-gold" onclick="showToast('تم رفع المستندات بنجاح!','success')">رفع المستندات</button>
+  </div>
+
+  <!-- الإحالة -->
+  <div class="glass anim-up" style="padding:32px">
+    <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">برنامج الإحالة</h2>
+    <p style="font-size:14px;color:var(--text2);margin-bottom:16px">شارك رابط الإحالة واحصل على مكافآت.</p>
+    <div style="display:flex;gap:12px">
+      <input class="input" value="https://goldmine.sd/register?ref=GMAH7X2K" readonly style="font-family:'JetBrains Mono',monospace;font-size:13px;direction:ltr">
+      <button class="btn-outline btn-sm" onclick="showToast('تم نسخ الرابط!','success')" style="white-space:nowrap">نسخ</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="js/theme.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
