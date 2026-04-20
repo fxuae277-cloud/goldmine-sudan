@@ -3,14 +3,15 @@
 // ═══════════════════════════════════════════════════════════════
 
 function initTheme() {
-  const saved = localStorage.getItem('theme') || 'dark';
+  // الافتراضي فاتح — إذا ما فيه حفظ سابق
+  const saved = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', saved);
   updateThemeButtons(saved);
 }
 
 function toggleTheme() {
   const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
+  const next = current === 'light' ? 'dark' : 'light';
   setTheme(next);
 }
 
