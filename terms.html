@@ -13,42 +13,68 @@
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/pages.css">
   <style>
-    .legal-content h2 {
+    .legal-section h2 {
       font-family: 'Cairo', serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
-      margin: 32px 0 12px;
       color: var(--gold);
+      margin: 32px 0 12px;
     }
-    .legal-content p {
+    .legal-section h2:first-child {
+      margin-top: 0;
+    }
+    .legal-section p {
       font-size: 15px;
       color: var(--text2);
       line-height: 2;
       margin-bottom: 12px;
     }
-    .legal-content ul {
+    .legal-section ul {
       padding-right: 20px;
       margin-bottom: 16px;
     }
-    .legal-content li {
+    .legal-section li {
       font-size: 14px;
       color: var(--text2);
       line-height: 2;
       margin-bottom: 4px;
     }
-    .legal-content li::marker {
+    .legal-section li::marker {
+      color: var(--gold);
+    }
+    .toc-link {
+      display: block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all .2s;
+    }
+    .toc-link:hover {
+      background: var(--stat-inner-bg);
       color: var(--gold);
     }
   </style>
 </head>
 <body>
 
+<!-- شريط التنقل -->
 <nav class="navbar" id="navbar">
   <div class="page">
     <div class="nav-inner">
       <div class="nav-right" style="order:3">
-        <div class="theme-toggle" onclick="toggleTheme()"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span><div class="toggle-knob"></div></div>
+        <div class="theme-toggle" onclick="toggleTheme()">
+          <span class="icon-moon">🌙</span>
+          <span class="icon-sun">☀️</span>
+          <div class="toggle-knob"></div>
+        </div>
         <a class="btn-gold btn-sm" href="login.html">تسجيل الدخول</a>
+        <button class="mobile-toggle" onclick="toggleMobile()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
       </div>
       <div class="nav-links" id="navLinks" style="order:2">
         <a class="nav-link" href="index.html">الرئيسية</a>
@@ -62,7 +88,8 @@
   </div>
 </nav>
 
-<div class="page inner-page" style="max-width:800px">
+<!-- المحتوى -->
+<div class="page inner-page" style="max-width:820px">
 
   <div style="margin-bottom:40px" class="anim-up">
     <h1 style="font-family:'Cairo',serif;font-size:36px;font-weight:800;margin-bottom:8px">
@@ -71,103 +98,183 @@
     <p style="color:var(--text3);font-size:13px">آخر تحديث: 1 فبراير 2025</p>
   </div>
 
-  <div class="glass legal-content anim-up" style="padding:40px">
+  <!-- فهرس المحتويات -->
+  <div class="glass anim-up" style="padding:24px;margin-bottom:24px">
+    <h3 style="font-family:'Cairo',serif;font-size:16px;font-weight:800;margin-bottom:12px">فهرس المحتويات</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+      <a class="toc-link" href="#s1">١. القبول بالشروط</a>
+      <a class="toc-link" href="#s2">٢. التسجيل والحساب</a>
+      <a class="toc-link" href="#s3">٣. الخدمات الاستثمارية</a>
+      <a class="toc-link" href="#s4">٤. الإيداع والسحب</a>
+      <a class="toc-link" href="#s5">٥. الرسوم والمصاريف</a>
+      <a class="toc-link" href="#s6">٦. الاستخدام المقبول</a>
+      <a class="toc-link" href="#s7">٧. الملكية الفكرية</a>
+      <a class="toc-link" href="#s8">٨. إخلاء المسؤولية</a>
+      <a class="toc-link" href="#s9">٩. تحديد المسؤولية</a>
+      <a class="toc-link" href="#s10">١٠. إنهاء الحساب</a>
+      <a class="toc-link" href="#s11">١١. القانون الحاكم</a>
+      <a class="toc-link" href="#s12">١٢. التعديلات</a>
+      <a class="toc-link" href="#s13">١٣. اتصل بنا</a>
+    </div>
+  </div>
 
-    <h2>١. القبول بالشروط</h2>
-    <p>باستخدامك لمنصة منجم الذهب السودان ("المنصة")، فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على أي جزء من هذه الشروط، يرجى عدم استخدام المنصة.</p>
+  <!-- نص الشروط -->
+  <div class="glass legal-section anim-up" style="padding:40px">
 
-    <h2>٢. التسجيل والحساب</h2>
+    <h2 id="s1">١. القبول بالشروط</h2>
+    <p>باستخدامك لمنصة منجم الذهب السودان ("المنصة"، "الموقع")، فإنك توافق على الالتزام الكامل بهذه الشروط والأحكام. إذا كنت لا توافق على أي جزء من هذه الشروط، يرجى التوقف فوراً عن استخدام المنصة. يُعد استخدامك المستمر للمنصة قبولاً لأي تحديثات مستقبلية لهذه الشروط.</p>
+
+    <h2 id="s2">٢. التسجيل والحساب</h2>
+    <p>للاستفادة من خدمات المنصة، يجب عليك إنشاء حساب شخصي. عند التسجيل، أنت توافق على ما يلي:</p>
     <ul>
       <li>يجب أن يكون عمرك ١٨ سنة على الأقل لإنشاء حساب</li>
-      <li>يجب تقديم معلومات دقيقة وحديثة عند التسجيل</li>
-      <li>أنت مسؤول عن الحفاظ على سرية بيانات الدخول الخاصة بك</li>
-      <li>يجب إكمال التحقق من الهوية (KYC) للاستفادة من جميع الخدمات</li>
-      <li>يُسمح بحساب واحد لكل شخص</li>
+      <li>تقديم معلومات شخصية دقيقة وكاملة وحديثة</li>
+      <li>الحفاظ على سرية بيانات الدخول وعدم مشاركتها مع أي طرف</li>
+      <li>إخطارنا فوراً بأي استخدام غير مصرح به لحسابك</li>
+      <li>إكمال عملية التحقق من الهوية (KYC) خلال ٣٠ يوماً من التسجيل</li>
+      <li>يُسمح بإنشاء حساب واحد فقط لكل شخص</li>
+      <li>نحتفظ بالحق في رفض أو تعليق أي حساب لا يستوفي الشروط</li>
     </ul>
 
-    <h2>٣. الخدمات الاستثمارية</h2>
+    <h2 id="s3">٣. الخدمات الاستثمارية</h2>
+    <p>تقدم المنصة محافظ استثمارية في قطاع تعدين الذهب في السودان. عند استخدامك لهذه الخدمات، أنت تقر بما يلي:</p>
     <ul>
-      <li>تقدم المنصة محافظ استثمارية في قطاع تعدين الذهب</li>
-      <li>العوائد المذكورة هي تقديرات وليست ضمانات</li>
-      <li>الاستثمار ينطوي على مخاطر وقد يؤدي إلى خسارة جزئية أو كاملة لرأس المال</li>
-      <li>لا نقدم نصائح مالية أو استشارات استثمارية</li>
+      <li>العوائد المذكورة هي تقديرات مبنية على الأداء السابق وليست ضمانات مستقبلية</li>
+      <li>الاستثمار ينطوي على مخاطر وقد يؤدي إلى خسارة جزئية أو كاملة لرأس المال المستثمر</li>
+      <li>الشركة لا تقدم نصائح مالية أو استشارات استثمارية شخصية</li>
+      <li>قرار الاستثمار يقع على مسؤوليتك الشخصية</li>
+      <li>يجب عليك تقييم مخاطر الاستثمار قبل اتخاذ أي قرار</li>
+      <li>الأرباح يتم توزيعها وفقاً لجدول زمني محدد لكل محفظة</li>
     </ul>
 
-    <h2>٤. الإيداع والسحب</h2>
+    <h2 id="s4">٤. الإيداع والسحب</h2>
+    <p>تحكم عمليات الإيداع والسحب بالقواعد التالية:</p>
     <ul>
-      <li>الحد الأدنى للإيداع: ١٠ USDT أو ٥٠ دولار للتحويل البنكي</li>
-      <li>الحد الأدنى للسحب: ٢٠ USDT أو ٥٠ دولار للتحويل البنكي</li>
-      <li>يتم مراجعة طلبات الإيداع والسحب خلال ٢٤ ساعة عمل</li>
-      <li>نحتفظ بالحق في رفض أي معاملة مشبوهة</li>
+      <li>الحد الأدنى للإيداع عبر USDT: ١٠ دولارات أمريكية</li>
+      <li>الحد الأدنى للإيداع عبر التحويل البنكي: ٥٠ دولاراً أمريكياً</li>
+      <li>الحد الأدنى للسحب عبر USDT: ٢٠ دولاراً أمريكياً</li>
+      <li>الحد الأدنى للسحب عبر التحويل البنكي: ٥٠ دولاراً أمريكياً</li>
+      <li>تتم مراجعة طلبات الإيداع خلال ١-٣ ساعات عمل</li>
+      <li>تتم مراجعة طلبات السحب خلال ٢٤ ساعة عمل</li>
+      <li>التحويلات البنكية تستغرق ١-٣ أيام عمل إضافية</li>
+      <li>نحتفظ بالحق في رفض أو تأخير أي معاملة مشبوهة</li>
+      <li>يجب أن يكون مصدر الأموال مشروعاً وقانونياً</li>
     </ul>
 
-    <h2>٥. الرسوم</h2>
-    <p>لا توجد رسوم على الإيداع أو السحب حالياً. تحتفظ الشركة بالحق في فرض رسوم مع إشعار مسبق.</p>
+    <h2 id="s5">٥. الرسوم والمصاريف</h2>
+    <p>الرسوم الحالية للمنصة:</p>
+    <ul>
+      <li>رسوم الإيداع: مجاناً</li>
+      <li>رسوم السحب: مجاناً</li>
+      <li>رسوم التحويل بين المحافظ: مجاناً</li>
+      <li>رسوم عدم النشاط: لا توجد حالياً</li>
+    </ul>
+    <p>نحتفظ بالحق في تعديل الرسوم في أي وقت مع إشعار مسبق لا يقل عن ٣٠ يوماً عبر البريد الإلكتروني أو إشعار على المنصة.</p>
 
-    <h2>٦. الاستخدام المقبول</h2>
+    <h2 id="s6">٦. الاستخدام المقبول</h2>
     <p>يُحظر استخدام المنصة لأي من الأغراض التالية:</p>
     <ul>
-      <li>غسيل الأموال أو تمويل الإرهاب</li>
-      <li>الاحتيال أو انتحال الهوية</li>
-      <li>الأنشطة غير القانونية</li>
-      <li>محاولة اختراق أو تعطيل المنصة</li>
-      <li>إنشاء حسابات متعددة</li>
+      <li>غسيل الأموال أو تمويل أي نشاط إرهابي أو غير قانوني</li>
+      <li>انتحال هوية شخص آخر أو تقديم معلومات كاذبة</li>
+      <li>استخدام المنصة من بلد تخضع لعقوبات دولية</li>
+      <li>محاولة اختراق أو تعطيل أو إتلاف المنصة أو أنظمتها</li>
+      <li>استخدام برامج آلية أو روبوتات للتفاعل مع المنصة</li>
+      <li>إنشاء حسابات متعددة للاستفادة من برامج الإحالة</li>
+      <li>التدخل في سير عمل المنصة أو شبكتها</li>
+      <li>انتهاك أي قوانين محلية أو دولية سارية</li>
     </ul>
+    <p>أي انتهاك لهذه القواعد قد يؤدي إلى الإيقاف الفوري للحساب ومصادرة الأموال وإبلاغ السلطات المختصة.</p>
 
-    <h2>٧. الملكية الفكرية</h2>
-    <p>جميع المحتوى والعلامات التجارية والشعارات الموجودة على المنصة هي ملك لشركة منجم الذهب السودان ولا يجوز استخدامها دون إذن كتابي.</p>
+    <h2 id="s7">٧. الملكية الفكرية</h2>
+    <p>جميع المحتوى والنصوص والصور والشعارات والعلامات التجارية والبرمجيات الموجودة على المنصة هي ملك حصري لشركة منجم الذهب السودان. لا يجوز نسخ أو تعديل أو توزيع أو إعادة إنتاج أي جزء من المنصة دون إذن كتابي مسبق من الشركة.</p>
 
-    <h2>٨. إخلاء المسؤولية</h2>
-    <p>يتم تقديم المنصة "كما هي" دون أي ضمانات صريحة أو ضمنية. لا نضمن استمرارية الخدمة أو خلوها من الأخطاء. الاستثمار في تعدين الذهب ينطوي على مخاطر، والعوائد السابقة لا تضمن الأداء المستقبلي.</p>
-
-    <h2>٩. تحديد المسؤولية</h2>
-    <p>لن تتجاوز مسؤوليتنا الإجمالية المبلغ الذي استثمرته عبر المنصة. لا نتحمل مسؤولية أي أضرار غير مباشرة أو تبعية.</p>
-
-    <h2>١٠. إنهاء الحساب</h2>
+    <h2 id="s8">٨. إخلاء المسؤولية</h2>
+    <p>يتم تقديم المنصة والخدمات "كما هي" و"حسب التوفر" دون أي ضمانات صريحة أو ضمنية. على سبيل المثال لا الحصر:</p>
     <ul>
-      <li>يمكنك إغلاق حسابك في أي وقت بعد سحب جميع أموالك</li>
-      <li>نحتفظ بالحق في تعليق أو إنهاء الحسابات المخالفة</li>
-      <li>سيتم الاحتفاظ بالبيانات الضرورية للالتزامات القانونية</li>
+      <li>لا نضمن استمرارية الخدمة أو خلوها من الانقطاعات</li>
+      <li>لا نضمن دقة أو اكتمال المعلومات المقدمة</li>
+      <li>لا نضمن خلو المنصة من الأخطاء أو الفيروسات</li>
+      <li>لا نضمن تحقيق عوائد استثمارية محددة</li>
+      <li>لا نتحمل مسؤولية أي خسائر ناتجة عن ظروف خارجة عن إرادتنا</li>
+    </ul>
+    <p>الاستثمار في قطاع تعدين الذهب ينطوي على مخاطر، والعوائد السابقة لا تضمن الأداء المستقبلي.</p>
+
+    <h2 id="s9">٩. تحديد المسؤولية</h2>
+    <p>في أي حال من الأحوال، لن تتجاوز مسؤوليتنا الإجمالية تجاهك المبلغ الذي قمت بإيداعه واستثماره عبر المنصة خلال الاثني عشر شهراً السابقة للحدث الذي أدى إلى المسؤولية. لا نتحمل بأي حال من الأحوال مسؤولية:</p>
+    <ul>
+      <li>الأضرار غير المباشرة أو التبعية أو العرضية</li>
+      <li>فقدان الأرباح أو الإيرادات أو البيانات</li>
+      <li>الأضرار الناتجة عن استخدام أو عدم القدرة على استخدام المنصة</li>
+      <li>الأضرار الناتجة عن أفعال أطراف ثالثة</li>
     </ul>
 
-    <h2>١١. القانون الحاكم</h2>
-    <p>تخضع هذه الشروط لقوانين جمهورية السودان وأي نزاع يحل عبر المحاكم المختصة.</p>
+    <h2 id="s10">١٠. إنهاء الحساب</h2>
+    <p>بشأن إنهاء الحساب:</p>
+    <ul>
+      <li>يمكنك إغلاق حسابك في أي وقت بعد سحب جميع أموالك المتاحة</li>
+      <li>الاستثمارات النشطة يجب أن تنتهي أو تُسحب قبل الإغلاق</li>
+      <li>نحتفظ بالحق في تعليق أو إنهاء الحسابات المخالفة دون إشعار مسبق</li>
+      <li>في حالة الإغلاق، سيتم الاحتفاظ بالبيانات الضرورية للالتزامات القانونية لمدة تصل إلى ٥ سنوات</li>
+      <li>الإحالة والمكافآت المكتسبة تُلغى عند إغلاق الحساب</li>
+    </ul>
 
-    <h2>١٢. التعديلات</h2>
-    <p>نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم إخطارك بالتغييرات الجوهرية عبر البريد الإلكتروني أو إشعار على المنصة.</p>
+    <h2 id="s11">١١. القانون الحاكم وتسوية النزاعات</h2>
+    <p>تخضع هذه الشروط والأحكام وتفسر وفقاً لقوانين جمهورية السودان. أي نزاع ينشأ عن أو يتعلق بهذه الشروط يتم حله أولاً عبر التفاوض الودي خلال ٣٠ يوماً. في حال عدم التوصل إلى حل، يتم إحالة النزاع إلى المحاكم المختصة في الخرطوم، السودان.</p>
 
-    <h2>١٣. اتصل بنا</h2>
+    <h2 id="s12">١٢. التعديلات</h2>
+    <p>نحتفظ بالحق في تعديل أو تحديث هذه الشروط والأحكام في أي وقت. سيتم:</p>
+    <ul>
+      <li>نشر النسخة المحدثة على هذه الصفحة</li>
+      <li>تحديث تاريخ "آخر تحديث" في أعلى الصفحة</li>
+      <li>إرسال إشعار بالبريد الإلكتروني للتغييرات الجوهرية</li>
+      <li>منح فترة ٣٠ يوماً قبل دخول التغييرات حيز التنفيذ</li>
+    </ul>
+    <p>استمرارك في استخدام المنصة بعد دخول التغييرات حيز التنفيذ يعني موافقتك على الشروط الجديدة.</p>
+
+    <h2 id="s13">١٣. اتصل بنا</h2>
+    <p>إذا كان لديك أي أسئلة أو استفسارات حول هذه الشروط والأحكام، يمكنك التواصل معنا:</p>
     <ul>
       <li>البريد الإلكتروني: legal@goldmine.sd</li>
       <li>الهاتف: +249 123 456 789</li>
-      <li>العنوان: الخرطوم، السودان</li>
+      <li>العنوان: شارع النيل، الخرطوم، السودان</li>
+      <li>ساعات العمل: الأحد - الخميس، ٨ صباحاً - ٥ مساءً</li>
     </ul>
 
   </div>
 
-  <div style="text-align:center;margin-top:32px" class="anim-up">
-    <a href="privacy.html" style="color:var(--gold);font-size:14px;text-decoration:none">اقرأ سياسة الخصوصية ←</a>
+  <!-- روابط ذات صلة -->
+  <div style="display:flex;gap:16px;margin-top:32px;justify-content:center" class="anim-up">
+    <a href="privacy.html" class="glass" style="padding:16px 24px;border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:8px">
+      <span>🔒</span>
+      <span style="font-size:14px;font-weight:600">سياسة الخصوصية</span>
+    </a>
+    <a href="index.html" class="glass" style="padding:16px 24px;border-radius:12px;text-decoration:none;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:8px">
+      <span>🏠</span>
+      <span style="font-size:14px;font-weight:600">الصفحة الرئيسية</span>
+    </a>
   </div>
 
 </div>
 
-<footer class="site-footer">
+<!-- التذييل -->
+<footer class="site-footer" style="margin-top:60px">
   <div class="page">
-    <div class="footer-inner">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:1px solid var(--card-border);flex-wrap:wrap;gap:16px">
       <div style="display:flex;align-items:center;gap:10px">
         <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0a0a12">G</div>
-        <span style="font-family:'Cairo',serif;font-size:18px;font-weight:800"><span class="gold-text">Gold</span>Mine السودان</span>
+        <span style="font-family:'Cairo',serif;font-size:16px;font-weight:800"><span class="gold-text">Gold</span>Mine السودان</span>
       </div>
       <div style="display:flex;gap:24px">
         <a href="privacy.html" style="font-size:13px;color:var(--text3);text-decoration:none">سياسة الخصوصية</a>
         <a href="terms.html" style="font-size:13px;color:var(--text3);text-decoration:none">الشروط والأحكام</a>
       </div>
-      <p style="font-size:13px;color:var(--text3)">© 2025 منجم الذهب السودان</p>
+      <p style="font-size:13px;color:var(--text3)">© 2025 منجم الذهب السودان. جميع الحقوق محفوظة.</p>
     </div>
   </div>
 </footer>
 
 <div class="toast" id="toast"></div>
+
 <script src="js/theme.js"></script>
 <script src="js/app.js"></script>
 </body>
