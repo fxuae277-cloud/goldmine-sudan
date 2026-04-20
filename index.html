@@ -1,248 +1,45 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>منجم الذهب السودان — منصة الاستثمار المميز</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0a0a12;--bg2:#13131f;--bg3:#1e1e2e;--bg4:#282840;
-  --gold:#d4a810;--gold-light:#f5e08e;--gold-dark:#7a5f0a;--gold-mid:#e8c01a;
-  --text:#f0ece4;--text2:#a3a3b5;--text3:#72728a;
-  --success:#22c55e;--warning:#f59e0b;--danger:#ef4444;
-  --radius:16px;
-}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Tajawal','Cairo',sans-serif;background:var(--bg);color:var(--text);
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.8;
-  direction:rtl;text-align:right;
-}
-::selection{background:rgba(212,168,16,.3);color:#fff}
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg2)}
-::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px}
-
-/* ─── Utility ─── */
-.page{max-width:1280px;margin:0 auto;padding:0 24px}
-.glass{background:rgba(30,30,46,.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(212,168,16,.1);border-radius:var(--radius)}
-.glass:hover{border-color:rgba(212,168,16,.2)}
-.gold-text{background:linear-gradient(135deg,#d4a810,#e8c01a,#f5e08e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.5px}
-.badge-success{background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
-.badge-warning{background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.2)}
-.badge-danger{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
-.badge-gold{background:rgba(212,168,16,.1);color:#d4a810;border:1px solid rgba(212,168,16,.2)}
-
-/* ─── Animations ─── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(212,168,16,.1)}50%{box-shadow:0 0 40px rgba(212,168,16,.25)}}
-@keyframes goldPulse{0%,100%{opacity:.6}50%{opacity:1}}
-
-.anim-up{animation:fadeUp .7s ease forwards;opacity:0}
-.anim-up:nth-child(1){animation-delay:.05s}
-.anim-up:nth-child(2){animation-delay:.1s}
-.anim-up:nth-child(3){animation-delay:.15s}
-.anim-up:nth-child(4){animation-delay:.2s}
-.anim-up:nth-child(5){animation-delay:.25s}
-.anim-up:nth-child(6){animation-delay:.3s}
-
-/* ─── Buttons ─── */
-.btn-gold{
-  background:linear-gradient(135deg,#d4a810,#e8c01a,#f5e08e);
-  color:#0a0a12;font-weight:700;padding:14px 32px;border-radius:12px;border:none;
-  font-size:15px;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:8px;
-  text-decoration:none;font-family:inherit;
-}
-.btn-gold:hover{box-shadow:0 8px 30px rgba(212,168,16,.3);transform:translateY(-2px)}
-.btn-gold:active{transform:translateY(0) scale(.97)}
-.btn-outline{
-  border:1px solid rgba(212,168,16,.3);color:#d4a810;font-weight:600;
-  padding:14px 32px;border-radius:12px;background:transparent;cursor:pointer;
-  transition:all .3s;font-size:15px;text-decoration:none;font-family:inherit;
-}
-.btn-outline:hover{background:rgba(212,168,16,.08);border-color:rgba(212,168,16,.5)}
-.btn-sm{padding:10px 20px;font-size:13px;border-radius:10px}
-
-/* ─── Input ─── */
-.input{
-  width:100%;background:rgba(10,10,18,.8);border:1px solid rgba(212,168,16,.1);
-  border-radius:12px;padding:14px 16px;color:var(--text);font-size:14px;
-  font-family:inherit;transition:all .2s;outline:none;
-}
-.input::placeholder{color:var(--text3)}
-.input:focus{border-color:rgba(212,168,16,.4);box-shadow:0 0 0 3px rgba(212,168,16,.08)}
-select.input{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2372728a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 14px center;padding-left:36px}
-
-/* ─── Navbar ─── */
-.navbar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(10,10,18,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(212,168,16,.08);transition:all .3s;
-}
-.navbar.scrolled{background:rgba(10,10,18,.95);box-shadow:0 4px 30px rgba(0,0,0,.3)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
-.nav-logo-icon{
-  width:36px;height:36px;border-radius:10px;
-  background:linear-gradient(135deg,#d4a810,#f5e08e);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:16px;color:#0a0a12;transition:box-shadow .3s;
-}
-.nav-logo:hover .nav-logo-icon{box-shadow:0 4px 20px rgba(212,168,16,.3)}
-.nav-logo span{font-family:'Cairo',serif;font-size:20px;font-weight:800;letter-spacing:-.5px}
-.nav-links{display:flex;gap:4px}
-.nav-link{
-  padding:8px 16px;border-radius:10px;font-size:14px;font-weight:500;
-  color:var(--text2);text-decoration:none;transition:all .2s;cursor:pointer;
-}
-.nav-link:hover,.nav-link.active{color:#d4a810;background:rgba(212,168,16,.08)}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-balance{
-  padding:6px 14px;border-radius:10px;background:rgba(212,168,16,.08);
-  border:1px solid rgba(212,168,16,.15);font-family:'JetBrains Mono',monospace;
-  font-size:13px;font-weight:600;color:#d4a810;direction:ltr;
-}
-.mobile-toggle{display:none;background:none;border:none;color:var(--text2);cursor:pointer;padding:8px}
-
-/* ─── Section ─── */
-.section{padding:100px 0}
-.section-title{font-family:'Cairo',serif;font-size:42px;font-weight:800;line-height:1.3;margin-bottom:16px}
-.section-sub{color:var(--text2);font-size:17px;max-width:600px;line-height:1.8}
-
-/* ─── Stats Row ─── */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:40px 0;border-top:1px solid rgba(212,168,16,.08);border-bottom:1px solid rgba(212,168,16,.08)}
-.stat-item{text-align:center}
-.stat-value{font-family:'Cairo',serif;font-size:36px;font-weight:800;margin-bottom:4px}
-.stat-label{font-size:13px;color:var(--text3);letter-spacing:.5px}
-
-/* ─── Cards ─── */
-.card{padding:32px;transition:all .4s}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.2)}
-
-/* ─── Page Visibility ─── */
-.page-view{display:none;min-height:100vh}
-.page-view.active{display:block;animation:fadeIn .4s ease}
-
-/* ─── Chart Canvas ─── */
-.chart-container{position:relative;height:300px;width:100%}
-.chart-bar{
-  position:absolute;bottom:0;border-radius:6px 6px 0 0;
-  background:linear-gradient(to top,rgba(212,168,16,.8),rgba(212,168,16,.2));
-  transition:all .6s ease;min-width:20px;
-}
-.chart-bar:hover{background:linear-gradient(to top,#d4a810,rgba(212,168,16,.5))}
-
-/* ─── Table ─── */
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse}
-th{text-align:right;padding:12px 20px;font-size:11px;color:var(--text3);letter-spacing:.5px;font-weight:700;border-bottom:1px solid rgba(212,168,16,.08)}
-td{padding:14px 20px;font-size:14px;border-bottom:1px solid rgba(212,168,16,.04)}
-tr:hover td{background:rgba(212,168,16,.03)}
-
-/* ─── Modal ─── */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);
-  z-index:200;display:none;align-items:center;justify-content:center;padding:20px;
-}
-.modal-overlay.open{display:flex}
-.modal{width:100%;max-width:480px;animation:fadeUp .3s ease}
-
-/* ─── Toggle ─── */
-.toggle{width:44px;height:24px;border-radius:12px;background:var(--bg4);positionflex-shrink:0}
-.toggle.on{background:var(--gold)}
-.toggle::after{content:'';position:absolute;top:3px;right:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:all .3s}
-.toggle.on::after{right:23px}
-
-/* ─── Toast ─── */
-.toast{
-  position:fixed;bottom:24px;left:24px;z-index:300;
-  padding:14px 24px;border-radius:12px;font-size:14px;font-weight:500;
-  animation:fadeUp .3s ease;display:none;
-  box-shadow:0 8px 30px rgba(0,0,0,.3);
-}
-.toast.show{display:flex;align-items:center;gap:10px}
-.toast-success{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#22c55e}
-.toast-error{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);color:#ef4444}
-
-/* ─── Sidebar ─── */
-.admin-layout{display:flex;min-height:100vh}
-.admin-sidebar{width:256px;background:rgba(19,19,31,.8);border-left:1px solid rgba(212,168,16,.08);padding:20px;position:fixed;top:64px;bottom:0;right:0;overflow-y:auto}
-.admin-main{flex:1;margin-right:256px;padding:32px}
-.sidebar-link{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;font-size:14px;color:var(--text2);text-decoration:none;transition:all .2s;cursor:pointer;margin-bottom:2px}
-.sidebar-link:hover,.sidebar-link.active{background:rgba(212,168,16,.08);color:#d4a810}
-
-/* ─── Responsive ─── */
-@media(max-width:1024px){
-  .stats-row{grid-template-columns:repeat(2,1fr)}
-  .section:relative;cursor:pointer;transition:all .3s;-title{font-size:32px}
-  .admin-sidebar{display:none}
-  .admin-main{margin-right:0}
-}
-@media(max-width:768px){
-  .nav-links{display:none}
-  .mobile-toggle{display:block}
-  .nav-balance{display:none}
-  .stats-row{grid-template-columns:1fr 1fr;gap:12px}
-  .stat-value{font-size:28px}
-  .section{padding:60px 0}
-  .section-title{font-size:28px}
-  .page{padding:0 16px}
-  .grid-2{grid-template-columns:1fr !important}
-  .grid-3{grid-template-columns:1fr !important}
-  .grid-4{grid-template-columns:1fr 1fr !important}
-}
-@media(max-width:480px){
-  .stats-row{grid-template-columns:1fr}
-}
-
-/* ─── Noise ─── */
-body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");
-}
-
-/* ─── Particles ─── */
-.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.particle{position:absolute;width:2px;height:2px;background:rgba(212,168,16,.3);border-radius:50%;animation:float 8s ease-in-out infinite}
-
-/* ─── RTL Fixes ─── */
-select.input{background-position:left 14px center}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منجم الذهب السودان — منصة الاستثمار المميز</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/pages.css">
 </head>
 <body>
 
-<!-- ════════════════════════════════════════════════════════════════
-     شريط التنقل
-     ════════════════════════════════════════════════════════════════ -->
+<!-- شريط التنقل -->
 <nav class="navbar" id="navbar">
   <div class="page">
     <div class="nav-inner">
       <div class="nav-right" style="order:3">
-        <div class="nav-balance" id="navBalance">$24,580.00</div>
-        <a class="btn-gold btn-sm" onclick="showPage('login')" id="navAuthBtn">تسجيل الدخول</a>
+        <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
+          <span class="icon-moon">🌙</span>
+          <span class="icon-sun">☀️</span>
+          <div class="toggle-knob" id="themeKnob"></div>
+        </div>
+        <div class="nav-balance">$24,580.00</div>
+        <a class="btn-gold btn-sm" href="login.html">تسجيل الدخول</a>
         <button class="mobile-toggle" onclick="toggleMobile()">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
-
       <div class="nav-links" id="navLinks" style="order:2">
-        <a class="nav-link active" data-page="home" onclick="showPage('home')">الرئيسية</a>
-        <a class="nav-link" data-page="portfolios" onclick="showPage('portfolios')">المحافظ</a>
-        <a class="nav-link" data-page="dashboard" onclick="showPage('dashboard')">لوحة التحكم</a>
-        <a class="nav-link" data-page="transactions" onclick="showPage('transactions')">المعاملات</a>
-        <a class="nav-link" data-page="settings" onclick="showPage('settings')">الإعدادات</a>
-        <a class="nav-link" data-page="admin" onclick="showPage('admin')" style="color:var(--gold)">الإدارة</a>
+        <a class="nav-link active" data-page="home" href="index.html">الرئيسية</a>
+        <a class="nav-link" data-page="portfolios" href="portfolios.html">المحافظ</a>
+        <a class="nav-link" data-page="dashboard" href="dashboard.html">لوحة التحكم</a>
+        <a class="nav-link" data-page="transactions" href="transactions.html">المعاملات</a>
+        <a class="nav-link" data-page="settings" href="settings.html">الإعدادات</a>
+        <a class="nav-link" data-page="admin" href="admin.html" style="color:var(--gold)">الإدارة</a>
       </div>
-
-      <a class="nav-logo" onclick="showPage('home')" style="order:1">
+      <a class="nav-logo" href="index.html" style="order:1">
         <div class="nav-logo-icon">G</div>
         <span><span class="gold-text">Gold</span>Mine</span>
       </a>
@@ -250,431 +47,55 @@ select.input{background-position:left 14px center}
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════════════════════════════
-     الصفحة الرئيسية
-     ════════════════════════════════════════════════════════════════ -->
-<div class="page-view active" id="page-home">
-
-  <!-- Hero -->
-  <section style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:64px">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,#1e1e2e 0%,#0a0a12 100%)"></div>
-    <div style="position:absolute;top:20%;left:0;width:600px;height:600px;border-radius:50%;background:rgba(212,168,16,.04);filter:blur(120px)"></div>
-    <div style="position:absolute;bottom:0;right:25%;width:400px;height:400px;border-radius:50%;background:rgba(212,168,16,.02);filter:blur(100px)"></div>
-
-    <div class="particles">
-      <div class="particle" style="top:15%;right:10%;animation-delay:0s"></div>
-      <div class="particle" style="top:30%;right:80%;animation-delay:1s;width:3px;height:3px"></div>
-      <div class="particle" style="top:60%;right:20%;animation-delay:2s"></div>
-      <div class="particle" style="top:75%;right:70%;animation-delay:3s;width:3px;height:3px"></div>
-      <div class="particle" style="top:45%;right:50%;animation-delay:4s"></div>
-      <div class="particle" style="top:85%;right:35%;animation-delay:1.5s"></div>
-    </div>
-
-    <div class="page" style="position:relative;z-index:1">
-      <div style="max-width:750px">
-        <div class="anim-up" style="display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;background:rgba(212,168,16,.08);border:1px solid rgba(212,168,16,.15);margin-bottom:32px">
-          <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;animation:goldPulse 2s infinite"></span>
-          <span style="font-size:13px;color:#d4a810;font-weight:600">عمليات تعدين نشطة — السودان</span>
-        </div>
-
-        <h1 class="anim-up" style="font-family:'Cairo',serif;font-size:clamp(36px,5.5vw,68px);font-weight:900;line-height:1.2;margin-bottom:24px">
-          استثمر في ذهب<br><span class="gold-text">السودان</span><br>
-          ثورة التعدين
-        </h1>
-
-        <p class="anim-up" style="font-size:18px;color:var(--text2);line-height:1.9;margin-bottom:40px;max-width:580px">
-          وصول إلى محافظ استثمارية مميزة في تعدين الذهب مدعومة بأصول حقيقية وعمليات شفافة وتقارير إنتاج موثقة. احصل على أرباح يومية من أغنى مناطق الذهب في أفريقيا.
-        </p>
-
-        <div class="anim-up" style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:56px">
-          <a class="btn-gold" onclick="showPage('dashboard')" style="font-size:17px">
-            ابدأ الاستثمار
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="transform:rotate(180deg)"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a class="btn-outline" onclick="showPage('portfolios')" style="font-size:17px">تصفح المحافظ</a>
-        </div>
-
-        <div class="anim-up" style="display:flex;flex-wrap:wrap;gap:32px">
-          <div style="display:flex;align-items:center;gap:8px">
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="#d4a810"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span style="font-size:13px;color:var(--text2)">عمليات تعدين موثقة</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px">
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="#d4a810"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span style="font-size:13px;color:var(--text2)">توزيع أرباح يومي</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px">
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="#d4a810"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span style="font-size:13px;color:var(--text2)">تقارير شفافة</span>
-          </div>
-        </div>
+<!-- Hero -->
+<section class="hero-section">
+  <div class="hero-bg"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="particles">
+    <div class="particle" style="top:15%;right:10%"></div>
+    <div class="particle" style="top:30%;right:80%;width:3px;height:3px;animation-delay:1s"></div>
+    <div class="particle" style="top:60%;right:20%;animation-delay:2s"></div>
+    <div class="particle" style="top:75%;right:70%;width:3px;height:3px;animation-delay:3s"></div>
+  </div>
+  <div class="page" style="position:relative;z-index:1">
+    <div style="max-width:750px">
+      <div class="anim-up" style="display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;background:rgba(212,168,16,.08);border:1px solid rgba(212,168,16,.15);margin-bottom:32px">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--success);animation:goldPulse 2s infinite"></span>
+        <span style="font-size:13px;color:var(--gold);font-weight:600">عمليات تعدين نشطة — السودان</span>
       </div>
-    </div>
-  </section>
-
-  <!-- الإحصائيات -->
-  <section style="padding:60px 0;border-top:1px solid rgba(212,168,16,.08);border-bottom:1px solid rgba(212,168,16,.08)">
-    <div class="page">
-      <div class="stats-row" style="border:none">
-        <div class="stat-item anim-up"><div class="stat-value gold-text">$12.4M</div><div class="stat-label">إجمالي الاستثمارات</div></div>
-        <div class="stat-item anim-up"><div class="stat-value gold-text">3,200+</div><div class="stat-label">مستثمر نشط</div></div>
-        <div class="stat-item anim-up"><div class="stat-value gold-text">847 كغ</div><div class="stat-label">ذهب مُنتَج</div></div>
-        <div class="stat-item anim-up"><div class="stat-value gold-text">14.2%</div><div class="stat-label">متوسط العائد الشهري</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- المحافظ الاستثمارية -->
-  <section class="section">
-    <div class="page">
-      <div style="text-align:center;margin-bottom:64px" class="anim-up">
-        <h2 class="section-title">المحافظ <span class="gold-text">الاستثمارية</span></h2>
-        <p class="section-sub" style="margin:0 auto">اختر من بين أربع محافظ مُصممة بعناية، لكل منها مستوى مخاطرة وأفق استثماري مختلف.</p>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px" class="grid-2">
-        <!-- محفظة الإنتاج -->
-        <div class="glass card anim-up">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
-            <div>
-              <div style="font-size:32px;margin-bottom:12px">⛏️</div>
-              <h3 style="font-family:'Cairo',serif;font-size:22px;font-weight:800">محفظة الإنتاج</h3>
-              <p style="font-size:13px;color:var(--text3);margin-top:4px;font-family:'JetBrains Mono',monospace">Production Portfolio</p>
-            </div>
-            <span class="badge badge-success">مخاطرة منخفضة</span>
-          </div>
-          <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:24px">مدعومة بإنتاج ذهب نشط. عوائد ثابتة من عمليات تعدين قائمة في منطقة وادي النيل.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:20px;border-top:1px solid rgba(212,168,16,.08)">
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:600;direction:ltr">12–18%</p></div>
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">90 يوم</p></div>
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$500</p></div>
-          </div>
-        </div>
-
-        <!-- تمويل التشغيل -->
-        <div class="glass card anim-up">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
-            <div>
-              <div style="font-size:32px;margin-bottom:12px">🏭</div>
-              <h3 style="font-family:'Cairo',serif;font-size:22px;font-weight:800">تمويل التشغيل</h3>
-              <p style="font-size:13px;color:var(--text3);margin-top:4px;font-family:'JetBrains Mono',monospace">Operational Funding</p>
-            </div>
-            <span class="badge badge-warning">مخاطرة متوسطة</span>
-          </div>
-          <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:24px">موّل توسيع المناجم القائمة. عوائد أعلى مع مخاطرة تشغيلية معتدلة والتزام أطول.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:20px;border-top:1px solid rgba(212,168,16,.08)">
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:600;direction:ltr">15–22%</p></div>
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">180 يوم</p></div>
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$1,000</p></div>
-          </div>
-        </div>
-
-        <!-- محفظة التداول -->
-        <div class="glass card anim-up">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
-            <div>
-              <div style="font-size:32px;margin-bottom:12px">📈</div>
-              <h3 style="font-family:'Cairo',serif;font-size:22px;font-weight:800">محفظة التداول</h3>
-              <p style="font-size:13px;color:var(--text3);margin-top:4px;font-family:'JetBrains Mono',monospace">Trading Portfolio</p>
-            </div>
-            <span class="badge badge-warning">مخاطرة متوسطة-عالية</span>
-          </div>
-          <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:24px">عمليات تداول ذهب قصيرة الأجل. عوائد سريعة مع توزيع أرباح يومي وشروط مرنة.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:20px;border-top:1px solid rgba(212,168,16,.08)">
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:600;direction:ltr">10–25%</p></div>
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">30 يوم</p></div>
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$200</p></div>
-          </div>
-rgba(21        </div>
-
-        <!-- محفظة الاستكشاف -->
-        <div class="glass card anim-up">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
-            <div>
-              <div style="font-size:32px;margin-bottom:12px">🗺️</div>
-              <h3 style="font-family:'Cairo',serif;font-size:22px;font-weight:800">محفظة الاستكشاف</h3>
-              <p style="font-size:13px;color:var(--text3);margin-top:4px;font-family:'JetBrains Mono',monospace">Exploration Portfolio</p>
-            </div>
-            <span class="badge badge-danger">مخاطرة عالية</span>
-          </div>
-          <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:24px">موّل مواقع استكشاف جديدة. أعلى عوائد محتملة من احتياطيات ذهب غير مستغلة.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:20px;border-top:1px solid rgba(8)">
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:600;direction:ltr">20–35%</p></div>
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">365 يوم</p></div>
-            <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$2,000</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- كيف يعمل -->
-  <section class="section" style="background:rgba(19,19,31,.4)">
-    <div class="page">
-      <h2 class="section-title" style="text-align:center;margin-bottom:64px">كيف <span class="gold-text">يعمل</span></h2>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px" class="grid-4">
-        <div class="anim-up" style="position:relative">
-          <span style="font-family:'Cairo',serif;font-size:72px;font-weight:900;color:rgba(212,168,16,.08);position:absolute;top:-16px;right:-8px">01</span>
-          <div style="position:relative;padding-top:48px">
-            <h3 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">إنشاء حساب</h3>
-            <p style="font-size:1212,168,16,.04px;color:var(--text2)">سجّل ووثّق هويتك في دقائق.</p>
-          </div>
-        </div>
-        <div class="anim-up" style="position:relative">
-          <span style="font-family:'Cairo',serif;font-size:72px;font-weight:900;color:rgba(212,168,16,.08);position:absolute;top:-16px;right:-8px">02</span>
-          <div style="position:relative;padding-top:48px">
-            <h3 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">تمويل المحفظة</h3>
-            <p style="font-size:14px;color:var(--text2)">أودع عبر USDT (TRC20) أو تحويل بنكي.</p>
-          </div>
-        </div>
-        <div class="anim-up" style="position:relative">
-          <span style="font-family:'Cairo',serif;font-size:72px;font-weight:900;color:2,16p>
-          </div>
-        </div>
-        <div class="anim-up" style="position:relative">
-          <span style="font-family:'Cairo',serif;font-size:72px;font-weight:900;color:rgba(212,168,16,.08);position:absolute;top:-16px;right:-8px">04</span>
-          <div style="position:relative;padding-top:48px">
-            <h3 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">اربح يومياً</h3>
-            <p style="font-size:14px;color:var(--text2)">تلقَّ أرباحك اليومية مباشرة في محفظتك.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section">
-    <div class="page">
-      <div class="glass" style="padding:64px 48px;text-align:center;position:relative;overflow:hidden">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,168,16,.03),transparent);pointer-events:none"></div>
-        <div style="position:relative;z-index:1">
-          <h2 style="font-family:'Cairo',serif;font-size:40px;font-weight:800;margin-bottom:16px">هل أنت مستعد <span class="gold-text">للبدء؟</span></h2>
-          <p style="color:var(--text2);max-width:500px;margin:0 auto 32px;font-size:16px">انضم إلى آلاف المستثمرين الذين يحققون عوائد ثابتة من صناعة تعدين الذهب في السودان.</p>
-          <a class="btn-gold" onclick="showPage('dashboard')" style="font-size:17px">إنشاء حساب مجاني</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- التذييل -->
-  <footer style="padding:48px 0;border-top:1px solid rgba(212,168,16,.08)">
-    <div class="page">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px">
-        <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#d4a810,#f5e08e);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0a0a12">G</div>
-          <span style="font-family:'Cairo',serif;font-size:18px;font-weight:800"><span class="gold-text">Gold</span>Mine السودان</span>
-        </div>
-        <p style="font-size:13px;color:var(--text3)">© 2025 منجم الذهب السودان. جميع الحقوق محفوظة. الاستثمار ينطوي على مخاطر.</p>
-      </div>
-    </div>
-  </footer>
-</div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     صفحة تسجيل الدخول
-     ════════════════════════════════════════════════════════════════ -->
-<div class="page-view" id="page-login">
-  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 24px 48px">
-    <div style="width:100%;max-width:420px">
-      <div style="text-align:center;margin-bottom:32px" class="anim-up">
-        <h1 style="font-family:'Cairo',serif;font-size:32px;font-weight:800;margin-bottom:8px">مرحباً بـ<span class="gold-text">عودتك</span></h1>
-        <p style="color:var(--text2)">سجّل الدخول إلى حسابك الاستثماري</p>
-      </div>
-      <div class="glass anim-up" style="padding:32px">
-        <div style="margin-bottom:20px">
-          <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">البريد الإلكتروني</label>
-          <input class="input" type="email" placeholder="example@email.com" value="ahmed@example.com">
-        </div>
-        <div style="margin-bottom:24px">
-          <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">كلمة المرور</label>
-          <input class="input" type="password" placeholder="أدخل كلمة المرور" value="password123">
-        </div>
-        <button class="btn-gold" style="width:100%;justify-content:center" onclick="showPage('dashboard')">تسجيل الدخول</button>
-        <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--text3)">ليس لديك حساب؟ <a style="color:#d4a810;cursor:pointer" onclick="showPage('register')">إنشاء حساب</a></p>
+      <h1 class="anim-up" style="font-family:'Cairo',serif;font-size:clamp(36px,5.5vw,68px);font-weight:900;line-height:1.2;margin-bottom:24px">
+        استثمر في ذهب<br><span class="gold-text">السودان</span><br>ثورة التعدين
+      </h1>
+      <p class="anim-up" style="font-size:18px;color:var(--text2);line-height:1.9;margin-bottom:40px;max-width:580px">
+        وصول إلى محافظ استثمارية مميزة في تعدين الذهب مدعومة بأصول حقيقية وعمليات شفافة.
+      </p>
+      <div class="anim-up" style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:56px">
+        <a class="btn-gold" href="dashboard.html" style="font-size:17px">ابدأ الاستثمار</a>
+        <a class="btn-outline" href="portfolios.html" style="font-size:17px">تصفح المحافظ</a>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     صفحة التسجيل
-     ════════════════════════════════════════════════════════════════ -->
-<div class="page-view" id="page-register">
-  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 24px 48px">
-    <div style="width:100%;max-width:420px">
-      <div style="text-align:center;margin-bottom:32px" class="anim-up">
-        <h1 style="font-family:'Cairo',serif;font-size:32px;font-weight:800;margin-bottom:8px">أنشئ <span class="gold-text">حسابك</span></h1>
-        <p style="color:var(--text2)">ابدأ الاستثمار في تعدين الذهب اليوم</p>
-      </div>
-      <div class="glass anim-up" style="padding:32px">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
-          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">الاسم الأول</label><input class="input" placeholder="أحمد"></div>
-          <div><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">اسم العائلة</label><input class="input" placeholder="حسن"></div>
-        </div>
-        <div style="margin-bottom:16px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">البريد الإلكتروني</label><input class="input" type="email" placeholder="example@email.com"></div>
-        <div style="margin-bottom:16px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">كلمة المرور</label><input class="input" type="password" placeholder="٨ أحرف على الأقل"></div>
-        <div style="margin-bottom:16px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">تأكيد كلمة المرور</label><input class="input" type="password" placeholder="أعد كتابة كلمة المرور"></div>
-        <div style="margin-bottom:24px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">كود الإحالة <span style="color:var(--text3)">(اختياري)</span></label><input class="input" placeholder="GMXXXXXX"></div>
-        <button class="btn-gold" style="width:100%;justify-content:center" onclick="showPage('dashboard')">إنشاء الحساب</button>
-        <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--text3)">لديك حساب بالفعل؟ <a style="color:#d4a810;cursor:pointer" onclick="showPage('login')">تسجيل الدخول</a></p>
-      </div>
+<!-- الإحصائيات -->
+<section style="padding:60px 0;border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border)">
+  <div class="page">
+    <div class="stats-row" style="border:none">
+      <div class="stat-item anim-up"><div class="stat-value gold-text">$12.4M</div><div class="stat-label">إجمالي الاستثمارات</div></div>
+      <div class="stat-item anim-up"><div class="stat-value gold-text">3,200+</div><div class="stat-label">مستثمر نشط</div></div>
+      <div class="stat-item anim-up"><div class="stat-value gold-text">847 كغ</div><div class="stat-label">ذهب مُنتَج</div></div>
+      <div class="stat-item anim-up"><div class="stat-value gold-text">14.2%</div><div class="stat-label">متوسط العائد الشهري</div></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     لوحة التحكم
-     ════════════════════════════════════════════════════════════════ -->
-<div class="page-view" id="page-dashboard">
-  <div style="padding-top:88px;padding-bottom:60px" class="page">
-
-    <!-- العنوان -->
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px" class="anim-up">
-      <div>
-        <h1 style="font-family:'Cairo',serif;font-size:32px;font-weight:800">مرحباً بعودتك، <span class="gold-text">أحمد</span></h1>
-        <p style="color:var(--text2);margin-top:4px">إليك نظرة عامة على استثماراتك</p>
-      </div>
-      <div style="display:flex;gap:12px">
-        <a class="btn-gold btn-sm" onclick="openModal('invest')">+ استثمار جديد</a>
-        <a class="btn-outline btn-sm" onclick="showPage('transactions')">سحب الأرباح $142.80</a>
-      </div>
-    </div>
-
-    <!-- تنبيه التحقق -->
-    <div class="glass anim-up" style="padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:16px;border-color:rgba(245,158,11,.15)">
-      <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,158,11,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">⚠️</div>
-      <div style="flex:1">
-        <p style="font-size:14px;font-weight:700">مراجعة التحقق من الهوية قيد التنفيذ</p>
-        <p style="font-size:12px;color:var(--text3)">يتم مراجعة مستنداتك. يستغرق هذا عادةً 24-48 ساعة.</p>
-      </div>
-      <a style="font-size:13px;color:#f59e0b;font-weight:700;cursor:pointer" onclick="showPage('settings')">عرض الحالة ←</a>
-    </div>
-
-    <!-- الإحصائيات -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px" class="grid-4">
-      <div class="glass anim-up" style="padding:24px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:16px">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(212,168,16,.08);display:flex;align-items:center;justify-content:center">💰</div>
-          <span style="font-size:11px;color:#22c55e;font-family:'JetBrains Mono',monospace;direction:ltr">↑ 12.4%</span>
-        </div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;margin-bottom:4px;direction:ltr">$24,580.00</p>
-        <p style="font-size:13px;color:var(--text3)">الرصيد الإجمالي</p>
-        <p style="font-size:11px;color:#d4a810;font-family:'JetBrains Mono',monospace;margin-top:4px;direction:ltr">+$3,240.80 ربح</p>
-      </div>
-      <div class="glass anim-up" style="padding:24px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:16px">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(212,168,16,.08);display:flex;align-items:center;justify-content:center">📥</div>
-        </div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;margin-bottom:4px;direction:ltr">$18,500.00</p>
-        <p style="font-size:13px;color:var(--text3)">إجمالي الإيداعات</p>
-      </div>
-      <div class="glass anim-up" style="padding:24px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:16px">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(212,168,16,.08);display:flex;align-items:center;justify-content:center">⏳</div>
-        </div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;margin-bottom:4px;direction:ltr">$142.80</p>
-        <p style="font-size:13px;color:var(--text3)">أرباح معلقة</p>
-      </div>
-      <div class="glass anim-up" style="padding:24px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:16px">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(212,168,16,.08);display:flex;align-items:center;justify-content:center">📤</div>
-        </div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;margin-bottom:4px;direction:ltr">$2,500.00</p>
-        <p style="font-size:13px;color:var(--text3)">إجمالي المسحوبات</p>
-      </div>
-    </div>
-
-    <!-- الرسم البياني + الملخص -->
-    <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-bottom:32px" class="grid-2">
-      <div class="glass anim-up" style="padding:24px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-          <div>
-            <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">سجل الأرباح</h3>
-            <p style="font-size:13px;color:var(--text3)">نظرة عامة على الأرباح اليومية</p>
-          </div>
-          <div style="display:flex;gap:4px;background:var(--bg);border-radius:8px;padding:3px">
-            <button style="padding:6px 12px;font-size:11px;font-weight:700;border-radius:6px;border:none;background:rgba(212,168,16,.15);color:#d4a810;cursor:pointer;font-family:inherit">٧ أيام</button>
-            <button style="padding:6px 12px;font-size:11px;font-weight:700;border-radius:6px;border:none;background:transparent;color:var(--text3);cursor:pointer;font-family:inherit">٣٠ يوم</button>
-            <button style="padding:6px 12px;font-size:11px;font-weight:700;border-radius:6px;border:none;background:transparent;color:var(--text3);cursor:pointer;font-family:inherit">٩٠ يوم</button>
-          </div>
-        </div>
-        <div class="chart-container" id="profitChart"></div>
-      </div>
-
-      <div class="glass anim-up" style="padding:24px">
-        <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800;margin-bottom:20px">ملخص المحافظ</h3>
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid rgba(212,168,16,.08)">
-            <span style="font-size:13px;color:var(--text3)">استثمارات نشطة</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">3</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid rgba(212,168,16,.08)">
-            <span style="font-size:13px;color:var(--text3)">إجمالي النشط</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#d4a810;direction:ltr">$15,000</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid rgba(212,168,16,.08)">
-            <span style="font-size:13px;color:var(--text3)">إجمالي المكتسب</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#22c55e;direction:ltr">$3,240.80</span>
-          </div>
-          <div style="display:flex;justify-content:space-between">
-            <span style="font-size:13px;color:var(--text3)">كود الإحالة</span>
-            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#d4a810;background:rgba(212,168,16,.08);padding:2px 8px;border-radius:6px;direction:ltr">GMAH7X2K</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- الاستثمارات النشطة -->
-    <div class="glass anim-up" style="overflow:hidden">
-      <div style="padding:24px;border-bottom:1px solid rgba(212,168,16,.08)">
-        <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">الاستثمارات النشطة</h3>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>المحفظة</th><th>المبلغ</th><th>العائد الشهري</th><th>المكتسب</th><th>إعادة الاستثمار</th><th>تاريخ الانتهاء</th><th>الحالة</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><p style="font-weight:700">محفظة الإنتاج</p><p style="font-size:11px;color:var(--text3)">مخاطرة منخفضة</p></td>
-              <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,000.00</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:#d4a810;direction:ltr">14.82%</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:#22c55e;direction:ltr">$1,240.50</td>
-              <td><span class="badge badge-gold">مفعّل</span></td>
-              <td style="color:var(--text3);direction:ltr">15 مارس 2025</td>
-              <td><span class="badge badge-success">نشط</span></td>
-            </tr>
-            <tr>
-              <td><p style="font-weight:700">محفظة التداول</p><p style="font-size:11px;color:var(--text3)">مخاطرة متوسطة-عالية</p></td>
-              <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$8,000.00</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:#d4a810;direction:ltr">17.34%</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:#22c55e;direction:ltr">$1,650.30</td>
-              <td><span style="font-size:11px;color:var(--text3)">موقوف</span></td>
-              <td style="color:var(--text3);direction:ltr">20 فبراير 2025</td>
-              <td><span class="badge badge-success">نشط</span></td>
-            </tr>
-            <tr>
-              <td><p style="font-weight:700">تمويل التشغيل</p><p style="font-size:11px;color:var(--text3)">مخاطرة متوسطة</p></td>
-              <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$2,000.00</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:#d4a810;direction:ltr">18.50%</td>
-              <td style="font-family:'JetBrains Mono',monospace;color:#22c55e;direction:ltr">$350.00</td>
-              <td><span class="badge badge-gold">مفعّل</span></td>
-              <td style="color:var(--text3);direction:ltr">10 يونيو 2025</td>
-              <td><span class="badge badge-success">نشط</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     صفحة المحافظ
-     ════════════════════════════════════════════════════════════════ -->
-<div class="page-view" id="page-portfolios">
-  <div style="padding-top:100px;padding-bottom:60px" class="page">
+<!-- المحافظ -->
+<section class="section">
+  <div class="page">
     <div style="text-align:center;margin-bottom:64px" class="anim-up">
-      <h1 class="section-title">المحافظ <span class="gold-text">الاستثمارية</span></h1>
-      <p class="section-sub" style="margin:0 auto">اختر محفظة تناسب استراتيجيتك الاستثمارية. كل محفظة مدعومة بعمليات تعدين ذهب حقيقية.</p>
+      <h2 class="section-title">المحافظ <span class="gold-text">الاستثمارية</span></h2>
+      <p class="section-sub" style="margin:0 auto">اختر من بين أربع محافظ مُصممة بعناية.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px" class="grid-2">
       <div class="glass card anim-up">
@@ -682,616 +103,93 @@ rgba(21        </div>
           <div><div style="font-size:32px;margin-bottom:12px">⛏️</div><h3 style="font-family:'Cairo',serif;font-size:22px;font-weight:800">محفظة الإنتاج</h3></div>
           <span class="badge badge-success">مخاطرة منخفضة</span>
         </div>
-        <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:20px">مدعومة بإنتاج ذهب نشط. عوائد ثابتة من عمليات تعدين قائمة.</p>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px">
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:700;direction:ltr">12–18%</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">90 يوم</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">$500</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أعلى استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">$50,000</p></div>
+        <div class="portfolio-info">
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">12–18%</p></div>
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">90 يوم</p></div>
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$500</p></div>
         </div>
-        <button class="btn-gold" style="width:100%;justify-content:center" onclick="openModal('invest')">استثمر الآن</button>
       </div>
-
       <div class="glass card anim-up">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
           <div><div style="font-size:32px;margin-bottom:12px">🏭</div><h3 style="font-family:'Cairo',serif;font-size:22px;font-weight:800">تمويل التشغيل</h3></div>
           <span class="badge badge-warning">مخاطرة متوسطة</span>
         </div>
-        <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:20px">موّل توسيع المناجم القائمة. عوائد أعلى مع مخاطرة تشغيلية معتدلة.</p>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px">
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:700;direction:ltr">15–22%</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">180 يوم</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">$1,000</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أعلى استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">$100,000</p></div>
+        <div class="portfolio-info">
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">15–22%</p></div>
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">180 يوم</p></div>
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$1,000</p></div>
         </div>
-        <button class="btn-gold" style="width:100%;justify-content:center" onclick="openModal('invest')">استثمر الآن</button>
       </div>
-
       <div class="glass card anim-up">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
           <div><div style="font-size:32px;margin-bottom:12px">📈</div><h3 style="font-family:'Cairo',serif;font-size:22px;font-weight:800">محفظة التداول</h3></div>
           <span class="badge badge-warning">مخاطرة متوسطة-عالية</span>
         </div>
-        <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:20px">عمليات تداول ذهب قصيرة الأجل. عوائد سريعة مع توزيع أرباح يومي.</p>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px">
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:700;direction:ltr">10–25%</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">30 يوم</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">$200</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أعلى استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">$25,000</p></div>
+        <div class="portfolio-info">
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">10–25%</p></div>
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">30 يوم</p></div>
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$200</p></div>
         </div>
-        <button class="btn-gold" style="width:100%;justify-content:center" onclick="openModal('invest')">استثمر الآن</button>
       </div>
-
       <div class="glass card anim-up">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px">
           <div><div style="font-size:32px;margin-bottom:12px">🗺️</div><h3 style="font-family:'Cairo',serif;font-size:22px;font-weight:800">محفظة الاستكشاف</h3></div>
           <span class="badge badge-danger">مخاطرة عالية</span>
         </div>
-        <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:20px">موّل مواقع استكشاف جديدة. أعلى عوائد محتملة من احتياطيات ذهب غير مستغلة.</p>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px">
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:700;direction:ltr">20–35%</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">365 يوم</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">$2,000</p></div>
-          <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:12px"><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أعلى استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:700;direction:ltr">$200,000</p></div>
+        <div class="portfolio-info">
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">العائد الشهري</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">20–35%</p></div>
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">365 يوم</p></div>
+          <div><p style="font-size:11px;color:var(--text3);margin-bottom:4px">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$2,000</p></div>
         </div>
-        <button class="btn-gold" style="width:100%;justify-content:center" onclick="openModal('invest')">استثمر الآن</button>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     صفحة المعاملات
-     ════════════════════════════════════════════════════════════════ -->
-<div class="page-view" id="page-transactions">
-  <div style="padding-top:100px;padding-bottom:60px" class="page">
-    <div style="margin-bottom:32px" class="anim-up">
-      <h1 style="font-family:'Cairo',serif;font-size:32px;font-weight:800"><span class="gold-text">المعاملات</span></h1>
-      <p style="color:var(--text2);margin-top:4px">عرض سجل معاملاتك الكامل</p>
+<!-- كيف يعمل -->
+<section class="section" style="background:var(--section-alt-bg)">
+  <div class="page">
+    <h2 class="section-title" style="text-align:center;margin-bottom:64px">كيف <span class="gold-text">يعمل</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px" class="grid-4">
+      <div class="anim-up" style="position:relative"><span class="step-number">01</span><div class="step-content"><h3 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">إنشاء حساب</h3><p style="font-size:14px;color:var(--text2)">سجّل ووثّق هويتك في دقائق.</p></div></div>
+      <div class="anim-up" style="position:relative"><span class="step-number">02</span><div class="step-content"><h3 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">تمويل المحفظة</h3><p style="font-size:14px;color:var(--text2)">أودع عبر USDT أو تحويل بنكي.</p></div></div>
+      <div class="anim-up" style="position:relative"><span class="step-number">03</span><div class="step-content"><h3 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">اختر المحفظة</h3><p style="font-size:14px;color:var(--text2)">اختر خطة تناسب أهدافك.</p></div></div>
+      <div class="anim-up" style="position:relative"><span class="step-number">04</span><div class="step-content"><h3 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">اربح يومياً</h3><p style="font-size:14px;color:var(--text2)">تلقَّ أرباحك مباشرة.</p></div></div>
     </div>
-    <div class="glass anim-up" style="overflow:hidden">
-      <div style="padding:20px 24px;border-bottom:1px solid rgba(212,168,16,.08);display:flex;justify-content:space-between;align-items:center">
-        <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">جميع المعاملات</h3>
-        <select class="input" style="width:auto;padding:8px 12px;font-size:13px">
-          <option>جميع الأنواع</option><option>الإيداعات</option><option>المسحوبات</option><option>الأرباح</option>
-        </select>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>النوع</th><th>المبلغ</th><th>الحالة</th><th>التاريخ</th></tr></thead>
-          <tbody>
-            <tr><td style="color:#22c55e;font-weight:700">إيداع</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">+$5,000.00</td><td><span class="badge badge-success">مقبول</span></td><td style="color:var(--text3);direction:ltr">15 يناير 2025</td></tr>
-            <tr><td style="color:#d4a810;font-weight:700">ربح</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">+$24.60</td><td><span class="badge badge-success">مكتمل</span></td><td style="color:var(--text3);direction:ltr">16 يناير 2025</td></tr>
-            <tr><td style="color:#d4a810;font-weight:700">ربح</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">+$24.60</td><td><span class="badge badge-success">مكتمل</span></td><td style="color:var(--text3);direction:ltr">17 يناير 2025</td></tr>
-            <tr><td style="color:#22c55e;font-weight:700">إيداع</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">+$8,000.00</td><td><span class="badge badge-success">مقبول</span></td><td style="color:var(--text3);direction:ltr">20 يناير 2025</td></tr>
-            <tr><td style="color:#d4a810;font-weight:700">ربح</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">+$68.49</td><td><span class="badge badge-success">مكتمل</span></td><td style="color:var(--text3);direction:ltr">21 يناير 2025</td></tr>
-            <tr><td style="color:#ef4444;font-weight:700">سحب</td><td style="font-family:'JetBrains Mono',monospace;color:#ef4444;direction:ltr">-$2,500.00</td><td><span class="badge badge-success">مقبول</span></td><td style="color:var(--text3);direction:ltr">25 يناير 2025</td></tr>
-            <tr><td style="color:#22c55e;font-weight:700">إيداع</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">+$5,500.00</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td style="color:var(--text3);direction:ltr">28 يناير 2025</td></tr>
-            <tr><td style="color:#d4a810;font-weight:700">ربح</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">+$93.09</td><td><span class="badge badge-success">مكتمل</span></td><td style="color:var(--text3);direction:ltr">29 يناير 2025</td></tr>
-            <tr><td style="color:#d4a810;font-weight:700">ربح</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">+$93.09</td><td><span class="badge badge-success">مكتمل</span></td><td style="color:var(--text3);direction:ltr">30 يناير 2025</td></tr>
-            <tr><td style="color:#8b5cf6;font-weight:700">استثمار مُركّب</td><td style="font-family:'JetBrains Mono',monospace;color:#8b5cf6;direction:ltr">+$24.60</td><td><span class="badge badge-success">مكتمل</span></td><td style="color:var(--text3);direction:ltr">31 يناير 2025</td></tr>
-          </tbody>
-        </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="page">
+    <div class="glass cta-section">
+      <div class="cta-bg"></div>
+      <div style="position:relative;z-index:1">
+        <h2 style="font-family:'Cairo',serif;font-size:40px;font-weight:800;margin-bottom:16px">هل أنت مستعد <span class="gold-text">للبدء؟</span></h2>
+        <p style="color:var(--text2);max-width:500px;margin:0 auto 32px;font-size:16px">انضم إلى آلاف المستثمرين.</p>
+        <a class="btn-gold" href="register.html" style="font-size:17px">إنشاء حساب مجاني</a>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     صفحة الإعدادات
-     ════════════════════════════════════════════════════════════════ -->
-<div class="page-view" id="page-settings">
-  <div style="padding-top:100px;padding-bottom:60px" class="page">
-    <h1 style="font-family:'Cairo',serif;font-size:32px;font-weight:800;margin-bottom:32px" class="anim-up"><span class="gold-text">الإعدادات</span></h1>
-
-    <!-- الملف الشخصي -->
-    <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
-      <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:24px">الملف الشخصي</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-        <div><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">الاسم الأول</label><input class="input" value="أحمد"></div>
-        <div><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">اسم العائلة</label><input class="input" value="حسن"></div>
+<!-- التذييل -->
+<footer class="site-footer">
+  <div class="page">
+    <div class="footer-inner">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0a0a12">G</div>
+        <span style="font-family:'Cairo',serif;font-size:18px;font-weight:800"><span class="gold-text">Gold</span>Mine السودان</span>
       </div>
-      <div style="margin-bottom:16px"><label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">رقم الهاتف</label><input class="input" value="+249 912 345 678"></div>
-      <div style="margin-bottom:24px">
-        <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">اللغة</label>
-        <select class="input"><option>العربية</option><option>English</option></select>
-      </div>
-      <button class="btn-gold" onclick="showToast('تم حفظ التغييرات بنجاح!','success')">حفظ التغييرات</button>
-    </div>
-
-    <!-- التحقق من الهوية -->
-    <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-        <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800">التحقق من الهوية</h2>
-        <span class="badge badge-warning">قيد الانتظار</span>
-      </div>
-      <div style="margin-bottom:16px">
-        <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">وثيقة الهوية (جواز سفر / هوية وطنية)</label>
-        <input type="file" class="input" style="padding:10px">
-      </div>
-      <div style="margin-bottom:16px">
-        <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">إثبات العنوان</label>
-        <input type="file" class="input" style="padding:10px">
-      </div>
-      <div style="margin-bottom:24px">
-        <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">سيلفي مع الهوية</label>
-        <input type="file" class="input" style="padding:10px">
-      </div>
-      <button class="btn-gold" onclick="showToast('تم رفع المستندات بنجاح!','success')">رفع المستندات</button>
-    </div>
-
-    <!-- برنامج الإحالة -->
-    <div class="glass anim-up" style="padding:32px">
-      <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:8px">برنامج الإحالة</h2>
-      <p style="font-size:14px;color:var(--text2);margin-bottom:16px">شارك رابط الإحالة الخاص بك واحصل على مكافآت عند استثمار المستخدمين الجدد.</p>
-      <div style="display:flex;gap:12px">
-        <input class="input" value="https://goldmine.sd/register?ref=GMAH7X2K" readonly style="font-family:'JetBrains Mono',monospace;font-size:13px;direction:ltr">
-        <button class="btn-outline btn-sm" onclick="showToast('تم نسخ رابط الإحالة!','success')" style="white-space:nowrap">نسخ الرابط</button>
-      </div>
+      <p style="font-size:13px;color:var(--text3)">© 2025 منجم الذهب السودان. جميع الحقوق محفوظة.</p>
     </div>
   </div>
-</div>
+</footer>
 
-<!-- ════════════════════════════════════════════════════════════════
-     لوحة الإدارة
-     ════════════════════════════════════════════════════════════════ -->
-<div class="page-view" id="page-admin">
-  <div class="admin-layout" style="padding-top:64px">
-    <!-- الشريط الجانبي -->
-    <aside class="admin-sidebar">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px;padding:0 10px">
-        <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#d4a810,#f5e08e);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0a0a12">A</div>
-        <span style="font-family:'Cairo',serif;font-size:16px;font-weight:800">لوحة الإدارة</span>
-      </div>
-      <nav>
-        <a class="sidebar-link active" onclick="switchAdminTab('overview')">📊 نظرة عامة</a>
-        <a class="sidebar-link" onclick="switchAdminTab('users')">👥 المستخدمون</a>
-        <a class="sidebar-link" onclick="switchAdminTab('portfolios')">💼 المحافظ</a>
-        <a class="sidebar-link" onclick="switchAdminTab('deposits')">💰 الإيداعات والسحوبات</a>
-        <a class="sidebar-link" onclick="switchAdminTab('kyc')">📋 مراجعة الهوية</a>
-        <a class="sidebar-link" onclick="switchAdminTab('reports')">📄 التقارير</a>
-      </nav>
-      <div style="padding-top:32px;border-top:1px solid rgba(212,168,16,.08);margin-top:32px">
-        <a class="sidebar-link" onclick="showPage('dashboard')">العودة للمنصة ←</a>
-      </div>
-    </aside>
-
-    <!-- المحتوى الرئيسي -->
-    <main class="admin-main">
-
-      <!-- نظرة عامة -->
-      <div class="admin-tab active" id="tab-overview">
-        <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">نظرة <span class="gold-text">عامة</span></h1>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:32px" class="grid-4">
-          <div class="glass" style="padding:20px"><p style="font-size:11px;color:var(--text3);margin-bottom:8px">إجمالي المستخدمين</p><p style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;direction:ltr">3,247</p><p style="font-size:11px;color:#d4a810;font-family:'JetBrains Mono',monospace;direction:ltr">2,891 نشط</p></div>
-          <div class="glass" style="padding:20px"><p style="font-size:11px;color:var(--text3);margin-bottom:8px">إجمالي الاستثمارات</p><p style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;direction:ltr">$12.4M</p><p style="font-size:11px;color:#d4a810;font-family:'JetBrains Mono',monospace;direction:ltr">1,842 نشط</p></div>
-          <div class="glass" style="padding:20px"><p style="font-size:11px;color:var(--text3);margin-bottom:8px">إجمالي الإيداعات</p><p style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;direction:ltr">$8.7M</p><p style="font-size:11px;color:#f59e0b;font-family:'JetBrains Mono',monospace;direction:ltr">23 قيد الانتظار</p></div>
-          <div class="glass" style="padding:20px"><p style="font-size:11px;color:var(--text3);margin-bottom:8px">المسحوبات</p><p style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;direction:ltr">$3.2M</p><p style="font-size:11px;color:#f59e0b;font-family:'JetBrains Mono',monospace;direction:ltr">8 قيد الانتظار</p></div>
-          <div class="glass" style="padding:20px"><p style="font-size:11px;color:var(--text3);margin-bottom:8px">هوية قيد المراجعة</p><p style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;direction:ltr">14</p><p style="font-size:11px;color:var(--text3)">بانتظار المراجعة</p></div>
-        </div>
-
-        <!-- النشاط الأخير -->
-        <div class="glass" style="overflow:hidden">
-          <div style="padding:20px 24px;border-bottom:1px solid rgba(212,168,16,.08)"><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">النشاط الأخير</h3></div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>المستخدم</th><th>الإجراء</th><th>المبلغ</th><th>الوقت</th></tr></thead>
-              <tbody>
-                <tr><td>أحمد حسن</td><td style="color:#22c55e;font-weight:700">استثمار جديد</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,000</td><td style="color:var(--text3)">منذ دقيقتين</td></tr>
-                <tr><td>فاطمة علي</td><td style="color:#d4a810;font-weight:700">طلب إيداع</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">$2,500</td><td style="color:var(--text3)">منذ ١٥ دقيقة</td></tr>
-                <tr><td>عمر بشير</td><td style="color:#ef4444;font-weight:700">طلب سحب</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">$1,200</td><td style="color:var(--text3)">منذ ساعة</td></tr>
-                <tr><td>مريم يوسف</td><td style="color:#f59e0b;font-weight:700">تقديم هوية</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">—</td><td style="color:var(--text3)">منذ ساعتين</td></tr>
-                <tr><td>إبراهيم سعيد</td><td style="color:#22c55e;font-weight:700">تسجيل جديد</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">—</td><td style="color:var(--text3)">منذ ٣ ساعات</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- المستخدمون -->
-      <div class="admin-tab" id="tab-users" style="display:none">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-          <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800">إدارة <span class="gold-text">المستخدمين</span></h1>
-          <input class="input" style="width:250px" placeholder="بحث عن مستخدم...">
-        </div>
-        <div class="glass" style="overflow:hidden">
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>المستخدم</th><th>البريد</th><th>الرصيد</th><th>الاستثمارات</th><th>الهوية</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td style="font-weight:700">أحمد حسن</td><td style="color:var(--text3)">ahmed@example.com</td>
-                  <td style="font-family:'JetBrains Mono',monospace;color:#d4a810;direction:ltr">$24,580</td><td>3</td>
-                  <td><span class="badge badge-warning">قيد الانتظار</span></td><td><span class="badge badge-success">نشط</span></td>
-                  <td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:#ef4444;border-color:rgba(239,68,68,.2)">تعليق</button></td>
-                </tr>
-                <tr>
-                  <td style="font-weight:700">فاطمة علي</td><td style="color:var(--text3)">fatima@example.com</td>
-                  <td style="font-family:'JetBrains Mono',monospace;color:#d4a810;direction:ltr">$12,300</td><td>2</td>
-                  <td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td>
-                  <td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:#ef4444;border-color:rgba(239,68,68,.2)">تعليق</button></td>
-                </tr>
-                <tr>
-                  <td style="font-weight:700">عمر بشير</td><td style="color:var(--text3)">omar@example.com</td>
-                  <td style="font-family:'JetBrains Mono',monospace;color:#d4a810;direction:ltr">$8,750</td><td>1</td>
-                  <td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td>
-                  <td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:#ef4444;border-color:rgba(239,68,68,.2)">تعليق</button></td>
-                </tr>
-                <tr>
-                  <td style="font-weight:700">مريم يوسف</td><td style="color:var(--text3)">mariam@example.com</td>
-                  <td style="font-family:'JetBrains Mono',monospace;color:#d4a810;direction:ltr">$5,200</td><td>1</td>
-                  <td><span class="badge badge-warning">قيد الانتظار</span></td><td><span class="badge badge-danger">معلّق</span></td>
-                  <td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:#22c55e;border-color:rgba(34,197,94,.2)">تفعيل</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- المحافظ -->
-      <div class="admin-tab" id="tab-portfolios" style="display:none">
-        <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">إدارة <span class="gold-text">المحافظ</span></h1>
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div class="glass" style="padding:24px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-              <div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">محفظة الإنتاج</h3><p style="font-size:13px;color:var(--text3)">842 استثمار نشط — $4.2M إجمالي</p></div>
-              <div style="display:flex;gap:8px;align-items:center"><span class="badge badge-success">نشطة</span><button class="btn-outline btn-sm" style="padding:6px 14px;font-size:12px" onclick="showToast('تم تحديث إعدادات المحفظة!','success')">تعديل</button></div>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
-              <div><p style="font-size:11px;color:var(--text3)">نطاق العائد</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:600;direction:ltr">12% – 18%</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">90 يوم</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$500</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">أعلى استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$50,000</p></div>
-            </div>
-          </div>
-          <div class="glass" style="padding:24px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-              <div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">محفظة التداول</h3><p style="font-size:13px;color:var(--text3)">523 استثمار نشط — $3.1M إجمالي</p></div>
-              <div style="display:flex;gap:8px;align-items:center"><span class="badge badge-success">نشطة</span><button class="btn-outline btn-sm" style="padding:6px 14px;font-size:12px">تعديل</button></div>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
-              <div><p style="font-size:11px;color:var(--text3)">نطاق العائد</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:600;direction:ltr">10% – 25%</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">30 يوم</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$200</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">أعلى استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$25,000</p></div>
-            </div>
-          </div>
-          <div class="glass" style="padding:24px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-              <div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">تمويل التشغيل</h3><p style="font-size:13px;color:var(--text3)">312 استثمار نشط — $3.8M إجمالي</p></div>
-              <div style="display:flex;gap:8px;align-items:center"><span class="badge badge-success">نشطة</span><button class="btn-outline btn-sm" style="padding:6px 14px;font-size:12px">تعديل</button></div>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
-              <div><p style="font-size:11px;color:var(--text3)">نطاق العائد</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:600;direction:ltr">15% – 22%</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">180 يوم</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$1,000</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">أعلى استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$100,000</p></div>
-            </div>
-          </div>
-          <div class="glass" style="padding:24px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-              <div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">محفظة الاستكشاف</h3><p style="font-size:13px;color:var(--text3)">165 استثمار نشط — $1.3M إجمالي</p></div>
-              <div style="display:flex;gap:8px;align-items:center"><span class="badge badge-success">نشطة</span><button class="btn-outline btn-sm" style="padding:6px 14px;font-size:12px">تعديل</button></div>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
-              <div><p style="font-size:11px;color:var(--text3)">نطاق العائد</p><p style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:600;direction:ltr">20% – 35%</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">365 يوم</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">أقل استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$2,000</p></div>
-              <div><p style="font-size:11px;color:var(--text3)">أعلى استثمار</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$200,000</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- الإيداعات والسحوبات -->
-      <div class="admin-tab" id="tab-deposits" style="display:none">
-        <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">الإيداعات <span class="gold-text">والسحوبات</span></h1>
-        <div style="display:flex;gap:12px;margin-bottom:24px">
-          <select class="input" style="width:auto"><option>قيد الانتظار</option><option>مقبول</option><option>مرفوض</option><option>الكل</option></select>
-          <select class="input" style="width:auto"><option>جميع الأنواع</option><option>الإيداعات</option><option>المسحوبات</option></select>
-        </div>
-        <div class="glass" style="overflow:hidden">
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>المستخدم</th><th>النوع</th><th>المبلغ</th><th>التفاصيل</th><th>الحالة</th><th>التاريخ</th><th>الإجراءات</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td>فاطمة علي<br><span style="font-size:11px;color:var(--text3)">fatima@example.com</span></td>
-                  <td style="color:#22c55e;font-weight:700">إيداع</td>
-                  <td style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$5,500.00</td>
-                  <td style="font-size:11px;color:var(--text3);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr">TX: 0x8f3a...b2c1</td>
-                  <td><span class="badge badge-warning">قيد الانتظار</span></td>
-                  <td style="color:var(--text3);direction:ltr">28 يناير</td>
-                  <td style="display:flex;gap:6px">
-                    <button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:#22c55e;border-color:rgba(34,197,94,.2)" onclick="showToast('تم قبول الإيداع!','success')">قبول</button>
-                    <button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:#ef4444;border-color:rgba(239,68,68,.2)" onclick="showToast('تم رفض الإيداع','error')">رفض</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>عمر بشير<br><span style="font-size:11px;color:var(--text3)">omar@example.com</span></td>
-                  <td style="color:#ef4444;font-weight:700">سحب</td>
-                  <td style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#ef4444;direction:ltr">$1,200.00</td>
-                  <td style="font-size:11px;color:var(--text3);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr">USDT: TQn9...4xKm</td>
-                  <td><span class="badge badge-warning">قيد الانتظار</span></td>
-                  <td style="color:var(--text3);direction:ltr">28 يناير</td>
-                  <td style="display:flex;gap:6px">
-                    <button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:#22c55e;border-color:rgba(34,197,94,.2)" onclick="showToast('تم قبول السحب!','success')">قبول</button>
-                    <button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:#ef4444;border-color:rgba(239,68,68,.2)">رفض</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>إبراهيم سعيد<br><span style="font-size:11px;color:var(--text3)">ibrahim@example.com</span></td>
-                  <td style="color:#22c55e;font-weight:700">إيداع</td>
-                  <td style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$3,000.00</td>
-                  <td style="font-size:11px;color:var(--text3)">تحويل بنكي — بنك嵖岈</td>
-                  <td><span class="badge badge-warning">قيد الانتظار</span></td>
-                  <td style="color:var(--text3);direction:ltr">27 يناير</td>
-                  <td style="display:flex;gap:6px">
-                    <button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:#22c55e;border-color:rgba(34,197,94,.2)">قبول</button>
-                    <button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:#ef4444;border-color:rgba(239,68,68,.2)">رفض</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- مراجعة الهوية -->
-      <div class="admin-tab" id="tab-kyc" style="display:none">
-        <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">مراجعة <span class="gold-text">الهوية</span></h1>
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div class="glass" style="padding:24px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-              <div>
-                <h3 style="font-weight:800;font-size:16px">أحمد حسن</h3>
-                <p style="font-size:13px;color:var(--text3)">ahmed@example.com — تم التقديم 28 يناير 2025</p>
-              </div>
-              <span class="badge badge-warning">قيد الانتظار</span>
-            </div>
-            <div style="display:flex;gap:12px;margin-bottom:16px">
-              <div style="flex:1;background:rgba(10,10,18,.5);border-radius:10px;padding:16px;text-align:center">
-                <p style="font-size:24px;margin-bottom:8px">🪪</p>
-                <p style="font-size:12px;color:var(--text3)">وثيقة الهوية</p>
-                <p style="font-size:11px;color:#22c55e;margin-top:4px">تم الرفع</p>
-              </div>
-              <div style="flex:1;background:rgba(10,10,18,.5);border-radius:10px;padding:16px;text-align:center">
-                <p style="font-size:24px;margin-bottom:8px">📄</p>
-                <p style="font-size:12px;color:var(--text3)">إثبات العنوان</p>
-                <p style="font-size:11px;color:#22c55e;margin-top:4px">تم الرفع</p>
-              </div>
-              <div style="flex:1;background:rgba(10,10,18,.5);border-radius:10px;padding:16px;text-align:center">
-                <p style="font-size:24px;margin-bottom:8px">🤳</p>
-                <p style="font-size:12px;color:var(--text3)">سيلفي مع الهوية</p>
-                <p style="font-size:11px;color:#22c55e;margin-top:4px">تم الرفع</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px">
-              <button class="btn-gold btn-sm" onclick="showToast('تم اعتماد الهوية! تم توثيق المستخدم.','success')">✓ اعتماد</button>
-              <button class="btn-outline btn-sm" style="color:#ef4444;border-color:rgba(239,68,68,.2)" onclick="showToast('تم رفض الهوية. تم إبلاغ المستخدم.','error')">✕ رفض</button>
-            </div>
-          </div>
-          <div class="glass" style="padding:24px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-              <div>
-                <h3 style="font-weight:800;font-size:16px">مريم يوسف</h3>
-                <p style="font-size:13px;color:var(--text3)">mariam@example.com — تم التقديم 27 يناير 2025</p>
-              </div>
-              <span class="badge badge-warning">قيد الانتظار</span>
-            </div>
-            <div style="display:flex;gap:12px;margin-bottom:16px">
-              <div style="flex:1;background:rgba(10,10,18,.5);border-radius:10px;padding:16px;text:center">
-                <p style="font-size:24px;margin-bottom:8px">🪪</p>
-                <p style="font-size:12px;color:var(--text3)">وثيقة الهوية</p>
-                <p style="font-size:11px;color:#22c55e;margin-top:4px">تم الرفع</p>
-              </div>
-              <div style="flex:1;background:rgba(10,10,18,.5);border-radius:10px;padding:16px;text-align:center">
-                <p style="font-size:24px;margin-bottom:8px">📄</p>
-                <p style="font-size:12px;color:var(--text3)">إثبات العنوان</p>
-                <p style="font-size:11px;color:#ef4444;margin-top:4px">غير متوفر</p>
-              </div>
-              <div style="flex:1;background:rgba(10,10,18,.5);border-radius:10px;padding:16px;text-align:center">
-                <p style="font-size:24px;margin-bottom:8px">🤳</p>
-                <p style="font-size:12px;color:var(--text3)">سيلفي مع الهوية</p>
-                <p style="font-size:11px;color:#22c55e;margin-top:4px">تم الرفع</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px">
-              <button class="btn-outline btn-sm" style="color:#ef4444;border-color:rgba(239,68,68,.2)">✕ رفض (مستندات ناقصة)</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- التقارير -->
-      <div class="admin-tab" id="tab-reports" style="display:none">
-        <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">تقارير <span class="gold-text">الشفافية</span></h1>
-        <div class="glass" style="padding:24px;margin-bottom:24px">
-          <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800;margin-bottom:16px">رفع تقرير جديد</h3>
-          <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">عنوان التقرير</label><input class="input" placeholder="تقرير إنتاج الذهب - الربع الرابع 2024"></div>
-          <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">الوصف</label><input class="input" placeholder="ملخص عن مخرجات التعدين والعمليات"></div>
-          <div style="margin-bottom:16px">
-            <label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">النوع</label>
-            <select class="input"><option>تقرير إنتاج</option><option>تقرير مالي</option><option>صور الموقع</option><option>فيديو</option></select>
-          </div>
-          <div style="margin-bottom:24px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">الملف</label><input type="file" class="input" style="padding:10px"></div>
-          <button class="btn-gold" onclick="showToast('تم رفع التقرير ونشره!','success')">رفع ونشر</button>
-        </div>
-        <div class="glass" style="overflow:hidden">
-          <div style="padding:20px 24px;border-bottom:1px solid rgba(212,168,16,.08)"><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">التقارير المنشورة</h3></div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>العنوان</th><th>النوع</th><th>تاريخ النشر</th><th>الحالة</th></tr></thead>
-              <tbody>
-                <tr><td style="font-weight:700">تقرير إنتاج الربع الرابع 2024</td><td>تقرير إنتاج</td><td style="color:var(--text3);direction:ltr">15 يناير 2025</td><td><span class="badge badge-success">منشور</span></td></tr>
-                <tr><td style="font-weight:700">صور موقع وادي النيل</td><td>صور الموقع</td><td style="color:var(--text3);direction:ltr">10 يناير 2025</td><td><span class="badge badge-success">منشور</span></td></tr>
-                <tr><td style="font-weight:700">جولة فيديو لعمليات التعدين</td><td>فيديو</td><td style="color:var(--text3);direction:ltr">28 ديسمبر 2024</td><td><span class="badge badge-success">منشور</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-    </main>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     نافذة الاستثمار
-     ════════════════════════════════════════════════════════════════ -->
-<div class="modal-overlay" id="modal-invest">
-  <div class="modal glass" style="padding:32px">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-      <h2 style="font-family:'Cairo',serif;font-size:22px;font-weight:800">استثمار <span class="gold-text">جديد</span></h2>
-      <button onclick="closeModal('invest')" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:20px">✕</button>
-    </div>
-
-    <div style="margin-bottom:16px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">اختر المحفظة</label>
-      <select class="input" id="modal-portfolio">
-        <option value="production">محفظة الإنتاج (عائد 12–18%)</option>
-        <option value="trading">محفظة التداول (عائد 10–25%)</option>
-        <option value="operational">تمويل التشغيل (عائد 15–22%)</option>
-        <option value="exploration">محفظة الاستكشاف (عائد 20–35%)</option>
-      </select>
-    </div>
-
-    <div style="margin-bottom:16px">
-      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">مبلغ الاستثمار (دولار)</label>
-      <input class="input" type="number" placeholder="الحد الأدنى $200" value="5000" id="modal-amount" oninput="updateEstimate()" style="font-family:'JetBrains Mono',monospace;direction:ltr">
-      <p style="font-size:11px;color:var(--text3);margin-top:6px">الرصيد المتاح: <span style="color:#d4a810;font-family:'JetBrains Mono',monospace;direction:ltr">$24,580.00</span></p>
-    </div>
-
-    <div style="display:flex;gap:8px;margin-bottom:16px">
-      <button style="flex:1;padding:8px;font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text3);border:1px solid rgba(212,168,16,.1);border-radius:8px;background:none;cursor:pointer" onclick="document.getElementById('modal-amount').value=100;updateEstimate()">$100</button>
-      <button style="flex:1;padding:8px;font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text3);border:1px solid rgba(212,168,16,.1);border-radius:8px;background:none;cursor:pointer" onclick="document.getElementById('modal-amount').value=500;updateEstimate()">$500</button>
-      <button style="flex:1;padding:8px;font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text3);border:1px solid rgba(212,168,16,.1);border-radius:8px;background:none;cursor:pointer" onclick="document.getElementById('modal-amount').value=1000;updateEstimate()">$1,000</button>
-      <button style="flex:1;padding:8px;font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text3);border:1px solid rgba(212,168,16,.1);border-radius:8px;background:none;cursor:pointer" onclick="document.getElementById('modal-amount').value=5000;updateEstimate()">$5,000</button>
-    </div>
-
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;cursor:pointer" onclick="this.querySelector('.toggle').classList.toggle('on')">
-      <div class="toggle"></div>
-      <div>
-        <p style="font-size:14px;font-weight:600">إعادة استثمار تلقائية</p>
-        <p style="font-size:12px;color:var(--text3)">أعِد استثمار الأرباح للنمو المُركّب</p>
-      </div>
-    </div>
-
-    <div style="background:rgba(10,10,18,.5);border-radius:12px;padding:16px;margin-bottom:20px">
-      <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:var(--text3)">الربح اليومي المُقدَّر</span><span style="font-family:'JetBrains Mono',monospace;color:#d4a810;font-weight:600;direction:ltr" id="est-daily">$22.60</span></div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;color:var(--text3)">الإجمالي المُقدَّر (٩٠ يوم)</span><span style="font-family:'JetBrains Mono',monospace;color:#22c55e;font-weight:600;direction:ltr" id="est-total">$2,034.00</span></div>
-      <div style="display:flex;justify-content:space-between"><span style="font-size:13px;color:var(--text3)">المدة</span><span style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">90 يوم</span></div>
-    </div>
-
-    <button class="btn-gold" style="width:100%;justify-content:center" onclick="closeModal('invest');showToast('تم إنشاء الاستثمار بنجاح! ستبدأ الأرباح اليومية غداً.','success')">تأكيد الاستثمار — $5,000</button>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     الإشعارات
-     ════════════════════════════════════════════════════════════════ -->
+<!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<!-- ════════════════════════════════════════════════════════════════
-     JavaScript
-     ════════════════════════════════════════════════════════════════ -->
-<script>
-function showPage(page) {
-  document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + page).classList.add('active');
-  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-  document.querySelector(`.nav-link[data-page="${page}"]`)?.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  document.querySelectorAll('#page-' + page + ' .anim-up').forEach((el, i) => {
-    el.style.animation = 'none';
-    el.offsetHeight;
-    el.style.animation = `fadeUp .7s ease ${i * 0.05}s forwards`;
-    el.style.opacity = '0';
-  });
-  if (page === 'dashboard') setTimeout(renderChart, 100);
-}
-
-function switchAdminTab(tab) {
-  document.querySelectorAll('.admin-tab').forEach(t => t.style.display = 'none');
-  document.getElementById('tab-' + tab).style.display = 'block';
-  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-  event.target.classList.add('active');
-}
-
-function openModal(id) { document.getElementById('modal-' + id).classList.add('open'); }
-function closeModal(id) { document.getElementById('modal-' + id).classList.remove('open'); }
-
-function showToast(msg, type) {
-  const toast = document.getElementById('toast');
-  toast.textContent = (type === 'success' ? '✓ ' : '✕ ') + msg;
-  toast.className = 'toast show toast-' + type;
-  setTimeout(() => toast.classList.remove('show'), 3000);
-}
-
-function updateEstimate() {
-  const amount = parseFloat(document.getElementById('modal-amount').value) || 0;
-  const daily = (amount * 0.15 / 30);
-  const total = daily * 90;
-  document.getElementById('est-daily').textContent = '$' + daily.toFixed(2);
-  document.getElementById('est-total').textContent = '$' + total.toFixed(2);
-}
-
-function renderChart() {
-  const container = document.getElementById('profitChart');
-  if (!container) return;
-  container.innerHTML = '';
-  const data = [
-    { day: 'الإثنين', value: 45 }, { day: 'الثلاثاء', value: 52 },
-    { day: 'الأربعاء', value: 38 }, { day: 'الخميس', value: 67 },
-    { day: 'الجمعة', value: 71 }, { day: 'السبت', value: 58 },
-    { day: 'الأحد', value: 82 },
-  ];
-  const max = Math.max(...data.map(d => d.value));
-  const barWidth = 100 / data.length;
-  data.forEach((d, i) => {
-    const bar = document.createElement('div');
-    bar.className = 'chart-bar';
-    const h = (d.value / max) * 260;
-    bar.style.height = h + 'px';
-    bar.style.left = (i * barWidth + barWidth * 0.15) + '%';
-    bar.style.width = (barWidth * 0.7) + '%';
-    bar.style.opacity = '0';
-    bar.style.animation = `fadeUp .5s ease ${i * 0.08}s forwards`;
-    bar.title = `${d.day}: $${d.value.toFixed(2)}`;
-    const label = document.createElement('div');
-    label.style.cssText = `position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--text3);font-family:'Tajawal',sans-serif;white-space:nowrap`;
-    label.textContent = d.day;
-    bar.appendChild(label);
-    const val = document.createElement('div');
-    val.style.cssText = `position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:#d4a810;font-family:'JetBrains Mono',monospace;font-weight:600;white-space:nowrap;direction:ltr`;
-    val.textContent = '$' + d.value;
-    bar.appendChild(val);
-    container.appendChild(bar);
-  });
-}
-
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
-});
-
-function toggleMobile() {
-  const links = document.getElementById('navLinks');
-  if (links.style.display === 'flex') {
-    links.style.display = 'none';
-  } else {
-    links.style.display = 'flex';
-    links.style.flexDirection = 'column';
-    links.style.position = 'absolute';
-    links.style.top = '64px';
-    links.style.left = '0';
-    links.style.right = '0';
-    links.style.background = 'rgba(10,10,18,.95)';
-    links.style.padding = '16px';
-    links.style.borderBottom = '1px solid rgba(212,168,16,.08)';
-    links.style.backdropFilter = 'blur(20px)';
-  }
-}
-</script>
+<script src="js/theme.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
