@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الإيداع — منجم الذهب</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    .deposit-method {
+      padding: 20px;
+      border: 2px solid var(--card-border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all .3s;
+      background: var(--card-bg);
+    }
+    .deposit-method:hover {
+      border-color: rgba(212,168,16,.3);
+      transform: translateY(-2px);
+    }
+    .deposit-method.active {
+      border-color: var(--gold);
+      background: rgba(212,168,16,.05);
+      box-shadow: 0 0 20px rgba(212,168,16,.1);
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(212,168,16,.1);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .wallet-address {
+      background: var(--stat-inner-bg);
+      border: 1px dashed var(--card-border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      direction: ltr;
+      text-align: center;
+      word-break: break-all;
+      color: var(--text);
+      user-select: all;
+    }
+    .qr-placeholder {
+      width: 160px;
+      height: 160px;
+      border: 2px dashed var(--card-border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      background: var(--stat-inner-bg);
+    }
+  </style>
+</head>
+<body>
+
+<!-- شريط التنقل -->
+<nav class="navbar" id="navbar">
+  <div class="page">
+    <div class="nav-inner">
+      <div class="nav-right" style="order:3">
+        <div class="theme-toggle" onclick="toggleTheme()"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span><div class="toggle-knob"></div></div>
+        <div class="nav-balance">$24,580.00</div>
+        <a class="btn-gold btn-sm" href="login.html">تسجيل الدخول</a>
+        <button class="mobile-toggle" onclick="toggleMobile()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="nav-links" id="navLinks" style="order:2">
+        <a class="nav-link" href="index.html">الرئيسية</a>
+        <a class="nav-link" href="portfolios.html">المحافظ</a>
+        <a class="nav-link" href="dashboard.html">لوحة التحكم</a>
+        <a class="nav-link" href="transactions.html">المعاملات</a>
+        <a class="nav-link" href="settings.html">الإعدادات</a>
+        <a class="nav-link" href="admin.html" style="color:var(--gold)">الإدارة</a>
+      </div>
+      <a class="nav-logo" href="index.html" style="order:1">
+        <div class="nav-logo-icon">G</div>
+        <span><span class="gold-text">Gold</span>Mine</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- محتوى الصفحة -->
+<div class="page inner-page">
+
+  <div style="margin-bottom:32px" class="anim-up">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+      <a href="dashboard.html" style="color:var(--text3);font-size:13px;text-decoration:none">لوحة التحكم</a>
+      <span style="color:var(--text3)">←</span>
+      <span style="color:var(--gold);font-size:13px">الإيداع</span>
+    </div>
+    <h1 style="font-family:'Cairo',serif;font-size:32px;font-weight:800">
+      <span class="gold-text">إيداع الأموال</span>
+    </h1>
+    <p style="color:var(--text2);margin-top:4px">اختر طريقة الدفع وأكمل عملية الإيداع</p>
+  </div>
+
+  <!-- الخطوة 1: اختيار طريقة الدفع -->
+  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+      <div class="step-number">1</div>
+      <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800">اختر طريقة الدفع</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px" class="grid-2">
+      <div class="deposit-method active" onclick="selectMethod(this,'usdt')" id="method-usdt">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(34,197,94,.1);display:flex;align-items:center;justify-content:center;font-size:24px">💎</div>
+          <div>
+            <p style="font-weight:700;font-size:16px">USDT (TRC20)</p>
+            <p style="font-size:12px;color:var(--text3)">الوصول خلال 1-3 تأكيدات</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <span class="badge badge-success">فوري</span>
+          <span class="badge badge-gold">بدون رسوم</span>
+        </div>
+      </div>
+
+      <div class="deposit-method" onclick="selectMethod(this,'bank')" id="method-bank">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(59,130,246,.1);display:flex;align-items:center;justify-content:center;font-size:24px">🏦</div>
+          <div>
+            <p style="font-weight:700;font-size:16px">تحويل بنكي</p>
+            <p style="font-size:12px;color:var(--text3)">الوصول خلال 24 ساعة عمل</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <span class="badge badge-warning">1-24 ساعة</span>
+          <span class="badge badge-gold">بدون رسوم</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- الخطوة 2: تفاصيل الدفع — USDT -->
+  <div class="glass anim-up" style="padding:32px;margin-bottom:24px" id="usdt-section">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+      <div class="step-number">2</div>
+      <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800">تفاصيل الدفع — USDT</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px" class="grid-2">
+      <!-- يمين: المبلغ وعنوان المحفظة -->
+      <div>
+        <div style="margin-bottom:20px">
+          <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">مبلغ الإيداع (USDT)</label>
+          <input class="input" type="number" placeholder="الحد الأدنى 10 USDT" id="deposit-amount" style="font-family:'JetBrains Mono',monospace;direction:ltr;font-size:18px">
+        </div>
+
+        <div style="margin-bottom:16px">
+          <label style="00;color:var(--text2);margin-bottom:8px">عنوان المحفظة (TRC20)</label>
+          <div class="wallet-address" id="wallet-addr">TXyzAbc123456789DefGhijKlmnOpqrStuVw</div>
+          <button onclick="copyAddress()" style="margin-top:8px;width:100%;padding:10px;border-radius:8px;border:1px solid var(--card-border);background:var(--stat-inner-bg);color:var(--gold);font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;transition:all .2s">
+            📋 نسخ العنوان
+          </button>
+        </div>
+
+        <div style="background:rgba(245,158,11,.08);borderdisplay:block;font-size:13px;font-weight:6:1px solid rgba(245,158,11,.15);border-radius:10px;padding:12px">
+          <p style="font-size:12px;color:var(--warning);font-weight:600">⚠️ تنبيه مهم</p>
+          <p style="font-size:12px;color:var(--text2);margin-top:4px">أرسل فقط USDT على شبكة TRC20. أي عملة أخرى أو شبكة مختلفة قد تؤدي إلى فقدان الأموال.</p>
+        </div>
+      </div>
+
+      <!-- يسار: QR -->
+      <div style="text-align:center">
+        <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:12px">امسح الرمز للدفع</label>
+        <div class="qr-placeholder">
+          <div style="text-align:center">
+            <p style="font-size:40px;margin-bottom:8px">📱</p>
+            <p style="font-size:11px;color:var(--text3)">QR Code</p>
+            <p style="font-size:10px;color:var(--text3)">أضف صورة QR هنا</p>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--text3);margin-top:12px">أو استخدم محفظتك لمسح الرمز أعلاه</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- الخطوة 2: تفاصيل الدفع — بنكي (مخفي افتراضياً) -->
+  <div class="glass anim-up" style="padding:32px;margin-bottom:24px;display:none" id="bank-section">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+      <div class="step-number">2</div>
+      <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800">تفاصيل">GoldMine Sudan Ltd</p>
+        </div>
+        <div>
+          <p style="font-size:11px;color:var(--text3);margin-bottom:4px">رقم الحساب</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">1234567890123</p>
+        </div>
+        <div>
+          <p style="font-size:11px;color:var(--text3);margin-bottom:4px">IBAN</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-weight التحويل البنكي</h2>
+    </div>
+
+    <div style="background:var(--stat-inner-bg);border-radius:12px;padding:20px;margin-bottom:20px">
+      <p style="font-size:14px;font-weight:700;margin-bottom:16px">بيانات الحساب البنكي</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div>
+          <p style="font-size:11px;color:var(--text3);margin-bottom:4px">اسم البنك</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:600">بنك嵖岈 السوداني المحدود</p>
+        </div>
+        <div>
+          <p style="font-size:11px;color:var(--text3);margin-bottom:4px">اسم صاحب الحساب</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-weight:600:600;direction:ltr">SD12CBIH1234567890123</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">مبلغ التحويل (دولار)</label>
+      <input class="input" type="number" placeholder="الحد الأدنى $50" style="font-family:'JetBrains Mono',monospace;direction:ltr;font-size:18px">
+    </div>
+
+    <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);border-radius:10px;padding:12px;margin-bottom:20px">
+      <p style="font-size:12px;color:var(--warning);font-weight:600">⚠️ ملاحظة</p>
+      <p style="font-size:12px;color:var(--text2);margin-top:4px">يرجى كتابة رقم حسابك في GoldMine في خانة البيان عند التحويل لتسهيل التتبع.</p>
+    </div>
+  </div>
+
+  <!-- الخطوة 3: رفع إثبات التحويل -->
+  <div class="glass anim-up" style="padding:32px;margin-bottom:24px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+      <div class="step-number">3</div>
+      <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800">إثبات التحويل</h2>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">رقم العملية (اختياري)</label>
+      <input class="input dashed var(--card-border);border-radius:12px;padding:40px;text-align:center;cursor:pointer;transition:all .3s" onclick="document.getElementById('proof-file').click()" id="upload-zone">
+        <p style="font-size:32px;margin-bottom:8px">📤</p>
+        <p style="font-size:14px;font-weight" placeholder="TX Hash أو رقم التحويل البنكي" style="font-family:'JetBrains Mono',monospace;direction:ltr">
+    </div>
+
+    <div style="margin-bottom:24px">
+      <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">صورة إثبات التحويل</label>
+      <div style="border:2px:600;color:var(--text2)">اضغط لرفع الصورة</p>
+        <p style="font-size:12px;color:var(--text3);margin-top:4px">PNG, JPG, PDF — حد أقصى 5MB</p>
+      </div>
+      <input type="file" id="proof-file" style="display:none" accept="image/*,.pdf" onchange="handleFileUpload(this)">
+      <p id="file-name" style="font-size:12px;color:var(--success);margin-top:8px;display:none"></p>
+    </div>
+
+    <button class="btn-gold" style="width:100%;justify-content:center;font-size:16px;padding:16px" onclick="submitDeposit()">
+      ✓ تأكيد الإيداع
+    </button>
+  </div>
+
+  <!-- حالة الإيداعات السابقة -->
+  <div class="glass anim-up" style="padding:32px">
+    <h2 style="font-family:'Cairo',serif;font-size:20px;font-weight:800;margin-bottom:24px">طلبات الإيداع السابقة</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>الرقم</th>
+            <th>الطريقة</th>
+            <th>المبلغ</th>
+            <th>الحالة</th>
+            <th>التاريخ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;direction:ltr;color:var(--text3)">#10234</td>
+            <td>USDT TRC20</td>
+            <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,000.00</td>
+            <td><span class="badge badge-success">مقبول</span></td>
+            <td style="color:var(--text3);direction:ltr">15 يناير 2025</td>
+          </tr>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;direction:ltr;color:var(--text3)">#10267</td>
+            <td>تحويل بنكي</td>
+            <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$2,500.00</td>
+            <td><span class="badge badge-success">مقبول</span></td>
+            <td style="color:var(--text3);direction:ltr">20 يناير 2025</td>
+          </tr>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;direction:ltr;color:var(--text3)">#10301</td>
+            <td>USDT TRC20</td>
+            <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,500.00</td>
+            <td><span class="badge badge-warning">قيد الانتظار</span></td>
+            <td style="color:var(--text3);direction:ltr">28 يناير 2025</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/theme.js"></script>
+<script src="js/app.js"></script>
+<script>
+  function selectMethod(el, method) {
+    document.querySelectorAll('.deposit-method').forEach(m => m.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('usdt-section').style.display = method === 'usdt' ? 'block' : 'none';
+    document.getElementById('bank-section').style.display = method === 'bank' ? 'block' : 'none';
+  }
+
+  function copyAddress() {
+    const addr = document.getElementById('wallet-addr').textContent;
+    navigator.clipboard.writeText(addr).then(() => {
+      showToast('تم نسخ العنوان!','success');
+    });
+  }
+
+  function handleFileUpload(input) {
+    if (input.files[0]) {
+      document.getElementById('file-name').textContent = '✓ ' + input.files[0].name;
+      document.getElementById('file-name').style.display = 'block';
+      document.getElementById('upload-zone').style.borderColor = 'var(--success)';
+    }
+  }
+
+  function submitDeposit() {
+    showToast('تم إرسال طلب الإيداع بنجاح! سيتم المراجعة خلال ساعات.','success');
+  }
+</script>
+</body>
+</html>
