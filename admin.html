@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الإدارة — منجم الذهب</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="page">
+    <div class="nav-inner">
+      <div class="nav-right" style="order:3">
+        <div class="theme-toggle" onclick="toggleTheme()"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span><div class="toggle-knob"></div></div>
+        <a class="btn-gold btn-sm" href="login.html">تسجيل الدخول</a>
+      </div>
+      <div class="nav-links" id="navLinks" style="order:2">
+        <a class="nav-link" href="index.html">الرئيسية</a>
+        <a class="nav-link" href="portfolios.html">المحافظ</a>
+        <a class="nav-link" href="dashboard.html">لوحة التحكم</a>
+        <a class="nav-link" href="transactions.html">المعاملات</a>
+        <a class="nav-link" href="settings.html">الإعدادات</a>
+        <a class="nav-link active" href="admin.html" style="color:var(--gold)">الإدارة</a>
+      </div>
+      <a class="nav-logo" href="index.html" style="order:1">
+        <div class="nav-logo-icon">G</div>
+        <span><span class="gold-text">Gold</span>Mine</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-layout" style="padding-top:64px">
+  <aside class="admin-sidebar">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px;padding:0 10px">
+      <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0a0a12">A</div>
+      <span style="font-family:'Cairo',serif;font-size:16px;font-weight:800">لوحة الإدارة</span>
+    </div>
+    <nav>
+      <a class="sidebar-link active" onclick="switchAdminTab('overview')">📊 نظرة عامة</a>
+      <a class="sidebar-link" onclick="switchAdminTab('users')">👥 المستخدمون</a>
+      <a class="sidebar-link" onclick="switchAdminTab('portfolios')">💼 المحافظ</a>
+      <a class="sidebar-link" onclick="switchAdminTab('deposits')">💰 الإيداعات والسحوبات</a>
+      <a class="sidebar-link" onclick="switchAdminTab('kyc')">📋 مراجعة الهوية</a>
+      <a class="sidebar-link" onclick="switchAdminTab('reports')">📄 التقارير</a>
+    </nav>
+    <div style="padding-top:32px;border-top:1px solid var(--card-border);margin-top:32px">
+      <a class="sidebar-link" href="dashboard.html">العودة للمنصة ←</a>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <!-- نظرة عامة -->
+    <div class="admin-tab active" id="tab-overview">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">نظرة <span class="gold-text">عامة</span></h1>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:32px" class="grid-4">
+        <div class="glass admin-stat"><p class="label">إجمالي المستخدمين</p><p class="value">3,247</p><p class="sub">2,891 نشط</p></div>
+        <div class="glass admin-stat"><p class="label">إجمالي الاستثمارات</p><p class="value">$12.4M</p><p class="sub">1,842 نشط</p></div>
+        <div class="glass admin-stat"><p class="label">إجمالي الإيداعات</p><p class="value">$8.7M</p><p class="sub">23 قيد الانتظار</p></div>
+        <div class="glass admin-stat"><p class="label">المسحوبات</p><p class="value">$3.2M</p><p class="sub">8 قيد الانتظار</p></div>
+        <div class="glass admin-stat"><p class="label">هوية قيد المراجعة</p><p class="value">14</p><p class="sub" style="color:var(--text3)">بانتظار المراجعة</p></div>
+      </div>
+      <div class="glass" style="overflow:hidden">
+        <div style="padding:20px 24px;border-bottom:1px solid var(--card-border)"><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">النشاط الأخير</h3></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>المستخدم</th><th>الإجراء</th><th>المبلغ</th><th>الوقت</th></tr></thead>
+          <tbody>
+            <tr><td>أحمد حسن</td><td style="color:var(--success);font-weight:700">استثمار جديد</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,000</td><td style="color:var(--text3)">منذ دقيقتين</td></tr>
+            <tr><td>فاطمة علي</td><td style="color:var(--gold);font-weight:700">طلب إيداع</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">$2,500</td><td style="color:var(--text3)">منذ ١٥ دقيقة</td></tr>
+            <tr><td>عمر بشير</td><td style="color:var(--danger);font-weight:700">طلب سحب</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">$1,200</td><td style="color:var(--text3)">منذ ساعة</td></tr>
+            <tr><td>مريم يوسف</td><td style="color:var(--warning);font-weight:700">تقديم هوية</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">—</td><td style="color:var(--text3)">منذ ساعتين</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <!-- المستخدمون -->
+    <div class="admin-tab" id="tab-users" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">إدارة <span class="gold-text">المستخدمين</span></h1>
+      <div class="glass" style="overflow:hidden"><div class="table-wrap"><table>
+        <thead><tr><th>المستخدم</th><th>البريد</th><th>الرصيد</th><th>الهوية</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700">أحمد حسن</td><td style="color:var(--text3)">ahmed@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);direction:ltr">$24,580</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">تعليق</button></td></tr>
+          <tr><td style="font-weight:700">فاطمة علي</td><td style="color:var(--text3)">fatima@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);direction:ltr">$12,300</td><td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">تعليق</button></td></tr>
+          <tr><td style="font-weight:700">عمر بشير</td><td style="color:var(--text3)">omar@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);direction:ltr">$8,750</td><td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">تعليق</button></td></tr>
+        </tbody>
+      </table></div></div>
+    </div>
+
+    <!-- المحافظ -->
+    <div class="admin-tab" id="tab-portfolios" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">إدارة <span class="gold-text">المحافظ</span></h1>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">محفظة الإنتاج</h3><p style="font-size:13px;color:var(--text3)">842 استثمار نشط — $4.2M إجمالي</p></div><span class="badge badge-success">نشطة</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><div><p style="font-size:11px;color:var(--text3)">العائد</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">12–18%</p></div><div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">90 يوم</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأدنى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$500</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأقصى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$50,000</p></div></div></div>
+        <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">محفظة التداول</h3><p style="font-size:13px;color:var(--text3)">523 استثمار نشط — $3.1M إجمالي</p></div><span class="badge badge-success">نشطة</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><div><p style="font-size:11px;color:var(--text3)">العائد</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">10–25%</p></div><div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">30 يوم</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأدنى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$200</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأقصى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$25,000</p></div></div></div>
+        <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">تمويل التشغيل</h3><p style="font-size:13px;color:var(--text3)">312 استثمار نشط — $3.8M إجمالي</p></div><span class="badge badge-success">نشطة</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><div><p style="font-size:11px;color:var(--text3)">العائد</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">15–22%</p></div><div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">180 يوم</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأدنى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$1,000</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأقصى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$100,000</p></div></div></div>
+      </div>
+    </div>
+
+    <!-- الإيداعات والسحوبات -->
+    <div class="admin-tab" id="tab-deposits" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">الإيداعات <span class="gold-text">والسحوبات</span></h1>
+      <div class="glass" style="overflow:hidden"><div class="table-wrap"><table>
+        <thead><tr><th>المستخدم</th><th>النوع</th><th>المبلغ</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
+        <tbody>
+          <tr><td>فاطمة علي</td><td style="color:var(--success);font-weight:700">إيداع</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,500</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td style="display:flex;gap:6px"><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--success);border-color:rgba(34,197,94,.2)" onclick="showToast('تم قبول الإيداع!','success')">قبول</button><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">رفض</button></td></tr>
+          <tr><td>عمر بشير</td><td style="color:var(--danger);font-weight:700">سحب</td><td style="font-family:'JetBrains Mono',monospace;color:var(--danger);direction:ltr">$1,200</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td style="display:flex;gap:6px"><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--success);border-color:rgba(34,197,94,.2)">قبول</button><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">رفض</button></td></tr>
+        </tbody>
+      </table></div></div>
+    </div>
+
+    <!-- مراجعة الهوية -->
+    <div class="admin-tab" id="tab-kyc" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">مراجعة <span class="gold-text">الهوية</span></h1>
+      <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-weight:800">أحمد حسن</h3><p style="font-size:13px;color:var(--text3)">ahmed@example.com</p></div><span class="badge badge-warning">قيد الانتظار</span></div>
+        <div style="display:flex;gap:12px;margin-bottom:16px">
+          <div class="kyc-doc-card"><p class="emoji">🪪</p><p class="doc-name">وثيقة الهوية</p><p class="doc-status" style="color:var(--success)">تم الرفع</p></div>
+          <div class="kyc-doc-card"><p class="emoji">📄</p><p class="doc-name">إثبات العنوان</p><p class="doc-status" style="color:var(--success)">تم الرفع</p></div>
+          <div class="kyc-doc-card"><p class="emoji">🤳</p><p class="doc-name">سيلفي</p><p class="doc-status" style="color:var(--success)">تم الرفع</p></div>
+        </div>
+        <div style="display:flex;gap:12px">
+          <button class="btn-gold btn-sm" onclick="showToast('تم اعتماد الهوية!','success')">✓ اعتماد</button>
+          <button class="btn-outline btn-sm" style="color:var(--danger);border-color:rgba(239,68,68,.2)">✕ رفض</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- التقارير -->
+    <div class="admin-tab" id="tab-reports" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">تقارير <span class="gold-text">الشفافية</span></h1>
+      <div class="glass" style="padding:24px;margin-bottom:24px">
+        <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800;margin-bottom:16px">رفع تقرير جديد</h3>
+        <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">العنوان</label><input class="input" placeholder="تقرير إنتاج الذهب"></div>
+        <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">النوع</label><select class="input"><option>تقرير إنتاج</option><option>تقرير مالي</option><option>صور</option><option>فيديو</option></select></div>
+        <div style="margin-bottom:24px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">الملف</label><input type="file" class="input" style="padding:10px"></div>
+        <button class="btn-gold" onclick="showToast('تم رفع التقرير!','success')">رفع ونشر</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="js/theme.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
