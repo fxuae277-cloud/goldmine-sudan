@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول — منجم الذهب</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="page">
+    <div class="nav-inner">
+      <div class="nav-right" style="order:3">
+        <div class="theme-toggle" onclick="toggleTheme()"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span><div class="toggle-knob"></div></div>
+        <a class="btn-gold btn-sm" href="register.html">إنشاء حساب</a>
+      </div>
+      <div class="nav-links" id="navLinks" style="order:2">
+        <a class="nav-link" href="index.html">الرئيسية</a>
+        <a class="nav-link" href="portfolios.html">المحافظ</a>
+      </div>
+      <a class="nav-logo" href="index.html" style="order:1">
+        <div class="nav-logo-icon">G</div>
+        <span><span class="gold-text">Gold</span>Mine</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="auth-page">
+  <div class="auth-card">
+    <div style="text-align:center;margin-bottom:32px" class="anim-up">
+      <h1 style="font-family:'Cairo',serif;font-size:32px;font-weight:800;margin-bottom:8px">مرحباً بـ<span class="gold-text">عودتك</span></h1>
+      <p style="color:var(--text2)">سجّل الدخول إلى حسابك الاستثماري</p>
+    </div>
+    <div class="glass anim-up" style="padding:32px">
+      <div style="margin-bottom:20px">
+        <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">البريد الإلكتروني</label>
+        <input class="input" type="email" placeholder="example@email.com">
+      </div>
+      <div style="margin-bottom:24px">
+        <label style="display:block;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:8px">كلمة المرور</label>
+        <input class="input" type="password" placeholder="أدخل كلمة المرور">
+      </div>
+      <a class="btn-gold" href="dashboard.html" style="width:100%;justify-content:center;display:flex">تسجيل الدخول</a>
+      <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--text3)">ليس لديك حساب؟ <a style="color:var(--gold);cursor:pointer" href="register.html">إنشاء حساب</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="js/theme.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
