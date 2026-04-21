@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منجم الذهب السودان — استثمر في ذهب حقيقي</title>
-  <meta name="description" content="منصة استثمارية موثوقة في قطاع تعدين الذهب بالسودان. عوائد يومية، شفافية كاملة، سحب سريع.">
+  <title>لوحة الإدارة — منجم الذهب</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,443 +12,531 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/pages.css">
+
+  <!-- ===== Inline overrides: layout structure from code1.html, light theme preserved ===== -->
+  <style>
+    /* ── Layout utilities (structure only, no color changes) ── */
+    .admin-layout { display: flex; min-height: 100vh; }
+    .admin-sidebar {
+      width: 256px;
+      padding: 20px;
+      position: fixed;
+      top: 64px;
+      bottom: 0;
+      right: 0;
+      overflow-y: auto;
+    }
+    .admin-main { flex: 1; margin-right: 256px; padding: 32px; }
+    .admin-tab { display: none; }
+    .admin-tab.active { display: block; animation: adminFadeIn .35s ease; }
+
+    @keyframes adminFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Overview: hero-style welcome banner (mirrors code1 hero section) ── */
+    .overview-hero {
+      padding: 48px 40px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .overview-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      pointer-events: none;
+    }
+    .overview-hero .hero-inner { position: relative; z-index: 1; max-width: 680px; }
+    .overview-hero .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .overview-hero .hero-badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      animation: dotPulse 2s infinite;
+    }
+    @keyframes dotPulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
+    .overview-hero h1 {
+      font-family: 'Cairo', serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .overview-hero p { font-size: 15px; line-height: 1.8; margin-bottom: 24px; }
+    .overview-hero .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .overview-hero .hero-features { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 20px; }
+    .overview-hero .hero-features .feat {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px;
+    }
+
+    /* ── Stats row (mirrors code1 stats section) ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 40px 0;
+      margin-bottom: 32px;
+    }
+    .stat-item { text-align: center; }
+    .stat-item .stat-value {
+      font-family: 'Cairo', serif;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .stat-item .stat-label { font-size: 12px; letter-spacing: .3px; }
+
+    /* ── Dashboard cards grid (mirrors code1 portfolio cards) ── */
+    .dash-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .dash-card {
+      padding: 24px;
+      border-radius: 16px;
+      transition: all .3s;
+    }
+    .dash-card:hover { transform: translateY(-2px); }
+    .dash-card .card-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .dash-card .card-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      direction: ltr;
+    }
+    .dash-card .card-label { font-size: 13px; }
+    .dash-card .card-sub { font-size: 11px; font-family: 'JetBrains Mono', monospace; margin-top: 4px; direction: ltr; }
+
+    /* ── Two-column section (mirrors code1 chart + summary layout) ── */
+    .two-col-section {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    /* ── Activity / Table section (mirrors code1 active investments table) ── */
+    .activity-section {
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .activity-section .section-header {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ── KYC Alert Banner (mirrors code1 verification alert) ── */
+    .kyc-alert {
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-radius: 16px;
+    }
+    .kyc-alert .alert-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+    .kyc-alert .alert-content { flex: 1; }
+    .kyc-alert .alert-title { font-size: 14px; font-weight: 700; }
+    .kyc-alert .alert-desc { font-size: 12px; }
+    .kyc-alert .alert-action { font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+
+    /* ── CTA banner (mirrors code1 CTA section) ── */
+    .cta-banner {
+      padding: 48px 40px;
+      text-align: center;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .cta-banner h2 {
+      font-family: 'Cairo', serif;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .cta-banner p { max-width: 480px; margin: 0 auto 24px; font-size: 15px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .admin-sidebar { display: none; }
+      .admin-main { margin-right: 0; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .dash-cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .two-col-section { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .dash-cards-grid { grid-template-columns: 1fr; }
+      .overview-hero { padding: 32px 20px; }
+      .overview-hero h1 { font-size: 24px; }
+      .admin-main { padding: 16px; }
+    }
+    @media (max-width: 480px) {
+      .stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     شريط التنقل
+     NAVBAR (unchanged from admin.html)
      ═══════════════════════════════════════════════════════════════ -->
 <nav class="navbar" id="navbar">
   <div class="page">
     <div class="nav-inner">
-
       <div class="nav-right" style="order:3">
-        <div class="nav-lang-switch">
-          <button class="nav-lang-btn active" onclick="setLang('ar')">عربي</button>
-          <button class="nav-lang-btn" onclick="setLang('en')">EN</button>
-        </div>
-        <div class="theme-toggle" onclick="toggleTheme()" title="تبديل الوضع">
-          <span class="icon-moon">🌙</span>
-          <span class="icon-sun">☀️</span>
-          <div class="toggle-knob"></div>
-        </div>
-        <div class="nav-balance">$24,580.00</div>
+        <div class="theme-toggle" onclick="toggleTheme()"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span><div class="toggle-knob"></div></div>
         <a class="btn-gold btn-sm" href="login.html">تسجيل الدخول</a>
-        <button class="mobile-toggle" onclick="toggleMobile()">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
       </div>
-
       <div class="nav-links" id="navLinks" style="order:2">
-        <a class="nav-link active" href="index.html">الرئيسية</a>
+        <a class="nav-link" href="index.html">الرئيسية</a>
         <a class="nav-link" href="portfolios.html">المحافظ</a>
         <a class="nav-link" href="dashboard.html">لوحة التحكم</a>
         <a class="nav-link" href="transactions.html">المعاملات</a>
-        <a class="nav-link" href="faq.html">الأسئلة الشائعة</a>
+        <a class="nav-link" href="settings.html">الإعدادات</a>
+        <a class="nav-link active" href="admin.html" style="color:var(--gold)">الإدارة</a>
       </div>
-
+      <a class="nav-logo" href="index.html" style="order:1">
+        <div class="nav-logo-icon">G</div>
+        <span><span class="gold-text">Gold</span>Mine</span>
+      </a>
     </div>
   </div>
 </nav>
+
 <!-- ═══════════════════════════════════════════════════════════════
-     Hero
+     ADMIN LAYOUT
      ═══════════════════════════════════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-bg"></div>
+<div class="admin-layout" style="padding-top:64px">
 
-  <div class="page">
-    <div class="hero-content">
-      <!-- النص -->
-      <div>
-        <div class="hero-badge anim-up">
-          <span class="hero-badge-dot"></span>
-          <span>عمليات تعدين نشطة — السودان</span>
-        </div>
+  <!-- ── Sidebar (unchanged) ── -->
+  <aside class="admin-sidebar">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px;padding:0 10px">
+      <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0a0a12">A</div>
+      <span style="font-family:'Cairo',serif;font-size:16px;font-weight:800">لوحة الإدارة</span>
+    </div>
+    <nav>
+      <a class="sidebar-link active" onclick="switchAdminTab('overview')">📊 نظرة عامة</a>
+      <a class="sidebar-link" onclick="switchAdminTab('users')">👥 المستخدمون</a>
+      <a class="sidebar-link" onclick="switchAdminTab('portfolios')">💼 المحافظ</a>
+      <a class="sidebar-link" onclick="switchAdminTab('deposits')">💰 الإيداعات والسحوبات</a>
+      <a class="sidebar-link" onclick="switchAdminTab('kyc')">📋 مراجعة الهوية</a>
+      <a class="sidebar-link" onclick="switchAdminTab('reports')">📄 التقارير</a>
+    </nav>
+    <div style="padding-top:32px;border-top:1px solid var(--card-border);margin-top:32px">
+      <a class="sidebar-link" href="dashboard.html">العودة للمنصة ←</a>
+    </div>
+  </aside>
 
-        <h1 class="hero-title anim-up">
-          استثمر في ذهب <span class="gold-text">السودان</span><br>
-          ثروة التعدين
-        </h1>
+  <!-- ════════════════════════════════════════════════════════════
+       MAIN CONTENT
+       ════════════════════════════════════════════════════════════ -->
+  <main class="admin-main">
 
-        <p class="hero-sub anim-up">
-          وصول إلى محافظ استثمارية مميزة في تعدين الذهب مدعومة بأصول حقيقية وعمليات شفافة وتقارير إنتاج موثقة.
-          احصل على أرباح يومية من أغنى مناطق الذهب في أفريقيا.
-        </p>
+    <!-- ══════════════════════════════════════════════════════════
+         TAB: OVERVIEW — RESTRUCTURED to match code1.html layout
+         ══════════════════════════════════════════════════════════ -->
+    <div class="admin-tab active" id="tab-overview">
 
-        <div class="hero-buttons anim-up">
-          <a class="btn-gold btn-xl" href="portfolios.html">ابدأ الاستثمار ←</a>
-          <a class="btn-outline btn-xl" href="portfolios.html">تصفح المحافظ</a>
-        </div>
-
-        <div class="hero-stats anim-up">
-          <div>
-            <div class="hero-stat-value">$24,580</div>
-            <div class="hero-stat-label">إجمالي أرباح المستثمرين</div>
+      <!-- ── 1. Hero Welcome Banner (mirrors code1.html hero section) ── -->
+      <div class="overview-hero glass">
+        <div class="hero-inner">
+          <div class="hero-badge" style="background:rgba(var(--gold-rgb),.08);border:1px solid rgba(var(--gold-rgb),.15)">
+            <span class="dot" style="background:var(--success)"></span>
+            <span style="color:var(--gold)">لوحة تحكم الإدارة — مباشر</span>
           </div>
-          <div>
-            <div class="hero-stat-value">18.5%</div>
-            <div class="hero-stat-label">متوسط العائد الشهري</div>
+          <h1>نظرة <span class="gold-text">عامة</span><br>على المنصة</h1>
+          <p style="color:var(--text2)">مراقبة شاملة لأداء المنصة، المستخدمين النشطين، الاستثمارات، والمعاملات المالية في الوقت الفعلي.</p>
+          <div class="hero-actions">
+            <button class="btn-gold btn-sm" onclick="switchAdminTab('users')">إدارة المستخدمين</button>
+            <button class="btn-outline btn-sm" onclick="switchAdminTab('deposits')">مراجعة المعاملات</button>
           </div>
-        </div>
-      </div>
-
-      <!-- الشكل/الكروت -->
-      <div class="hero-visual anim-up">
-        <div class="hero-card-stack">
-          <div class="hero-float-card hero-float-card-1">
-            <div class="hero-float-inner">
-              <div class="hero-float-icon">📈</div>
-              <div>
-                <div class="hero-float-label">نمو</div>
-                <div class="hero-float-value hero-float-value--success">+12.4%</div>
-              </div>
+          <div class="hero-features">
+            <div class="feat">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--gold)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span style="color:var(--text2)">3,247 مستخدم مسجّل</span>
             </div>
-          </div>
-
-          <div class="hero-float-card hero-float-card-2">
-            <div class="hero-float-inner">
-              <div class="hero-float-icon">🪙</div>
-              <div>
-                <div class="hero-float-label">ذهب مُنتَج</div>
-                <div class="hero-float-value">47.2kg</div>
-              </div>
+            <div class="feat">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--gold)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span style="color:var(--text2)">$12.4M إجمالي الاستثمارات</span>
             </div>
-          </div>
-
-          <div class="hero-main-card">
-            <div class="hero-main-label">رصيد استثماري</div>
-            <div class="hero-main-amount">$24,580.00</div>
-            <div class="hero-main-period">آخر تحديث: اليوم</div>
-
-            <div class="hero-main-tags">
-              <span class="hero-main-tag">USDT</span>
-              <span class="hero-main-tag">تحويل بنكي</span>
-              <span class="hero-main-tag">شفافية</span>
+            <div class="feat">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--gold)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span style="color:var(--text2)">تقارير شفافة منتظمة</span>
             </div>
           </div>
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-<!-- ═══════════════════════════════════════════════════════════════
-     لماذا نحن
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section">
-  <div class="page">
-    <div class="section-header anim-up">
-      <h2 class="section-title"><span data-i18n="why_title">لماذا</span> <span class="gold-text" data-i18n="why_title2">نحن؟</span></h2>
-      <p class="section-sub" data-i18n="why_sub">مزايا تجعلنا الخيار الأفضل لاستثمارك</p>
-    </div>
-
-    <div class="grid-3">
-      <div class="feature-card anim-up">
-        <div class="feature-icon feature-icon--gold">💰</div>
-        <h3 class="feature-title" data-i18n="why_1_title">عوائد حقيقية</h3>
-        <p class="feature-desc" data-i18n="why_1_desc">عوائد يومية تصل إلى 18% شهرياً مدعومة بعمليات تعدين ذهب حقيقية في السودان.</p>
-      </div>
-      <div class="feature-card anim-up">
-        <div class="feature-icon feature-icon--green">📊</div>
-        <h3 class="feature-title" data-i18n="why_2_title">شفافية كاملة</h3>
-        <p class="feature-desc" data-i18n="why_2_desc">تقارير شهرية مفصلة من موقع التعدين. تابع أرباحك لحظياً من لوحة التحكم.</p>
-      </div>
-      <div class="feature-card anim-up">
-        <div class="feature-icon feature-icon--blue">🔒</div>
-        <h3 class="feature-title" data-i18n="why_3_title">تخصص</h3>
-        <p class="feature-desc" data-i18n="why_3_desc">فريق متخصص في قطاع تعدين الذهب بخبرة تزيد عن 10 سنوات في السوق السوداني.</p>
-      </div>
-      <div class="feature-card anim-up">
-        <div class="feature-icon feature-icon--purple">🔒</div>
-        <h3 class="feature-title" data-i18n="why_4_title">آمن ومحمي</h3>
-        <p class="feature-desc" data-i18n="why_4_desc">تشفير كامل للبيانات، مصادقة بخطوتين، ومراقبة مستمرة لحماية أموالك.</p>
-      </div>
-      <div class="feature-card anim-up">
-        <div class="feature-icon feature-icon--pink">⚡</div>
-        <h3 class="feature-title" data-i18n="why_5_title">سحب سريع</h3>
-        <p class="feature-desc" data-i18n="why_5_desc">اسحب أرباحك خلال 24 ساعة عبر USDT أو التحويل البنكي. بدون رسوم.</p>
-      </div>
-      <div class="feature-card anim-up">
-        <div class="feature-icon feature-icon--orange">📱</div>
-        <h3 class="feature-title" data-i18n="why_6_title">سهولة الاستخدام</h3>
-        <p class="feature-desc" data-i18n="why_6_desc">واجهة بسيطة وواضحة. استثمر في 3 خطوات فقط بدون تعقيد.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     كيف يعمل
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section">
-  <div class="page">
-    <div class="section-header anim-up">
-      <h2 class="section-title"><span data-i18n="how_title">كيف</span> <span class="gold-text">يعمل؟</span></h2>
-      <p class="section-sub" data-i18n="how_sub">ابدأ استثمارك في 3 خطوات بسيطة</p>
-    </div>
-
-    <div class="steps-grid">
-      <div class="step-line"></div>
-
-      <div class="step-card glass anim-up">
-        <div class="step-num">1</div>
-        <h3 class="step-title" data-i18n="how_1_title">أنشئ حسابك</h3>
-        <p class="step-desc" data-i18n="how_1_desc">سجّل ببريدك الإلكتروني في أقل من دقيقة. ثم أكمل التحقق من هويتك.</p>
-      </div>
-      <div class="step-card glass anim-up">
-        <div class="step-num">2</div>
-        <h3 class="step-title" data-i18n="how_2_title">أودع وأستثمر</h3>
-        <p class="step-desc" data-i18n="how_2_desc">أودع عبر USDT أو التحويل البنكي، ثم اختر المحفظة التي تناسبك.</p>
-      </div>
-      <div class="step-card glass anim-up">
-        <div class="step-num">3</div>
-        <h3 class="step-title" data-i18n="how_3_title">تلقّ أرباحك</h3>
-        <p class="step-desc" data-i18n="how_3_desc">تُحسب أرباحك يومياً. اسحبها في أي وقت أو أعد استثمارها.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     معاينة المحافظ
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section section--alt">
-  <div class="page">
-    <div class="section-header anim-up">
-      <h2 class="section-title">المحافظ <span class="gold-text">الاستثمارية</span></h2>
-      <p class="section-sub">اختر المحفظة التي تناسب استراتيجيتك وأهدافك</p>
-    </div>
-
-    <div class="grid-4">
-      <div class="portfolio-card anim-up">
-        <div class="portfolio-card-icon">⛏️</div>
-        <h3 class="portfolio-card-title">محفظة الإنتاج</h3>
-        <p class="portfolio-card-sub">عائد شهري 12-18%</p>
-        <div class="portfolio-card-row">
-          <span class="portfolio-card-label">المدة</span>
-          <span class="portfolio-card-value">90 يوم</span>
+      <!-- ── 2. Stats Row (mirrors code1.html statistics section) ── -->
+      <div class="stats-row glass" style="padding:32px">
+        <div class="stat-item">
+          <div class="stat-value" style="color:var(--gold)">3,247</div>
+          <div class="stat-label" style="color:var(--text3)">إجمالي المستخدمين</div>
         </div>
-        <div class="portfolio-card-row">
-          <span class="portfolio-card-label">من</span>
-          <span class="portfolio-card-value mono">$500</span>
+        <div class="stat-item">
+          <div class="stat-value" style="color:var(--gold)">$12.4M</div>
+          <div class="stat-label" style="color:var(--text3)">إجمالي الاستثمارات</div>
         </div>
-        <span class="badge badge-success">مخاطرة منخفضة</span>
-      </div>
-
-      <div class="portfolio-card anim-up">
-        <div class="portfolio-card-icon">📈</div>
-        <h3 class="portfolio-card-title">محفظة التداول</h3>
-        <p class="portfolio-card-sub">عائد شهري 10-25%</p>
-        <div class="portfolio-card-row">
-          <span class="portfolio-card-label">المدة</span>
-          <span class="portfolio-card-value">30 يوم</span>
+        <div class="stat-item">
+          <div class="stat-value" style="color:var(--gold)">$8.7M</div>
+          <div class="stat-label" style="color:var(--text3)">إجمالي الإيداعات</div>
         </div>
-        <div class="portfolio-card-row">
-          <span class="portfolio-card-label">من</span>
-          <span class="portfolio-card-value mono">$200</span>
+        <div class="stat-item">
+          <div class="stat-value" style="color:var(--gold)">$3.2M</div>
+          <div class="stat-label" style="color:var(--text3)">إجمالي المسحوبات</div>
         </div>
-        <span class="badge badge-warning">مخاطرة متوسطة</span>
       </div>
 
-      <div class="portfolio-card anim-up">
-        <div class="portfolio-card-icon">🏭</div>
-        <h3 class="portfolio-card-title">تمويل التشغيل</h3>
-        <p class="portfolio-card-sub">عائد شهري 15-22%</p>
-        <div class="portfolio-card-row">
-          <span class="portfolio-card-label">المدة</span>
-          <span class="portfolio-card-value">180 يوم</span>
+      <!-- ── 3. KYC Alert Banner (mirrors code1.html verification alert) ── -->
+      <div class="kyc-alert glass" style="border-color:rgba(var(--warning-rgb),.15)">
+        <div class="alert-icon" style="background:rgba(var(--warning-rgb),.1)">⚠️</div>
+        <div class="alert-content">
+          <p class="alert-title">14 طلب تحقق من الهوية بانتظار المراجعة</p>
+          <p class="alert-desc" style="color:var(--text3)">يوجد مستندات هوية جديدة تتطلب مراجعة واعتماد.</p>
         </div>
-        <div class="portfolio-card-row">
-          <span class="portfolio-card-label">من</span>
-          <span class="portfolio-card-value mono">$1,000</span>
+        <a class="alert-action" style="color:var(--warning)" onclick="switchAdminTab('kyc')">مراجعة الآن ←</a>
+      </div>
+
+      <!-- ── 4. Dashboard Cards Grid (mirrors code1.html portfolio cards grid) ── -->
+      <div class="dash-cards-grid">
+        <div class="dash-card glass">
+          <div class="card-icon" style="background:rgba(var(--gold-rgb),.08)">💰</div>
+          <div class="card-value" style="color:var(--gold)">$12.4M</div>
+          <div class="card-label" style="color:var(--text3)">إجمالي الاستثمارات</div>
+          <div class="card-sub" style="color:var(--gold)">1,842 نشط</div>
         </div>
-        <span class="badge badge-warning">مخاطرة متوسطة</span>
-      </div>
-
-      <div class="portfolio-card anim-up">
-        <div class="portfolio-card-icon">🔍</div>
-        <h3 class="portfolio-card-title">محفظة الاستكشاف</h3>
-        <p class="portfolio-card-sub">عائد شهري 20-35%</p>
-        <div class="portfolio-card-row">
-          <span class="portfolio-card-label">المدة</span>
-          <span class="portfolio-card-value">365 يوم</span>
+        <div class="dash-card glass">
+          <div class="card-icon" style="background:rgba(var(--success-rgb),.08)">📥</div>
+          <div class="card-value">$8.7M</div>
+          <div class="card-label" style="color:var(--text3)">إجمالي الإيداعات</div>
+          <div class="card-sub" style="color:var(--warning)">23 قيد الانتظار</div>
         </div>
-        <div class="portfolio-card-row">
-          <span class="portfolio-card-label">من</span>
-          <span class="portfolio-card-value mono">$2,000</span>
+        <div class="dash-card glass">
+          <div class="card-icon" style="background:rgba(var(--danger-rgb),.08)">📤</div>
+          <div class="card-value">$3.2M</div>
+          <div class="card-label" style="color:var(--text3)">إجمالي المسحوبات</div>
+          <div class="card-sub" style="color:var(--warning)">8 قيد الانتظار</div>
         </div>
-        <span class="badge badge-danger">مخاطرة عالية</span>
+        <div class="dash-card glass">
+          <div class="card-icon" style="background:rgba(var(--gold-rgb),.08)">🪪</div>
+          <div class="card-value">14</div>
+          <div class="card-label" style="color:var(--text3)">هوية قيد المراجعة</div>
+          <div class="card-sub" style="color:var(--text3)">بانتظار المراجعة</div>
+        </div>
       </div>
-    </div>
 
-    <!-- Fix A: زر عرض تفاصيل المحافظ -->
-    <div class="section-header section-header--tight anim-up">
-      <a class="btn-gold btn-lg" href="portfolios.html">عرض تفاصيل المحافظ ←</a>
-    </div>
-  </div>
-</section>
+      <!-- ── 5. Two-Column Section (mirrors code1.html chart + summary) ── -->
+      <div class="two-col-section">
+        <!-- Left: Quick Actions (mirrors code1.html chart panel) -->
+        <div class="glass" style="padding:24px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+            <div>
+              <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">إجراءات سريعة</h3>
+              <p style="font-size:13px;color:var(--text3)">العمليات الأكثر استخداماً</p>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+            <button class="btn-gold" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('users')">👥 إدارة المستخدمين</button>
+            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('deposits')">💰 مراجعة الإيداعات</button>
+            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('kyc')">🪪 مراجعة الهويات</button>
+            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('portfolios')">💼 إدارة المحافظ</button>
+            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('reports')">📄 رفع تقرير</button>
+            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('reports')">📊 التقارير</button>
+          </div>
+        </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     إحصائيات حية
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section">
-  <div class="page">
-    <div class="section-header anim-up">
-      <h2 class="section-title">إحصائيات <span class="gold-text">المنصة</span></h2>
-      <p class="section-sub">أرقام حية من منصتنا</p>
-    </div>
-
-    <div class="grid-4">
-      <div class="glass stat-card anim-up">
-        <p class="stat-card-value gold-text">$2.4M</p>
-        <p class="stat-card-label">إجمالي الاستثمارات</p>
-      </div>
-      <div class="glass stat-card anim-up">
-        <p class="stat-card-value" style="color:var(--success)">1,240</p>
-        <p class="stat-card-label">مستثمر نشط</p>
-      </div>
-      <div class="glass stat-card anim-up">
-        <p class="stat-card-value">47.2kg</p>
-        <p class="stat-card-label">ذهب مُنتَج</p>
-      </div>
-      <div class="glass stat-card anim-up">
-        <p class="stat-card-value gold-text">18.5%</p>
-        <p class="stat-card-label">متوسط العائد الشهري</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     آراء المستثمرين
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section section--alt">
-  <div class="page">
-    <div class="section-header anim-up">
-      <h2 class="section-title">ماذا يقول <span class="gold-text">المستثمرون؟</span></h2>
-      <p class="section-sub">آراء حقيقية من مستثمرين راضين</p>
-    </div>
-
-    <div class="grid-3">
-      <div class="testimonial-card anim-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"استثمرت في محفظة الإنتاج قبل 3 أشهر. الأرباح تُضاف يومياً والتقارير الشفافة تخليني مرتاح. أفضل قرار مالي اتخذته."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">👨</div>
-          <div>
-            <p class="testimonial-name">محمد أحمد</p>
-            <p class="testimonial-period">مستثمر منذ 3 أشهر</p>
+        <!-- Right: Summary Panel (mirrors code1.html portfolio summary) -->
+        <div class="glass" style="padding:24px">
+          <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800;margin-bottom:20px">ملخص المنصة</h3>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--card-border)">
+              <span style="font-size:13px;color:var(--text3)">المستخدمون النشطون</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">2,891</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--card-border)">
+              <span style="font-size:13px;color:var(--text3)">الاستثمارات النشطة</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">1,842</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--card-border)">
+              <span style="font-size:13px;color:var(--text3)">معاملات معلّقة</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--warning);direction:ltr">31</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--card-border)">
+              <span style="font-size:13px;color:var(--text3)">هويات قيد المراجعة</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--warning);direction:ltr">14</span>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <span style="font-size:13px;color:var(--text3)">المحافظ النشطة</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--success);direction:ltr">4</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="testimonial-card anim-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"السحب سريع جداً. طلبت سحب يوم الخميس ووصلت الأموال يوم السبت. المنصة موثوقة والدعم الفني ممتاز."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">👩</div>
-          <div>
-            <p class="testimonial-name">فاطمة علي</p>
-            <p class="testimonial-period">مستثمرة منذ 5 أشهر</p>
-          </div>
+      <!-- ── 6. Recent Activity Table (mirrors code1.html active investments table) ── -->
+      <div class="activity-section glass">
+        <div class="section-header" style="border-bottom:1px solid var(--card-border)">
+          <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">النشاط الأخير</h3>
+          <button class="btn-outline btn-sm" style="padding:6px 14px;font-size:12px" onclick="switchAdminTab('users')">عرض الكل</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>المستخدم</th>
+                <th>الإجراء</th>
+                <th>المبلغ</th>
+                <th>الوقت</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700">أحمد حسن</td>
+                <td style="color:var(--success);font-weight:700">استثمار جديد</td>
+                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,000</td>
+                <td style="color:var(--text3)">منذ دقيقتين</td>
+              </tr>
+              <tr>
+                <td style="font-weight:700">فاطمة علي</td>
+                <td style="color:var(--gold);font-weight:700">طلب إيداع</td>
+                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$2,500</td>
+                <td style="color:var(--text3)">منذ ١٥ دقيقة</td>
+              </tr>
+              <tr>
+                <td style="font-weight:700">عمر بشير</td>
+                <td style="color:var(--danger);font-weight:700">طلب سحب</td>
+                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$1,200</td>
+                <td style="color:var(--text3)">منذ ساعة</td>
+              </tr>
+              <tr>
+                <td style="font-weight:700">مريم يوسف</td>
+                <td style="color:var(--warning);font-weight:700">تقديم هوية</td>
+                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">—</td>
+                <td style="color:var(--text3)">منذ ساعتين</td>
+              </tr>
+              <tr>
+                <td style="font-weight:700">إبراهيم سعيد</td>
+                <td style="color:var(--success);font-weight:700">تسجيل جديد</td>
+                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">—</td>
+                <td style="color:var(--text3)">منذ ٣ ساعات</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <div class="testimonial-card anim-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"بدأت بمبلغ صغير في محفظة التداول. خلال شهر تضاعف رصيدي تقريباً. التقارير الشهرية تعطيني ثقة كاملة."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">👨</div>
-          <div>
-            <p class="testimonial-name">عمر حسن</p>
-            <p class="testimonial-period">مستثمر منذ 2 أشهر</p>
-          </div>
+      <!-- ── 7. CTA Banner (mirrors code1.html CTA section) ── -->
+      <div class="cta-banner glass">
+        <h2>هل تحتاج إلى <span class="gold-text">تقرير؟</span></h2>
+        <p style="color:var(--text2)">ارفع تقارير الشفافية والإنتاج لمشاركتها مع المستثمرين وبناء الثقة.</p>
+        <button class="btn-gold" onclick="switchAdminTab('reports')">رفع تقرير جديد</button>
+      </div>
+
+    </div>
+    <!-- END tab-overview -->
+
+    <!-- ══════════════════════════════════════════════════════════
+         OTHER TABS — UNCHANGED from original admin.html
+         ══════════════════════════════════════════════════════════ -->
+
+    <!-- المستخدمون -->
+    <div class="admin-tab" id="tab-users" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">إدارة <span class="gold-text">المستخدمين</span></h1>
+      <div class="glass" style="overflow:hidden"><div class="table-wrap"><table>
+        <thead><tr><th>المستخدم</th><th>البريد</th><th>الرصيد</th><th>الهوية</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700">أحمد حسن</td><td style="color:var(--text3)">ahmed@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);direction:ltr">$24,580</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">تعليق</button></td></tr>
+          <tr><td style="font-weight:700">فاطمة علي</td><td style="color:var(--text3)">fatima@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);direction:ltr">$12,300</td><td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">تعليق</button></td></tr>
+          <tr><td style="font-weight:700">عمر بشير</td><td style="color:var(--text3)">omar@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);direction:ltr">$8,750</td><td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">تعليق</button></td></tr>
+        </tbody>
+      </table></div></div>
+    </div>
+
+    <!-- المحافظ -->
+    <div class="admin-tab" id="tab-portfolios" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">إدارة <span class="gold-text">المحافظ</span></h1>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">محفظة الإنتاج</h3><p style="font-size:13px;color:var(--text3)">842 استثمار نشط — $4.2M إجمالي</p></div><span class="badge badge-success">نشطة</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><div><p style="font-size:11px;color:var(--text3)">العائد</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">12–18%</p></div><div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">90 يوم</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأدنى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$500</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأقصى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$50,000</p></div></div></div>
+        <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">محفظة التداول</h3><p style="font-size:13px;color:var(--text3)">523 استثمار نشط — $3.1M إجمالي</p></div><span class="badge badge-success">نشطة</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><div><p style="font-size:11px;color:var(--text3)">العائد</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">10–25%</p></div><div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">30 يوم</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأدنى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$200</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأقصى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$25,000</p></div></div></div>
+        <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">تمويل التشغيل</h3><p style="font-size:13px;color:var(--text3)">312 استثمار نشط — $3.8M إجمالي</p></div><span class="badge badge-success">نشطة</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><div><p style="font-size:11px;color:var(--text3)">العائد</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">15–22%</p></div><div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">180 يوم</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأدنى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$1,000</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأقصى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$100,000</p></div></div></div>
+      </div>
+    </div>
+
+    <!-- الإيداعات والسحوبات -->
+    <div class="admin-tab" id="tab-deposits" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">الإيداعات <span class="gold-text">والسحوبات</span></h1>
+      <div class="glass" style="overflow:hidden"><div class="table-wrap"><table>
+        <thead><tr><th>المستخدم</th><th>النوع</th><th>المبلغ</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
+        <tbody>
+          <tr><td>فاطمة علي</td><td style="color:var(--success);font-weight:700">إيداع</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,500</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td style="display:flex;gap:6px"><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--success);border-color:rgba(34,197,94,.2)" onclick="showToast('تم قبول الإيداع!','success')">قبول</button><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">رفض</button></td></tr>
+          <tr><td>عمر بشير</td><td style="color:var(--danger);font-weight:700">سحب</td><td style="font-family:'JetBrains Mono',monospace;color:var(--danger);direction:ltr">$1,200</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td style="display:flex;gap:6px"><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--success);border-color:rgba(34,197,94,.2)">قبول</button><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">رفض</button></td></tr>
+        </tbody>
+      </table></div></div>
+    </div>
+
+    <!-- مراجعة الهوية -->
+    <div class="admin-tab" id="tab-kyc" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">مراجعة <span class="gold-text">الهوية</span></h1>
+      <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-weight:800">أحمد حسن</h3><p style="font-size:13px;color:var(--text3)">ahmed@example.com</p></div><span class="badge badge-warning">قيد الانتظار</span></div>
+        <div style="display:flex;gap:12px;margin-bottom:16px">
+          <div class="kyc-doc-card"><p class="emoji">🪪</p><p class="doc-name">وثيقة الهوية</p><p class="doc-status" style="color:var(--success)">تم الرفع</p></div>
+          <div class="kyc-doc-card"><p class="emoji">📄</p><p class="doc-name">إثبات العنوان</p><p class="doc-status" style="color:var(--success)">تم الرفع</p></div>
+          <div class="kyc-doc-card"><p class="emoji">🤳</p><p class="doc-name">سيلفي</p><p class="doc-status" style="color:var(--success)">تم الرفع</p></div>
+        </div>
+        <div style="display:flex;gap:12px">
+          <button class="btn-gold btn-sm" onclick="showToast('تم اعتماد الهوية!','success')">✓ اعتماد</button>
+          <button class="btn-outline btn-sm" style="color:var(--danger);border-color:rgba(239,68,68,.2)">✕ رفض</button>
         </div>
       </div>
     </div>
-  </div>
-</section>
-</section>
-<!-- ═══════════════════════════════════════════════════════════════
-     تذييل
-     ═══════════════════════════════════════════════════════════════ -->
-<footer class="footer">
-  <div class="page">
-    <div class="footer-grid">
 
-      <div class="footer-col footer-brand-col">
-        <div class="footer-brand">
-          <div class="footer-brand-icon">⛏</div>
-          <span class="footer-brand-text">منجم الذهب</span>
-        </div>
-        <p class="footer-desc">منصة استثمارية موثوقة في قطاع تعدين الذهب بالسودان. عوائد حقيقية، شفافية كاملة.</p>
-        <div class="footer-socials">
-          <a href="#" class="footer-social">📱</a>
-          <a href="#" class="footer-social">💬</a>
-          <a href="#" class="footer-social">🐦</a>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4>المنصة</h4>
-        <a class="footer-link" href="portfolios.html">المحافظ الاستثمارية</a>
-        <a class="footer-link" href="dashboard.html">لوحة التحكم</a>
-        <a class="footer-link" href="transactions.html">المعاملات</a>
-        <a class="footer-link" href="deposit.html">الإيداع</a>
-        <a class="footer-link" href="withdraw.html">السحب</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>الحساب</h4>
-        <a class="footer-link" href="register.html">إنشاء حساب</a>
-        <a class="footer-link" href="login.html">تسجيل الدخول</a>
-        <a class="footer-link" href="forgot-password.html">نسيت كلمة المرور</a>
-        <a class="footer-link" href="settings.html">الإعدادات</a>
-        <a class="footer-link" href="faq.html">الأسئلة الشائعة</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>قانوني</h4>
-        <a class="footer-link" href="privacy.html">سياسة الخصوصية</a>
-        <a class="footer-link" href="terms.html">الشروط والأحكام</a>
+    <!-- التقارير -->
+    <div class="admin-tab" id="tab-reports" style="display:none">
+      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">تقارير <span class="gold-text">الشفافية</span></h1>
+      <div class="glass" style="padding:24px;margin-bottom:24px">
+        <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800;margin-bottom:16px">رفع تقرير جديد</h3>
+        <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">العنوان</label><input class="input" placeholder="تقرير إنتاج الذهب"></div>
+        <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">النوع</label><select class="input"><option>تقرير إنتاج</option><option>تقرير مالي</option><option>صور</option><option>فيديو</option></select></div>
+        <div style="margin-bottom:24px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">الملف</label><input type="file" class="input" style="padding:10px"></div>
+        <button class="btn-gold" onclick="showToast('تم رفع التقرير!','success')">رفع ونشر</button>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p>© 2025 منجم الذهب السودان. جميع الحقوق محفوظة.</p>
-      <div class="footer-bottom-links">
-        <a href="privacy.html" class="footer-link">الخصوصية</a>
-        <a href="terms.html" class="footer-link">الشروط</a>
-      </div>
-    </div>
-
-  </div>
-</footer>
+  </main>
+</div>
 
 <div class="toast" id="toast"></div>
-
 <script src="js/theme.js"></script>
-<script src="js/lang.js"></script>
 <script src="js/app.js"></script>
-<script src="js/export.js"></script>
-<script>
-  function toggleFaq(el) {
-    var answer = el.nextElementSibling;
-    var arrow = el.querySelector('.faq-arrow');
-    var isOpen = answer.classList.contains('open');
-    document.querySelectorAll('.faq-answer').forEach(function(a) {
-      a.classList.remove('open');
-    });
-    document.querySelectorAll('.faq-arrow').forEach(function(a) {
-      a.style.transform = 'rotate(0deg)';
-    });
-    if (!isOpen) {
-      answer.classList.add('open');
-      arrow.style.transform = 'rotate(180deg)';
-    }
-  }
-</script>
 </body>
 </html>
