@@ -3,531 +3,2177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>لوحة الإدارة — منجم الذهب</title>
+  <title>GoldMine Sudan — استثمر في ذهب السودان</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/pages.css">
 
-  <!-- ===== Inline overrides: layout structure from code1.html, light theme preserved ===== -->
   <style>
-    /* ── Layout utilities (structure only, no color changes) ── */
-    .admin-layout { display: flex; min-height: 100vh; }
-    .admin-sidebar {
-      width: 256px;
-      padding: 20px;
+    /* ══════════════════════════════════════════════════════════════
+       DESIGN SYSTEM — Premium Investment Platform
+       Gold + White + Charcoal + Warm Neutrals
+       ══════════════════════════════════════════════════════════════ */
+
+    :root {
+      --gold: #C9A646;
+      --gold-light: #E8D48B;
+      --gold-dark: #A07D2E;
+      --gold-deep: #7A5C1E;
+      --gold-glow: rgba(201,166,70,0.10);
+      --gold-subtle: rgba(201,166,70,0.05);
+      --gold-shimmer: linear-gradient(135deg, #A07D2E, #C9A646, #E8D48B, #C9A646, #A07D2E);
+
+      --bg-page: #FDFCFA;
+      --bg-warm: #F9F6F0;
+      --bg-card: #FFFFFF;
+      --bg-dark: #1A1A1A;
+      --bg-dark-card: #242424;
+      --bg-charcoal: #2C2C2C;
+
+      --text-primary: #1A1A1A;
+      --text-secondary: #5A5A5A;
+      --text-muted: #9A9A9A;
+      --text-inverse: #FFFFFF;
+      --text-gold-on-dark: #E8D48B;
+
+      --border-light: #ECE9E2;
+      --border-medium: #D8D4CC;
+      --border-gold: rgba(201,166,70,0.30);
+
+      --success: #2D8A4E;
+      --success-bg: rgba(45,138,78,0.07);
+      --warning: #B8860B;
+      --warning-bg: rgba(184,134,11,0.07);
+      --danger: #C0392B;
+      --danger-bg: rgba(192,57,43,0.07);
+      --info: #2563EB;
+      --info-bg: rgba(37,99,235,0.07);
+
+      --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.07);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.09);
+      --shadow-xl: 0 24px 64px rgba(0,0,0,0.12);
+      --shadow-gold: 0 8px 32px rgba(201,166,70,0.18);
+      --shadow-gold-lg: 0 16px 48px rgba(201,166,70,0.22);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --radius-2xl: 32px;
+
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.3s var(--ease);
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: 'Cairo', 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes barGrow {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes goldLine {
+      from { width: 0; }
+      to { width: 60px; }
+    }
+    @keyframes heroGlow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .stagger > * { opacity: 0; animation: fadeUp 0.55s var(--ease) forwards; }
+    .stagger > *:nth-child(1) { animation-delay: 0.05s; }
+    .stagger > *:nth-child(2) { animation-delay: 0.12s; }
+    .stagger > *:nth-child(3) { animation-delay: 0.19s; }
+    .stagger > *:nth-child(4) { animation-delay: 0.26s; }
+    .stagger > *:nth-child(5) { animation-delay: 0.33s; }
+    .stagger > *:nth-child(6) { animation-delay: 0.40s; }
+
+    /* ── Gold Text ── */
+    .gold-text {
+      background: var(--gold-shimmer);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    .gold-text-static {
+      color: var(--gold);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       NAVBAR — Transparent → Solid on Scroll
+       ══════════════════════════════════════════════════════════════ */
+    .site-nav {
       position: fixed;
-      top: 64px;
-      bottom: 0;
-      right: 0;
-      overflow-y: auto;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 40px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+      background: transparent;
     }
-    .admin-main { flex: 1; margin-right: 256px; padding: 32px; }
-    .admin-tab { display: none; }
-    .admin-tab.active { display: block; animation: adminFadeIn .35s ease; }
+    .site-nav.scrolled {
+      background: rgba(253,252,250,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: var(--shadow-xs);
+    }
+    .site-nav.scrolled .nav-logo-text { color: var(--text-primary); }
+    .site-nav.scrolled .nav-link { color: var(--text-secondary); }
+    .site-nav.scrolled .nav-link:hover { color: var(--gold-dark); }
 
-    @keyframes adminFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: var(--gold-shimmer);
+      background-size: 200% auto;
+      animation: shimmer 3s linear infinite;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 17px; color: #fff;
+      box-shadow: var(--shadow-gold);
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-inverse);
+      transition: var(--transition);
+    }
+    .nav-links-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-link {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .nav-link:hover { color: var(--gold-light); background: rgba(255,255,255,0.06); }
+    .nav-link.active { color: var(--gold-light); font-weight: 600; }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-    /* ── Overview: hero-style welcome banner (mirrors code1 hero section) ── */
-    .overview-hero {
-      padding: 48px 40px;
-      border-radius: 16px;
-      margin-bottom: 32px;
-      position: relative;
-      overflow: hidden;
-    }
-    .overview-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      pointer-events: none;
-    }
-    .overview-hero .hero-inner { position: relative; z-index: 1; max-width: 680px; }
-    .overview-hero .hero-badge {
+    /* ── Buttons ── */
+    .btn-gold {
+      background: var(--gold-shimmer);
+      background-size: 200% auto;
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: var(--radius-md);
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-size: 12px;
+      text-decoration: none;
+      font-family: inherit;
+      box-shadow: var(--shadow-gold);
+      animation: shimmer 3s linear infinite;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold-lg);
+    }
+    .btn-gold:active { transform: translateY(0); }
+    .btn-gold.btn-sm { padding: 8px 18px; font-size: 12px; }
+    .btn-gold.btn-lg { padding: 16px 36px; font-size: 16px; border-radius: var(--radius-lg); }
+
+    .btn-outline-light {
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: #fff;
       font-weight: 600;
-      margin-bottom: 20px;
+      padding: 12px 28px;
+      border-radius: var(--radius-md);
+      background: transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 14px;
+      text-decoration: none;
+      font-family: inherit;
     }
-    .overview-hero .hero-badge .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      animation: dotPulse 2s infinite;
-    }
-    @keyframes dotPulse { 0%,100% { opacity: .5; } 50% { opacity: 1; } }
-    .overview-hero h1 {
-      font-family: 'Cairo', serif;
-      font-size: clamp(28px, 3.5vw, 40px);
-      font-weight: 900;
-      line-height: 1.3;
-      margin-bottom: 12px;
-    }
-    .overview-hero p { font-size: 15px; line-height: 1.8; margin-bottom: 24px; }
-    .overview-hero .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .overview-hero .hero-features { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 20px; }
-    .overview-hero .hero-features .feat {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 12px;
+    .btn-outline-light:hover {
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+      background: rgba(201,166,70,0.08);
     }
 
-    /* ── Stats row (mirrors code1 stats section) ── */
-    .stats-row {
+    .btn-outline {
+      border: 1.5px solid var(--border-medium);
+      color: var(--text-secondary);
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 14px;
+      text-decoration: none;
+      font-family: inherit;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-dark);
+      background: var(--gold-subtle);
+    }
+    .btn-outline.btn-sm { padding: 8px 18px; font-size: 12px; }
+
+    .btn-ghost {
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      padding: 0;
+    }
+    .btn-ghost:hover { color: var(--gold-dark); gap: 10px; }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION: HERO
+       ══════════════════════════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-dark);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,166,70,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(201,166,70,0.04) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(26,26,26,0.5) 100%);
+      z-index: 1;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+      z-index: 1;
+    }
+
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .hero-particle {
+      position: absolute;
+      width: 3px; height: 3px;
+      background: rgba(201,166,70,0.25);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 0;
+      animation: heroGlow 8s ease-in-out infinite;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding: 120px 0 80px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: rgba(201,166,70,0.10);
+      border: 1px solid rgba(201,166,70,0.20);
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s var(--ease) 0.2s forwards;
+      opacity: 0;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #4ADE80;
+      animation: pulse 2s infinite;
+    }
+    .hero-badge span {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 800;
+      color: var(--text-inverse);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      animation: fadeUp 0.6s var(--ease) 0.35s forwards;
+      opacity: 0;
+    }
+    .hero-title .gold-accent {
+      background: var(--gold-shimmer);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    .hero-subtitle {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      max-width: 540px;
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s var(--ease) 0.5s forwards;
+      opacity: 0;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.6s var(--ease) 0.65s forwards;
+      opacity: 0;
+    }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      animation: fadeUp 0.6s var(--ease) 0.8s forwards;
+      opacity: 0;
+    }
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+    .hero-trust-item svg { flex-shrink: 0; }
+
+    /* Hero Stats Floating Cards */
+    .hero-stats-float {
+      position: absolute;
+      left: 60px;
+      bottom: 100px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: slideLeft 0.7s var(--ease) 1s forwards;
+      opacity: 0;
+    }
+    .hero-stat-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      min-width: 180px;
+    }
+    .hero-stat-card .hsc-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 4px;
+      letter-spacing: 0.3px;
+    }
+    .hero-stat-card .hsc-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-inverse);
+      direction: ltr;
+    }
+    .hero-stat-card .hsc-trend {
+      font-size: 11px;
+      font-weight: 600;
+      color: #4ADE80;
+      font-family: 'JetBrains Mono', monospace;
+      direction: ltr;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION: LIVE METRICS BAR
+       ══════════════════════════════════════════════════════════════ */
+    .metrics-bar {
+      background: var(--bg-dark);
+      border-top: 1px solid rgba(201,166,70,0.10);
+      padding: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .metrics-inner {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      padding: 40px 0;
-      margin-bottom: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .stat-item { text-align: center; }
-    .stat-item .stat-value {
-      font-family: 'Cairo', serif;
+    .metric-item {
+      text-align: center;
+      padding: 32px 20px;
+      border-left: 1px solid rgba(255,255,255,0.06);
+      transition: var(--transition);
+    }
+    .metric-item:first-child { border-left: none; }
+    .metric-item:hover { background: rgba(201,166,70,0.04); }
+    .metric-item .mi-value {
+      font-family: 'Playfair Display', serif;
       font-size: 32px;
+      font-weight: 700;
+      color: var(--text-inverse);
+      margin-bottom: 4px;
+    }
+    .metric-item .mi-label {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.3px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION: WHY GOLD (Value Proposition)
+       ══════════════════════════════════════════════════════════════ */
+    .section {
+      padding: 100px 40px;
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section-eyebrow::before,
+    .section-eyebrow::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .why-gold-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 36px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold-shimmer);
+      background-size: 200% auto;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .why-card:hover {
+      border-color: var(--border-gold);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .why-card:hover::before {
+      opacity: 1;
+      animation: shimmer 2s linear infinite;
+    }
+    .why-card .wc-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .why-card .wc-title {
+      font-family: 'Cairo', serif;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+    .why-card .wc-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION: INVESTMENT PLANS (Portfolios)
+       ══════════════════════════════════════════════════════════════ */
+    .plans-section {
+      background: var(--bg-warm);
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .plan-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+    .plan-card:hover {
+      border-color: var(--border-gold);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .plan-card.featured {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-gold);
+    }
+    .plan-card.featured .plan-header {
+      background: linear-gradient(135deg, var(--bg-dark), var(--bg-charcoal));
+    }
+    .plan-card.featured .plan-header .ph-title,
+    .plan-card.featured .plan-header .ph-subtitle { color: var(--text-inverse); }
+    .plan-card.featured .plan-header .ph-badge {
+      background: rgba(201,166,70,0.20);
+      color: var(--gold-light);
+      border: 1px solid rgba(201,166,70,0.30);
+    }
+
+    .plan-header {
+      padding: 28px 28px 24px;
+      background: var(--bg-warm);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .plan-header .ph-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .plan-header .ph-icon {
+      font-size: 32px;
+    }
+    .plan-header .ph-badge {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .plan-header .ph-title {
+      font-family: 'Cairo', serif;
+      font-size: 20px;
       font-weight: 800;
       margin-bottom: 4px;
     }
-    .stat-item .stat-label { font-size: 12px; letter-spacing: .3px; }
+    .plan-header .ph-subtitle {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
 
-    /* ── Dashboard cards grid (mirrors code1 portfolio cards) ── */
-    .dash-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-bottom: 32px;
+    .plan-body { padding: 28px; }
+
+    .plan-roi {
+      text-align: center;
+      padding: 20px;
+      background: var(--gold-subtle);
+      border-radius: var(--radius-lg);
+      margin-bottom: 24px;
+      border: 1px solid rgba(201,166,70,0.10);
     }
-    .dash-card {
-      padding: 24px;
-      border-radius: 16px;
-      transition: all .3s;
-    }
-    .dash-card:hover { transform: translateY(-2px); }
-    .dash-card .card-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-      margin-bottom: 16px;
-    }
-    .dash-card .card-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 24px;
-      font-weight: 700;
+    .plan-roi .pr-label {
+      font-size: 11px;
+      color: var(--text-muted);
       margin-bottom: 4px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .plan-roi .pr-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--gold-dark);
       direction: ltr;
     }
-    .dash-card .card-label { font-size: 13px; }
-    .dash-card .card-sub { font-size: 11px; font-family: 'JetBrains Mono', monospace; margin-top: 4px; direction: ltr; }
+    .plan-roi .pr-period {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
 
-    /* ── Two-column section (mirrors code1 chart + summary layout) ── */
-    .two-col-section {
+    /* Profit Projection Visual */
+    .plan-projection {
+      margin-bottom: 24px;
+    }
+    .plan-projection .pp-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+    .pp-bar-track {
+      height: 8px;
+      background: var(--border-light);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .pp-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--gold-shimmer);
+      background-size: 200% auto;
+      animation: shimmer 3s linear infinite;
+      transition: width 1s var(--ease);
+    }
+    .pp-bar-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      direction: ltr;
+    }
+
+    .plan-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .pd-item {
+      text-align: center;
+      padding: 12px 8px;
+      background: var(--bg-warm);
+      border-radius: var(--radius-md);
+    }
+    .pd-item .pd-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .pd-item .pd-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      direction: ltr;
+    }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+    }
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-features li .check {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--success-bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .plan-features li .check svg { width: 10px; height: 10px; }
+
+    .plan-cta {
+      width: 100%;
+      justify-content: center;
+      padding: 14px;
+      font-size: 15px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION: PERFORMANCE / CHART
+       ══════════════════════════════════════════════════════════════ */
+    .performance-section {
+      background: var(--bg-dark);
+      color: var(--text-inverse);
+    }
+    .performance-section .section-title { color: var(--text-inverse); }
+    .performance-section .section-subtitle { color: rgba(255,255,255,0.55); }
+    .performance-section .section-eyebrow { color: var(--gold-light); }
+    .performance-section .section-eyebrow::before,
+    .performance-section .section-eyebrow::after { background: var(--gold-light); }
+
+    .perf-grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
       gap: 24px;
-      margin-bottom: 32px;
     }
-
-    /* ── Activity / Table section (mirrors code1 active investments table) ── */
-    .activity-section {
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 32px;
+    .perf-chart-card {
+      background: var(--bg-dark-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-xl);
+      padding: 32px;
     }
-    .activity-section .section-header {
-      padding: 20px 24px;
+    .perf-chart-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 24px;
+    }
+    .perf-chart-header h3 {
+      font-family: 'Cairo', serif;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .perf-chart-tabs {
+      display: flex;
+      gap: 4px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 3px;
+    }
+    .perf-chart-tab {
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+    }
+    .perf-chart-tab.active {
+      background: rgba(201,166,70,0.15);
+      color: var(--gold-light);
     }
 
-    /* ── KYC Alert Banner (mirrors code1 verification alert) ── */
-    .kyc-alert {
-      padding: 16px 20px;
+    .perf-chart-area {
+      height: 200px;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 0 0 20px;
+      position: relative;
+    }
+    .perf-chart-area::before {
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      left: 0; right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .perf-bar {
+      flex: 1;
+      border-radius: 6px 6px 0 0;
+      background: linear-gradient(to top, rgba(201,166,70,0.6), rgba(201,166,70,0.15));
+      transition: var(--transition);
+      position: relative;
+      transform-origin: bottom;
+      animation: barGrow 0.8s var(--ease) forwards;
+      cursor: pointer;
+    }
+    .perf-bar:hover {
+      background: linear-gradient(to top, var(--gold), rgba(201,166,70,0.4));
+      box-shadow: 0 -8px 20px rgba(201,166,70,0.2);
+    }
+    .perf-bar::after {
+      content: attr(data-val);
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 9px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--gold-light);
+      white-space: nowrap;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .perf-bar:hover::after { opacity: 1; }
+    .perf-chart-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 8px;
+    }
+
+    .perf-summary-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .psc-card {
+      background: var(--bg-dark-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: var(--transition);
+    }
+    .psc-card:hover {
+      border-color: rgba(201,166,70,0.2);
+      box-shadow: 0 4px 20px rgba(201,166,70,0.08);
+    }
+    .psc-card .psc-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+    .psc-card .psc-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-inverse);
+      direction: ltr;
+      margin-bottom: 4px;
+    }
+    .psc-card .psc-change {
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      direction: ltr;
+    }
+    .psc-change.up { color: #4ADE80; }
+    .psc-change.down { color: #F87171; }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION: TRUST & SECURITY
+       ══════════════════════════════════════════════════════════════ */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .trust-card {
+      text-align: center;
+      padding: 36px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      transition: var(--transition);
+    }
+    .trust-card:hover {
+      border-color: var(--border-gold);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .trust-card .tc-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--gold-glow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 16px;
+    }
+    .trust-card .tc-title {
+      font-family: 'Cairo', serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .trust-card .tc-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION: HOW IT WORKS
+       ══════════════════════════════════════════════════════════════ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      opacity: 0.2;
+    }
+    .step-card {
+      text-align: center;
+      position: relative;
+    }
+    .step-number {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold-dark);
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow-sm);
+    }
+    .step-card .step-title {
+      font-family: 'Cairo', serif;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-card .step-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       SECTION: CTA
+       ══════════════════════════════════════════════════════════════ */
+    .cta-section {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-charcoal) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(201,166,70,0.06) 0%, transparent 70%);
+    }
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-section .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 700;
+      color: var(--text-inverse);
+      margin-bottom: 16px;
+    }
+    .cta-section .cta-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════════════ */
+    .site-footer {
+      background: var(--bg-dark);
+      padding: 48px 40px 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-brand-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--gold-shimmer);
+      background-size: 200% auto;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px; color: #fff;
+    }
+    .footer-brand-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-inverse);
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ══════════════════════════════════════════════════════════════
+       ADMIN PANEL (Hidden by default, shown when needed)
+       ══════════════════════════════════════════════════════════════ */
+    .admin-layout { display: none; min-height: 100vh; }
+    .admin-layout.active { display: flex; }
+
+    .admin-sidebar {
+      width: 264px;
+      background: var(--bg-card);
+      border-left: 1px solid var(--border-light);
+      padding: 24px 14px;
+      position: fixed;
+      top: 72px;
+      bottom: 0;
+      right: 0;
+      overflow-y: auto;
+      box-shadow: -2px 0 12px rgba(0,0,0,0.03);
+    }
+    .admin-main {
+      flex: 1;
+      margin-right: 264px;
+      padding: 32px 36px;
+      background: var(--bg-page);
+    }
+
+    .admin-tab { display: none; }
+    .admin-tab.active { display: block; animation: fadeIn 0.3s ease; }
+
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 10px;
+      margin-bottom: 28px;
+    }
+    .sidebar-brand-icon {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 14px; color: #fff;
+    }
+    .sidebar-brand-text {
+      font-family: 'Cairo', serif;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .sidebar-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      padding: 0 14px;
+      margin-bottom: 6px;
+      margin-top: 20px;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      margin-bottom: 2px;
+      position: relative;
+    }
+    .sidebar-link:hover { background: var(--gold-subtle); color: var(--text-primary); }
+    .sidebar-link.active {
+      background: var(--gold-glow);
+      color: var(--gold-dark);
+      font-weight: 600;
+    }
+    .sidebar-link.active::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 18px;
+      background: var(--gold);
+      border-radius: 3px;
+    }
+
+    /* ── Admin Shared Styles ── */
+    .page-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .page-header h1 {
+      font-family: 'Cairo', serif;
+      font-size: 26px;
+      font-weight: 800;
+    }
+    .page-header .subtitle {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition);
+    }
+    .card:hover { box-shadow: var(--shadow-sm); }
+    .card-header {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-header h3 {
+      font-family: 'Cairo', serif;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .card-body { padding: 22px; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 20px 18px;
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold-shimmer);
+      background-size: 200% auto;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .stat-card:hover { box-shadow: var(--shadow-sm); border-color: var(--border-gold); transform: translateY(-1px); }
+    .stat-card:hover::before { opacity: 1; animation: shimmer 2s linear infinite; }
+    .stat-card .stat-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+    .stat-card .stat-label { font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+    .stat-card .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      direction: ltr;
+      text-align: left;
+      margin-bottom: 4px;
+    }
+    .stat-card .stat-sub { font-size: 10.5px; direction: ltr; text-align: left; }
+    .stat-trend { display: inline-flex; align-items: center; gap: 2px; font-size: 10px; font-weight: 600; font-family: 'JetBrains Mono', monospace; padding: 2px 5px; border-radius: 4px; direction: ltr; }
+    .stat-trend.up { color: var(--success); background: var(--success-bg); }
+
+    .alert-banner {
+      background: var(--warning-bg);
+      border: 1px solid rgba(184,134,11,0.12);
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
       margin-bottom: 24px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      border-radius: 16px;
+      gap: 12px;
     }
-    .kyc-alert .alert-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px;
+    .alert-banner .alert-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-sm);
+      background: rgba(184,134,11,0.10);
       display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
       flex-shrink: 0;
-      font-size: 18px;
     }
-    .kyc-alert .alert-content { flex: 1; }
-    .kyc-alert .alert-title { font-size: 14px; font-weight: 700; }
-    .kyc-alert .alert-desc { font-size: 12px; }
-    .kyc-alert .alert-action { font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .alert-banner .alert-text { flex: 1; }
+    .alert-banner .alert-title { font-size: 13px; font-weight: 700; }
+    .alert-banner .alert-desc { font-size: 11.5px; color: var(--text-secondary); margin-top: 2px; }
+    .alert-banner .alert-action { font-size: 12px; font-weight: 700; color: var(--warning); cursor: pointer; white-space: nowrap; }
 
-    /* ── CTA banner (mirrors code1 CTA section) ── */
-    .cta-banner {
-      padding: 48px 40px;
-      text-align: center;
-      border-radius: 16px;
+    .two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 24px; }
+    .quick-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .quick-action-btn {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 18px 14px;
+      background: var(--bg-warm);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .quick-action-btn:hover { background: var(--gold-subtle); border-color: var(--border-gold); transform: translateY(-2px); }
+    .quick-action-btn .qa-icon { width: 38px; height: 38px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .quick-action-btn .qa-label { font-size: 11.5px; font-weight: 600; text-align: center; }
+
+    .mini-chart { display: flex; align-items: flex-end; gap: 5px; height: 70px; padding: 10px 0; }
+    .mini-chart .bar {
+      flex: 1;
+      border-radius: 3px 3px 0 0;
+      background: linear-gradient(to top, var(--gold), var(--gold-light));
+      transition: var(--transition);
       position: relative;
-      overflow: hidden;
-      margin-bottom: 32px;
+      min-width: 6px;
     }
-    .cta-banner h2 {
-      font-family: 'Cairo', serif;
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 12px;
+    .mini-chart .bar:hover { background: linear-gradient(to top, var(--gold-dark), var(--gold)); }
+    .mini-chart .bar::after {
+      content: attr(data-value);
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      white-space: nowrap;
+      opacity: 0;
+      transition: var(--transition);
     }
-    .cta-banner p { max-width: 480px; margin: 0 auto 24px; font-size: 15px; }
+    .mini-chart .bar:hover::after { opacity: 1; }
 
-    /* ── Responsive ── */
+    .summary-list { display: flex; flex-direction: column; }
+    .summary-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border-light); }
+    .summary-item:last-child { border-bottom: none; }
+    .summary-item .item-label { font-size: 12px; color: var(--text-secondary); }
+    .summary-item .item-value { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; direction: ltr; }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      text-align: right;
+      padding: 10px 18px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border-light);
+      background: var(--bg-warm);
+    }
+    td { padding: 12px 18px; font-size: 13px; border-bottom: 1px solid var(--border-light); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--gold-subtle); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 5px;
+      font-size: 10.5px;
+      font-weight: 600;
+    }
+    .badge-success { background: var(--success-bg); color: var(--success); }
+    .badge-warning { background: var(--warning-bg); color: var(--warning); }
+    .badge-danger { background: var(--danger-bg); color: var(--danger); }
+    .badge-gold { background: var(--gold-glow); color: var(--gold-dark); }
+    .badge-info { background: var(--info-bg); color: var(--info); }
+
+    .input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-size: 13px;
+      font-family: inherit;
+      transition: var(--transition);
+      outline: none;
+    }
+    .input::placeholder { color: var(--text-muted); }
+    .input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-glow); }
+
+    .kyc-doc-card {
+      flex: 1;
+      background: var(--bg-warm);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+      border: 1px solid var(--border-light);
+    }
+    .kyc-doc-card .emoji { font-size: 22px; margin-bottom: 6px; }
+    .kyc-doc-card .doc-name { font-size: 11px; color: var(--text-secondary); }
+    .kyc-doc-card .doc-status { font-size: 10.5px; margin-top: 3px; font-weight: 600; }
+
+    .portfolio-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-xs);
+      transition: var(--transition);
+    }
+    .portfolio-card:hover { box-shadow: var(--shadow-sm); border-color: var(--border-gold); }
+    .portfolio-card .pc-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+    .portfolio-card .pc-title { font-family: 'Cairo', serif; font-size: 15px; font-weight: 700; }
+    .portfolio-card .pc-subtitle { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
+    .portfolio-card .pc-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .portfolio-card .pc-stat-item { text-align: center; padding: 8px 4px; background: var(--bg-warm); border-radius: var(--radius-sm); }
+    .portfolio-card .pc-stat-label { font-size: 9.5px; color: var(--text-muted); margin-bottom: 3px; }
+    .portfolio-card .pc-stat-value { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; direction: ltr; }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 300;
+      padding: 12px 22px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 500;
+      animation: fadeUp 0.3s ease;
+      display: none;
+      box-shadow: var(--shadow-lg);
+    }
+    .toast.show { display: flex; align-items: center; gap: 8px; }
+    .toast-success { background: var(--success-bg); border: 1px solid rgba(45,138,78,0.15); color: var(--success); }
+    .toast-error { background: var(--danger-bg); border: 1px solid rgba(192,57,43,0.15); color: var(--danger); }
+
+    /* ══════════════════════════════════════════════════════════════
+       RESPONSIVE
+       ══════════════════════════════════════════════════════════════ */
+    @media (max-width: 1200px) {
+      .hero-stats-float { display: none; }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 1024px) {
+      .why-gold-grid { grid-template-columns: repeat(2, 1fr); }
+      .plans-grid { grid-template-columns: 1fr; }
+      .perf-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
       .admin-sidebar { display: none; }
       .admin-main { margin-right: 0; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
-      .dash-cards-grid { grid-template-columns: repeat(2, 1fr); }
-      .two-col-section { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .two-col { grid-template-columns: 1fr; }
+      .quick-actions { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      .stats-row { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .dash-cards-grid { grid-template-columns: 1fr; }
-      .overview-hero { padding: 32px 20px; }
-      .overview-hero h1 { font-size: 24px; }
-      .admin-main { padding: 16px; }
+      .section { padding: 64px 20px; }
+      .site-nav { padding: 0 20px; }
+      .nav-links-wrap { display: none; }
+      .hero-inner { padding: 100px 0 60px; }
+      .hero-title { font-size: 32px; }
+      .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+      .metric-item { padding: 24px 16px; }
+      .metric-item .mi-value { font-size: 24px; }
+      .why-gold-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .plan-details { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .stat-card .stat-value { font-size: 18px; }
     }
     @media (max-width: 480px) {
-      .stats-row { grid-template-columns: 1fr; }
+      .metrics-inner { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .cta-actions { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     NAVBAR (unchanged from admin.html)
-     ═══════════════════════════════════════════════════════════════ -->
-<nav class="navbar" id="navbar">
-  <div class="page">
-    <div class="nav-inner">
-      <div class="nav-right" style="order:3">
-        <div class="theme-toggle" onclick="toggleTheme()"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span><div class="toggle-knob"></div></div>
-        <a class="btn-gold btn-sm" href="login.html">تسجيل الدخول</a>
-      </div>
-      <div class="nav-links" id="navLinks" style="order:2">
-        <a class="nav-link" href="index.html">الرئيسية</a>
-        <a class="nav-link" href="portfolios.html">المحافظ</a>
-        <a class="nav-link" href="dashboard.html">لوحة التحكم</a>
-        <a class="nav-link" href="transactions.html">المعاملات</a>
-        <a class="nav-link" href="settings.html">الإعدادات</a>
-        <a class="nav-link active" href="admin.html" style="color:var(--gold)">الإدارة</a>
-      </div>
-      <a class="nav-logo" href="index.html" style="order:1">
-        <div class="nav-logo-icon">G</div>
-        <span><span class="gold-text">Gold</span>Mine</span>
-      </a>
-    </div>
+<!-- ════════════════════════════════════════════════════════════════
+     SITE NAVIGATION
+     ════════════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="navbar">
+  <a class="nav-logo-wrap" onclick="showSection('landing')">
+    <div class="nav-logo-icon">G</div>
+    <span class="nav-logo-text">GoldMine</span>
+  </a>
+
+  <div class="nav-links-wrap" id="navLinks">
+    <a class="nav-link active" onclick="showSection('landing')">الرئيسية</a>
+    <a class="nav-link" onclick="scrollToId('plans-section')">المحافظ</a>
+    <a class="nav-link" onclick="scrollToId('performance-section')">الأداء</a>
+    <a class="nav-link" onclick="scrollToId('trust-section')">الأمان</a>
+    <a class="nav-link" onclick="showSection('admin')" style="color:var(--gold-light)">لوحة الإدارة</a>
+  </div>
+
+  <div class="nav-actions">
+    <a class="btn-outline-light btn-sm" href="login.html">تسجيل الدخول</a>
+    <a class="btn-gold btn-sm" onclick="scrollToId('plans-section')">ابدأ الاستثمار</a>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     ADMIN LAYOUT
-     ═══════════════════════════════════════════════════════════════ -->
-<div class="admin-layout" style="padding-top:64px">
+<!-- ════════════════════════════════════════════════════════════════
+     LANDING PAGE
+     ════════════════════════════════════════════════════════════════ -->
+<div id="landing-page">
 
-  <!-- ── Sidebar (unchanged) ── -->
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-particles">
+      <div class="hero-particle" style="top:12%;right:8%;animation-delay:0s"></div>
+      <div class="hero-particle" style="top:28%;right:75%;animation-delay:1.5s;width:4px;height:4px"></div>
+      <div class="hero-particle" style="top:55%;right:15%;animation-delay:3s"></div>
+      <div class="hero-particle" style="top:72%;right:60%;animation-delay:2s;width:4px;height:4px"></div>
+      <div class="hero-particle" style="top:40%;right:45%;animation-delay:4s"></div>
+      <div class="hero-particle" style="top:85%;right:30%;animation-delay:1s"></div>
+    </div>
+    <div class="hero-glow-orb" style="width:500px;height:500px;top:10%;right:60%;background:rgba(201,166,70,0.06)"></div>
+    <div class="hero-glow-orb" style="width:400px;height:400px;bottom:0;right:20%;background:rgba(201,166,70,0.03);animation-delay:4s"></div>
+
+    <div class="section-inner">
+      <div class="hero-inner">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span>عمليات تعدين نشطة — السودان</span>
+        </div>
+
+        <h1 class="hero-title">
+          استثمر في <span class="gold-accent">ذهب</span><br>
+          السودان.أمّن<br>
+          مستقبلك.
+        </h1>
+
+        <p class="hero-subtitle">
+          وصول حصري إلى فرص تعدين الذهب عالية العائد في أغنى مناطق أفريقيا. عوائد شفافة، أصول حقيقية، وتقارير إنتاج موثقة.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-gold btn-lg" onclick="scrollToId('plans-section')">
+            ابدأ الاستثمار الآن
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="transform:rotate(180deg)"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn-outline-light btn-lg" onclick="scrollToId('plans-section')" style="padding:16px 36px;font-size:16px;border-radius:var(--radius-lg)">تصفح المحافظ الاستثمارية</a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="hero-trust-item">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="#C9A646"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            عمليات تعدين موثقة
+          </div>
+          <div class="hero-trust-item">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="#C9A646"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            توزيع أرباح يومي
+          </div>
+          <div class="hero-trust-item">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="#C9A646"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            تقارير شفافة
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Stats -->
+    <div class="hero-stats-float">
+      <div class="hero-stat-card">
+        <div class="hsc-label">إجمالي الاستثمارات</div>
+        <div class="hsc-value">$12.4M</div>
+        <div class="hsc-trend">↑ 12.4%</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hsc-label">ذهب مُنتَج</div>
+        <div class="hsc-value">847 كغ</div>
+        <div class="hsc-trend">↑ 8.7%</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hsc-label">مستثمر نشط</div>
+        <div class="hsc-value">3,200+</div>
+        <div class="hsc-trend">↑ 15.2%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── METRICS BAR ── -->
+  <section class="metrics-bar">
+    <div class="metrics-inner">
+      <div class="metric-item">
+        <div class="mi-value">$12.4M</div>
+        <div class="mi-label">إجمالي الاستثمارات</div>
+      </div>
+      <div class="metric-item">
+        <div class="mi-value">3,200+</div>
+        <div class="mi-label">مستثمر نشط</div>
+      </div>
+      <div class="metric-item">
+        <div class="mi-value">847 كغ</div>
+        <div class="mi-label">ذهب مُنتَج</div>
+      </div>
+      <div class="metric-item">
+        <div class="mi-value">14.2%</div>
+        <div class="mi-label">متوسط العائد الشهري</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY GOLD ── -->
+  <section class="section" id="why-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">لماذا الذهب؟</div>
+        <h2 class="section-title">استثمار <span class="gold-text-static" style="color:var(--gold-dark)">آمن ومرتفع العائد</span></h2>
+        <p class="section-subtitle">الذهب هو أقدم وأأمن أصول الاستثمار في العالم. مع GoldMine Sudan، تحصل على وصول مباشر إلى عمليات التعدين الحقيقية.</p>
+      </div>
+
+      <div class="why-gold-grid">
+        <div class="why-card">
+          <div class="wc-icon" style="background:var(--gold-glow)">⛏️</div>
+          <div class="wc-title">أصول حقيقية ملموسة</div>
+          <div class="wc-desc">استثماراتك مدعولة بإنتاج ذهب حقيقي من مناجم نشطة في منطقة وادي النيل بالسودان.</div>
+        </div>
+        <div class="why-card">
+          <div class="wc-icon" style="background:var(--success-bg)">📈</div>
+          <div class="wc-title">عوائد مرتفعة ومستقرة</div>
+          <div class="wc-desc">متوسط عائد شهري 14.2% مع توزيع أرباح يومي مباشر إلى محفظتك الاستثمارية.</div>
+        </div>
+        <div class="why-card">
+          <div class="wc-icon" style="background:var(--info-bg)">🔒</div>
+          <div class="wc-title">شفافية وأمان كامل</div>
+          <div class="wc-desc">تقارير إنتاج منتظمة، تحقق من الهوية، وعمليات سحب سريعة ومضمونة.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INVESTMENT PLANS ── -->
+  <section class="section plans-section" id="plans-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">المحافظ الاستثمارية</div>
+        <h2 class="section-title">اختر <span class="gold-text-static" style="color:var(--gold-dark)">استثمارك</span> المثالي</h2>
+        <p class="section-subtitle">أربع محافظ مُصممة بعناية لتلبية أهدافك الاستثمارية، من العوائد المستقرة إلى النمو العالي.</p>
+      </div>
+
+      <div class="plans-grid">
+        <!-- Plan 1: Production -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="ph-top">
+              <div class="ph-icon">⛏️</div>
+              <span class="ph-badge badge badge-success">مخاطرة منخفضة</span>
+            </div>
+            <div class="ph-title">محفظة الإنتاج</div>
+            <div class="ph-subtitle">عوائد ثابتة من عمليات تعدين قائمة</div>
+          </div>
+          <div class="plan-body">
+            <div class="plan-roi">
+              <div class="pr-label">العائد الشهري المتوقع</div>
+              <div class="pr-value">12–18%</div>
+              <div class="pr-period">على مدار 90 يوم</div>
+            </div>
+
+            <div class="plan-projection">
+              <div class="pp-label">الربح المتوقع على استثمار $5,000</div>
+              <div class="pp-bar-track">
+                <div class="pp-bar-fill" style="width:65%"></div>
+              </div>
+              <div class="pp-bar-labels">
+                <span>$0</span>
+                <span style="color:var(--gold-dark);font-weight:600">$600 – $900</span>
+              </div>
+            </div>
+
+            <div class="plan-details">
+              <div class="pd-item"><div class="pd-label">المدة</div><div class="pd-value">90 يوم</div></div>
+              <div class="pd-item"><div class="pd-label">أقل استثمار</div><div class="pd-value">$500</div></div>
+              <div class="pd-item"><div class="pd-label">أعلى استثمار</div><div class="pd-value">$50,000</div></div>
+            </div>
+
+            <ul class="plan-features">
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>توزيع أرباح يومي</li>
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>إعادة استثمار تلقائية</li>
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>تقارير شهرية مفصلة</li>
+            </ul>
+
+            <button class="btn-gold plan-cta" onclick="showSection('admin')">استثمر الآن</button>
+          </div>
+        </div>
+
+        <!-- Plan 2: Trading (Featured) -->
+        <div class="plan-card featured">
+          <div class="plan-header">
+            <div class="ph-top">
+              <div class="ph-icon">📈</div>
+              <span class="ph-badge">الأكثر شعبية</span>
+            </div>
+            <div class="ph-title">محفظة التداول</div>
+            <div class="ph-subtitle">عوائد سريعة مع توزيع أرباح يومي</div>
+          </div>
+          <div class="plan-body">
+            <div class="plan-roi">
+              <div class="pr-label">العائد الشهري المتوقع</div>
+              <div class="pr-value">10–25%</div>
+              <div class="pr-period">على مدار 30 يوم</div>
+            </div>
+
+            <div class="plan-projection">
+              <div class="pp-label">الربح المتوقع على استثمار $5,000</div>
+              <div class="pp-bar-track">
+                <div class="pp-bar-fill" style="width:80%"></div>
+              </div>
+              <div class="pp-bar-labels">
+                <span>$0</span>
+                <span style="color:var(--gold-dark);font-weight:600">$500 – $1,250</span>
+              </div>
+            </div>
+
+            <div class="plan-details">
+              <div class="pd-item"><div class="pd-label">المدة</div><div class="pd-value">30 يوم</div></div>
+              <div class="pd-item"><div class="pd-label">أقل استثمار</div><div class="pd-value">$200</div></div>
+              <div class="pd-item"><div class="pd-label">أعلى استثمار</div><div class="pd-value">$25,000</div></div>
+            </div>
+
+            <ul class="plan-features">
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>توزيع أرباح يومي</li>
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>شروط مرنة ومدة قصيرة</li>
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>سحب الأرباح في أي وقت</li>
+            </ul>
+
+            <button class="btn-gold plan-cta" onclick="showSection('admin')">استثمر الآن</button>
+          </div>
+        </div>
+
+        <!-- Plan 3: Operational -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="ph-top">
+              <div class="ph-icon">🏭</div>
+              <span class="ph-badge badge badge-warning">مخاطرة متوسطة</span>
+            </div>
+            <div class="ph-title">تمويل التشغيل</div>
+            <div class="ph-subtitle">موّل توسيع المناجم القائمة</div>
+          </div>
+          <div class="plan-body">
+            <div class="plan-roi">
+              <div class="pr-label">العائد الشهري المتوقع</div>
+              <div class="pr-value">15–22%</div>
+              <div class="pr-period">على مدار 180 يوم</div>
+            </div>
+
+            <div class="plan-projection">
+              <div class="pp-label">الربح المتوقع على استثمار $5,000</div>
+              <div class="pp-bar-track">
+                <div class="pp-bar-fill" style="width:75%"></div>
+              </div>
+              <div class="pp-bar-labels">
+                <span>$0</span>
+                <span style="color:var(--gold-dark);font-weight:600">$750 – $1,100</span>
+              </div>
+            </div>
+
+            <div class="plan-details">
+              <div class="pd-item"><div class="pd-label">المدة</div><div class="pd-value">180 يوم</div></div>
+              <div class="pd-item"><div class="pd-label">أقل استثمار</div><div class="pd-value">$1,000</div></div>
+              <div class="pd-item"><div class="pd-label">أعلى استثمار</div><div class="pd-value">$100,000</div></div>
+            </div>
+
+            <ul class="plan-features">
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>عوائد أعلى مع التوسع</li>
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>توزيع أرباح يومي</li>
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>تقارير تشغيل شهرية</li>
+            </ul>
+
+            <button class="btn-gold plan-cta" onclick="showSection('admin')">استثمر الآن</button>
+          </div>
+        </div>
+
+        <!-- Plan 4: Exploration -->
+        <div class="plan-card">
+          <div class="plan-header">
+            <div class="ph-top">
+              <div class="ph-icon">🗺️</div>
+              <span class="ph-badge badge badge-danger">عائد مرتفع</span>
+            </div>
+            <div class="ph-title">محفظة الاستكشاف</div>
+            <div class="ph-subtitle">أعلى عوائد محتملة من احتياطيات جديدة</div>
+          </div>
+          <div class="plan-body">
+            <div class="plan-roi">
+              <div class="pr-label">العائد الشهري المتوقع</div>
+              <div class="pr-value">20–35%</div>
+              <div class="pr-period">على مدار 365 يوم</div>
+            </div>
+
+            <div class="plan-projection">
+              <div class="pp-label">الربح المتوقع على استثمار $5,000</div>
+              <div class="pp-bar-track">
+                <div class="pp-bar-fill" style="width:92%"></div>
+              </div>
+              <div class="pp-bar-labels">
+                <span>$0</span>
+                <span style="color:var(--gold-dark);font-weight:600">$1,000 – $1,750</span>
+              </div>
+            </div>
+
+            <div class="plan-details">
+              <div class="pd-item"><div class="pd-label">المدة</div><div class="pd-value">365 يوم</div></div>
+              <div class="pd-item"><div class="pd-label">أقل استثمار</div><div class="pd-value">$2,000</div></div>
+              <div class="pd-item"><div class="pd-label">أعلى استثمار</div><div class="pd-value">$200,000</div></div>
+            </div>
+
+            <ul class="plan-features">
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>أعلى عوائد محتملة</li>
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>توزيع أرباح يومي</li>
+              <li><span class="check"><svg viewBox="0 0 20 20" fill="var(--success)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span>تقارير استكشاف ربع سنوية</li>
+            </ul>
+
+            <button class="btn-gold plan-cta" onclick="showSection('admin')">استثمر الآن</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PERFORMANCE ── -->
+  <section class="section performance-section" id="performance-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">الأداء والإحصائيات</div>
+        <h2 class="section-title">نتائج <span style="color:var(--gold-light)">حقيقية</span> وموثقة</h2>
+        <p class="section-subtitle"> acompanha أداء منصتنا المالي مع تقارير شفافة عن إنتاج الذهب والعوائد.</p>
+      </div>
+
+      <div class="perf-grid">
+        <div class="perf-chart-card">
+          <div class="perf-chart-header">
+            <h3>عوائد المنصة الشهرية</h3>
+            <div class="perf-chart-tabs">
+              <button class="perf-chart-tab active">6 أشهر</button>
+              <button class="perf-chart-tab">سنة</button>
+              <button class="perf-chart-tab">كل الوقت</button>
+            </div>
+          </div>
+          <div class="perf-chart-area">
+            <div class="perf-bar" style="height:55%;animation-delay:0.1s" data-val="$72K"></div>
+            <div class="perf-bar" style="height:68%;animation-delay:0.2s" data-val="$89K"></div>
+            <div class="perf-bar" style="height:45%;animation-delay:0.3s" data-val="$58K"></div>
+            <div class="perf-bar" style="height:82%;animation-delay:0.4s" data-val="$108K"></div>
+            <div class="perf-bar" style="height:75%;animation-delay:0.5s" data-val="$98K"></div>
+            <div class="perf-bar" style="height:92%;animation-delay:0.6s" data-val="$121K"></div>
+          </div>
+          <div class="perf-chart-labels">
+            <span>يوليو</span><span>أغسطس</span><span>سبتمبر</span><span>أكتوبر</span><span>نوفمبر</span><span>ديسمبر</span>
+          </div>
+        </div>
+
+        <div class="perf-summary-cards">
+          <div class="psc-card">
+            <div class="psc-label">إجمالي الذهب المُنتَج</div>
+            <div class="psc-value">847 كغ</div>
+            <div class="psc-change up">↑ 8.7% عن الشهر الماضي</div>
+          </div>
+          <div class="psc-card">
+            <div class="psc-label">متوسط العائد الشهري</div>
+            <div class="psc-value">14.2%</div>
+            <div class="psc-change up">↑ 2.1% عن الربع الماضي</div>
+          </div>
+          <div class="psc-card">
+            <div class="psc-label">إجمالي الأرباح الموزعة</div>
+            <div class="psc-value">$3.8M</div>
+            <div class="psc-change up">↑ 18.4% نمو سنوي</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUST & SECURITY ── -->
+  <section class="section" id="trust-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">الأمان والثقة</div>
+        <h2 class="section-title">لماذا يثق بنا <span class="gold-text-static" style="color:var(--gold-dark)">الآلاف</span></h2>
+        <p class="section-subtitle">نلتزم بأعلى معايير الشفافية والأمان لحماية استثماراتك وبناء علاقة ثقة دائمة.</p>
+      </div>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="tc-icon">🔐</div>
+          <div class="tc-title">تشفير متقدم</div>
+          <div class="tc-desc">جميع البيانات والمعاملات محمية بتشفير من الدرجة البنكية.</div>
+        </div>
+        <div class="trust-card">
+          <div class="tc-icon">📋</div>
+          <div class="tc-title">تقارير منتظمة</div>
+          <div class="tc-desc">تقارير إنتاج ومالية شهرية لضمان الشفافية الكاملة.</div>
+        </div>
+        <div class="trust-card">
+          <div class="tc-icon">🪪</div>
+          <div class="tc-title">تحقق من الهوية</div>
+          <div class="tc-desc">إجراءات KYC صارمة لحماية المنصة والمستثمرين.</div>
+        </div>
+        <div class="trust-card">
+          <div class="tc-icon">⚡</div>
+          <div class="tc-title">سحب سريع</div>
+          <div class="tc-desc">معالجة طلبات السحب خلال 24 ساعة عمل.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="section" style="background:var(--bg-warm)">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">كيف يعمل</div>
+        <h2 class="section-title">ابدأ الاستثمار في <span class="gold-text-static" style="color:var(--gold-dark)">4 خطوات</span></h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-title">إنشاء حساب</div>
+          <div class="step-desc">سجّل بياناتك ووثّق هويتك في دقائق معدودة.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-title">اختيار المحفظة</div>
+          <div class="step-desc">اختر المحافظة التي تناسب أهدافك وميزانيتك.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-title">التمويل</div>
+          <div class="step-desc">أودع عبر USDT أو التحويل البنكي بسهولة.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-title">اربح يومياً</div>
+          <div class="step-desc">تلقَّ أرباحك اليومية مباشرة في محفظتك.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="section cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-title">هل أنت مستعد <span style="color:var(--gold-light)">للبدء؟</span></h2>
+      <p class="cta-desc">انضم إلى آلاف المستثمرين الذين يحققون عوائد ثابتة من صناعة تعدين الذهب في السودان.</p>
+      <div class="cta-actions">
+        <a class="btn-gold btn-lg" onclick="showSection('admin')">إنشاء حساب مجاني</a>
+        <a class="btn-outline-light btn-lg" onclick="scrollToId('plans-section')" style="padding:16px 36px;font-size:16px;border-radius:var(--radius-lg)">تصفح المحافظ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-icon">G</div>
+        <span class="footer-brand-text">GoldMine Sudan</span>
+      </div>
+      <p class="footer-copy">© 2025 منجم الذهب السودان. جميع الحقوق محفوظة. الاستثمار ينطوي على مخاطر.</p>
+    </div>
+  </footer>
+
+</div>
+<!-- END landing-page -->
+
+<!-- ════════════════════════════════════════════════════════════════
+     ADMIN PANEL (Hidden, shown via navigation)
+     ════════════════════════════════════════════════════════════════ -->
+<div class="admin-layout" id="admin-panel">
+
   <aside class="admin-sidebar">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px;padding:0 10px">
-      <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0a0a12">A</div>
-      <span style="font-family:'Cairo',serif;font-size:16px;font-weight:800">لوحة الإدارة</span>
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon">A</div>
+      <span class="sidebar-brand-text">لوحة الإدارة</span>
     </div>
-    <nav>
-      <a class="sidebar-link active" onclick="switchAdminTab('overview')">📊 نظرة عامة</a>
-      <a class="sidebar-link" onclick="switchAdminTab('users')">👥 المستخدمون</a>
-      <a class="sidebar-link" onclick="switchAdminTab('portfolios')">💼 المحافظ</a>
-      <a class="sidebar-link" onclick="switchAdminTab('deposits')">💰 الإيداعات والسحوبات</a>
-      <a class="sidebar-link" onclick="switchAdminTab('kyc')">📋 مراجعة الهوية</a>
-      <a class="sidebar-link" onclick="switchAdminTab('reports')">📄 التقارير</a>
-    </nav>
-    <div style="padding-top:32px;border-top:1px solid var(--card-border);margin-top:32px">
-      <a class="sidebar-link" href="dashboard.html">العودة للمنصة ←</a>
-    </div>
+    <div class="sidebar-section-label">الرئيسية</div>
+    <a class="sidebar-link active" onclick="switchAdminTab('overview')">📊 نظرة عامة</a>
+    <div class="sidebar-section-label">الإدارة</div>
+    <a class="sidebar-link" onclick="switchAdminTab('users')">👥 المستخدمون</a>
+    <a class="sidebar-link" onclick="switchAdminTab('portfolios')">💼 المحافظ</a>
+    <a class="sidebar-link" onclick="switchAdminTab('deposits')">💰 الإيداعات والسحوبات</a>
+    <a class="sidebar-link" onclick="switchAdminTab('kyc')">🪪 مراجعة الهوية</a>
+    <div class="sidebar-section-label">التقارير</div>
+    <a class="sidebar-link" onclick="switchAdminTab('reports')">📄 التقارير</a>
+    <div style="height:1px;background:var(--border-light);margin:20px 14px"></div>
+    <a class="sidebar-link" onclick="showSection('landing')">← العودة للصفحة الرئيسية</a>
   </aside>
 
-  <!-- ════════════════════════════════════════════════════════════
-       MAIN CONTENT
-       ════════════════════════════════════════════════════════════ -->
   <main class="admin-main">
 
-    <!-- ══════════════════════════════════════════════════════════
-         TAB: OVERVIEW — RESTRUCTURED to match code1.html layout
-         ══════════════════════════════════════════════════════════ -->
+    <!-- Overview -->
     <div class="admin-tab active" id="tab-overview">
-
-      <!-- ── 1. Hero Welcome Banner (mirrors code1.html hero section) ── -->
-      <div class="overview-hero glass">
-        <div class="hero-inner">
-          <div class="hero-badge" style="background:rgba(var(--gold-rgb),.08);border:1px solid rgba(var(--gold-rgb),.15)">
-            <span class="dot" style="background:var(--success)"></span>
-            <span style="color:var(--gold)">لوحة تحكم الإدارة — مباشر</span>
-          </div>
-          <h1>نظرة <span class="gold-text">عامة</span><br>على المنصة</h1>
-          <p style="color:var(--text2)">مراقبة شاملة لأداء المنصة، المستخدمين النشطين، الاستثمارات، والمعاملات المالية في الوقت الفعلي.</p>
-          <div class="hero-actions">
-            <button class="btn-gold btn-sm" onclick="switchAdminTab('users')">إدارة المستخدمين</button>
-            <button class="btn-outline btn-sm" onclick="switchAdminTab('deposits')">مراجعة المعاملات</button>
-          </div>
-          <div class="hero-features">
-            <div class="feat">
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--gold)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              <span style="color:var(--text2)">3,247 مستخدم مسجّل</span>
-            </div>
-            <div class="feat">
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--gold)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              <span style="color:var(--text2)">$12.4M إجمالي الاستثمارات</span>
-            </div>
-            <div class="feat">
-              <svg width="14" height="14" viewBox="0 0 20 20" fill="var(--gold)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-              <span style="color:var(--text2)">تقارير شفافة منتظمة</span>
-            </div>
-          </div>
+      <div class="page-header">
+        <div><h1>نظرة <span class="gold-text-static" style="color:var(--gold)">عامة</span></h1><p class="subtitle">مراقبة شاملة لأداء المنصة</p></div>
+        <div style="display:flex;gap:8px">
+          <button class="btn-outline btn-sm" onclick="switchAdminTab('reports')">📄 التقارير</button>
+          <button class="btn-gold btn-sm" onclick="switchAdminTab('deposits')">مراجعة المعاملات</button>
         </div>
       </div>
 
-      <!-- ── 2. Stats Row (mirrors code1.html statistics section) ── -->
-      <div class="stats-row glass" style="padding:32px">
-        <div class="stat-item">
-          <div class="stat-value" style="color:var(--gold)">3,247</div>
-          <div class="stat-label" style="color:var(--text3)">إجمالي المستخدمين</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value" style="color:var(--gold)">$12.4M</div>
-          <div class="stat-label" style="color:var(--text3)">إجمالي الاستثمارات</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value" style="color:var(--gold)">$8.7M</div>
-          <div class="stat-label" style="color:var(--text3)">إجمالي الإيداعات</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value" style="color:var(--gold)">$3.2M</div>
-          <div class="stat-label" style="color:var(--text3)">إجمالي المسحوبات</div>
-        </div>
-      </div>
-
-      <!-- ── 3. KYC Alert Banner (mirrors code1.html verification alert) ── -->
-      <div class="kyc-alert glass" style="border-color:rgba(var(--warning-rgb),.15)">
-        <div class="alert-icon" style="background:rgba(var(--warning-rgb),.1)">⚠️</div>
-        <div class="alert-content">
+      <div class="alert-banner">
+        <div class="alert-icon">⚠️</div>
+        <div class="alert-text">
           <p class="alert-title">14 طلب تحقق من الهوية بانتظار المراجعة</p>
-          <p class="alert-desc" style="color:var(--text3)">يوجد مستندات هوية جديدة تتطلب مراجعة واعتماد.</p>
+          <p class="alert-desc">يوجد مستندات هوية جديدة تتطلب مراجعة واعتماد.</p>
         </div>
-        <a class="alert-action" style="color:var(--warning)" onclick="switchAdminTab('kyc')">مراجعة الآن ←</a>
+        <a class="alert-action" onclick="switchAdminTab('kyc')">مراجعة الآن ←</a>
       </div>
 
-      <!-- ── 4. Dashboard Cards Grid (mirrors code1.html portfolio cards grid) ── -->
-      <div class="dash-cards-grid">
-        <div class="dash-card glass">
-          <div class="card-icon" style="background:rgba(var(--gold-rgb),.08)">💰</div>
-          <div class="card-value" style="color:var(--gold)">$12.4M</div>
-          <div class="card-label" style="color:var(--text3)">إجمالي الاستثمارات</div>
-          <div class="card-sub" style="color:var(--gold)">1,842 نشط</div>
-        </div>
-        <div class="dash-card glass">
-          <div class="card-icon" style="background:rgba(var(--success-rgb),.08)">📥</div>
-          <div class="card-value">$8.7M</div>
-          <div class="card-label" style="color:var(--text3)">إجمالي الإيداعات</div>
-          <div class="card-sub" style="color:var(--warning)">23 قيد الانتظار</div>
-        </div>
-        <div class="dash-card glass">
-          <div class="card-icon" style="background:rgba(var(--danger-rgb),.08)">📤</div>
-          <div class="card-value">$3.2M</div>
-          <div class="card-label" style="color:var(--text3)">إجمالي المسحوبات</div>
-          <div class="card-sub" style="color:var(--warning)">8 قيد الانتظار</div>
-        </div>
-        <div class="dash-card glass">
-          <div class="card-icon" style="background:rgba(var(--gold-rgb),.08)">🪪</div>
-          <div class="card-value">14</div>
-          <div class="card-label" style="color:var(--text3)">هوية قيد المراجعة</div>
-          <div class="card-sub" style="color:var(--text3)">بانتظار المراجعة</div>
-        </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-icon" style="background:var(--gold-glow)">👥</div><div class="stat-label">إجمالي المستخدمين</div><div class="stat-value">3,247</div><div class="stat-sub"><span class="stat-trend up">↑ 8.2%</span> <span style="color:var(--text-muted);font-size:10px;margin-right:4px">2,891 نشط</span></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:var(--gold-glow)">💰</div><div class="stat-label">إجمالي الاستثمارات</div><div class="stat-value">$12.4M</div><div class="stat-sub"><span class="stat-trend up">↑ 12.4%</span> <span style="color:var(--text-muted);font-size:10px;margin-right:4px">1,842 نشط</span></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:var(--success-bg)">📥</div><div class="stat-label">إجمالي الإيداعات</div><div class="stat-value">$8.7M</div><div class="stat-sub"><span class="stat-trend up">↑ 5.1%</span> <span style="color:var(--warning);font-size:10px;margin-right:4px">23 معلّق</span></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:var(--danger-bg)">📤</div><div class="stat-label">إجمالي المسحوبات</div><div class="stat-value">$3.2M</div><div class="stat-sub"><span style="color:var(--warning);font-size:10px">8 قيد الانتظار</span></div></div>
+        <div class="stat-card"><div class="stat-icon" style="background:var(--info-bg)">🪪</div><div class="stat-label">هوية قيد المراجعة</div><div class="stat-value">14</div><div class="stat-sub"><span style="color:var(--text-muted);font-size:10px">بانتظار المراجعة</span></div></div>
       </div>
 
-      <!-- ── 5. Two-Column Section (mirrors code1.html chart + summary) ── -->
-      <div class="two-col-section">
-        <!-- Left: Quick Actions (mirrors code1.html chart panel) -->
-        <div class="glass" style="padding:24px">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-            <div>
-              <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">إجراءات سريعة</h3>
-              <p style="font-size:13px;color:var(--text3)">العمليات الأكثر استخداماً</p>
-            </div>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
-            <button class="btn-gold" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('users')">👥 إدارة المستخدمين</button>
-            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('deposits')">💰 مراجعة الإيداعات</button>
-            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('kyc')">🪪 مراجعة الهويات</button>
-            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('portfolios')">💼 إدارة المحافظ</button>
-            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('reports')">📄 رفع تقرير</button>
-            <button class="btn-outline" style="width:100%;justify-content:center;padding:14px" onclick="switchAdminTab('reports')">📊 التقارير</button>
-          </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><h3>إجراءات سريعة</h3></div>
+          <div class="card-body"><div class="quick-actions">
+            <a class="quick-action-btn" onclick="switchAdminTab('users')"><div class="qa-icon" style="background:var(--gold-glow)">👥</div><span class="qa-label">إدارة المستخدمين</span></a>
+            <a class="quick-action-btn" onclick="switchAdminTab('deposits')"><div class="qa-icon" style="background:var(--success-bg)">💰</div><span class="qa-label">مراجعة الإيداعات</span></a>
+            <a class="quick-action-btn" onclick="switchAdminTab('kyc')"><div class="qa-icon" style="background:var(--info-bg)">🪪</div><span class="qa-label">مراجعة الهويات</span></a>
+            <a class="quick-action-btn" onclick="switchAdminTab('portfolios')"><div class="qa-icon" style="background:var(--gold-glow)">💼</div><span class="qa-label">إدارة المحافظ</span></a>
+            <a class="quick-action-btn" onclick="switchAdminTab('reports')"><div class="qa-icon" style="background:var(--warning-bg)">📄</div><span class="qa-label">رفع تقرير</span></a>
+            <a class="quick-action-btn" onclick="switchAdminTab('reports')"><div class="qa-icon" style="background:var(--success-bg)">📊</div><span class="qa-label">التقارير المالية</span></a>
+          </div></div>
         </div>
-
-        <!-- Right: Summary Panel (mirrors code1.html portfolio summary) -->
-        <div class="glass" style="padding:24px">
-          <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800;margin-bottom:20px">ملخص المنصة</h3>
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--card-border)">
-              <span style="font-size:13px;color:var(--text3)">المستخدمون النشطون</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">2,891</span>
+        <div class="card">
+          <div class="card-header"><h3>ملخص المنصة</h3></div>
+          <div class="card-body">
+            <div style="margin-bottom:14px"><p style="font-size:10px;color:var(--text-muted);margin-bottom:6px;font-weight:600">الإيداعات خلال 7 أيام</p>
+              <div class="mini-chart"><div class="bar" style="height:45%" data-value="$38K"></div><div class="bar" style="height:62%" data-value="$52K"></div><div class="bar" style="height:38%" data-value="$31K"></div><div class="bar" style="height:85%" data-value="$71K"></div><div class="bar" style="height:55%" data-value="$46K"></div><div class="bar" style="height:72%" data-value="$60K"></div><div class="bar" style="height:95%" data-value="$79K"></div></div>
             </div>
-            <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--card-border)">
-              <span style="font-size:13px;color:var(--text3)">الاستثمارات النشطة</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">1,842</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--card-border)">
-              <span style="font-size:13px;color:var(--text3)">معاملات معلّقة</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--warning);direction:ltr">31</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--card-border)">
-              <span style="font-size:13px;color:var(--text3)">هويات قيد المراجعة</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--warning);direction:ltr">14</span>
-            </div>
-            <div style="display:flex;justify-content:space-between">
-              <span style="font-size:13px;color:var(--text3)">المحافظ النشطة</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--success);direction:ltr">4</span>
+            <div class="summary-list">
+              <div class="summary-item"><span class="item-label">المستخدمون النشطون</span><span class="item-value">2,891</span></div>
+              <div class="summary-item"><span class="item-label">الاستثمارات النشطة</span><span class="item-value">1,842</span></div>
+              <div class="summary-item"><span class="item-label">معاملات معلّقة</span><span class="item-value" style="color:var(--warning)">31</span></div>
+              <div class="summary-item"><span class="item-label">هويات قيد المراجعة</span><span class="item-value" style="color:var(--warning)">14</span></div>
+              <div class="summary-item"><span class="item-label">المحافظ النشطة</span><span class="item-value" style="color:var(--success)">4</span></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ── 6. Recent Activity Table (mirrors code1.html active investments table) ── -->
-      <div class="activity-section glass">
-        <div class="section-header" style="border-bottom:1px solid var(--card-border)">
-          <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">النشاط الأخير</h3>
-          <button class="btn-outline btn-sm" style="padding:6px 14px;font-size:12px" onclick="switchAdminTab('users')">عرض الكل</button>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>المستخدم</th>
-                <th>الإجراء</th>
-                <th>المبلغ</th>
-                <th>الوقت</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="font-weight:700">أحمد حسن</td>
-                <td style="color:var(--success);font-weight:700">استثمار جديد</td>
-                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,000</td>
-                <td style="color:var(--text3)">منذ دقيقتين</td>
-              </tr>
-              <tr>
-                <td style="font-weight:700">فاطمة علي</td>
-                <td style="color:var(--gold);font-weight:700">طلب إيداع</td>
-                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$2,500</td>
-                <td style="color:var(--text3)">منذ ١٥ دقيقة</td>
-              </tr>
-              <tr>
-                <td style="font-weight:700">عمر بشير</td>
-                <td style="color:var(--danger);font-weight:700">طلب سحب</td>
-                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">$1,200</td>
-                <td style="color:var(--text3)">منذ ساعة</td>
-              </tr>
-              <tr>
-                <td style="font-weight:700">مريم يوسف</td>
-                <td style="color:var(--warning);font-weight:700">تقديم هوية</td>
-                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">—</td>
-                <td style="color:var(--text3)">منذ ساعتين</td>
-              </tr>
-              <tr>
-                <td style="font-weight:700">إبراهيم سعيد</td>
-                <td style="color:var(--success);font-weight:700">تسجيل جديد</td>
-                <td style="font-family:'JetBrains Mono',monospace;direction:ltr">—</td>
-                <td style="color:var(--text3)">منذ ٣ ساعات</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="card">
+        <div class="card-header"><h3>النشاط الأخير</h3><button class="btn-outline btn-sm" onclick="switchAdminTab('users')">عرض الكل</button></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>المستخدم</th><th>الإجراء</th><th>المبلغ</th><th>الوقت</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:600">أحمد حسن</td><td><span class="badge badge-success">استثمار جديد</span></td><td style="font-family:'JetBrains Mono',monospace;direction:ltr;font-weight:600">$5,000</td><td style="color:var(--text-muted)">منذ دقيقتين</td></tr>
+            <tr><td style="font-weight:600">فاطمة علي</td><td><span class="badge badge-gold">طلب إيداع</span></td><td style="font-family:'JetBrains Mono',monospace;direction:ltr;font-weight:600">$2,500</td><td style="color:var(--text-muted)">منذ ١٥ دقيقة</td></tr>
+            <tr><td style="font-weight:600">عمر بشير</td><td><span class="badge badge-danger">طلب سحب</span></td><td style="font-family:'JetBrains Mono',monospace;direction:ltr;font-weight:600">$1,200</td><td style="color:var(--text-muted)">منذ ساعة</td></tr>
+            <tr><td style="font-weight:600">مريم يوسف</td><td><span class="badge badge-warning">تقديم هوية</span></td><td style="font-family:'JetBrains Mono',monospace;direction:ltr;color:var(--text-muted)">—</td><td style="color:var(--text-muted)">منذ ساعتين</td></tr>
+            <tr><td style="font-weight:600">إبراهيم سعيد</td><td><span class="badge badge-info">تسجيل جديد</span></td><td style="font-family:'JetBrains Mono',monospace;direction:ltr;color:var(--text-muted)">—</td><td style="color:var(--text-muted)">منذ ٣ ساعات</td></tr>
+          </tbody>
+        </table></div>
       </div>
-
-      <!-- ── 7. CTA Banner (mirrors code1.html CTA section) ── -->
-      <div class="cta-banner glass">
-        <h2>هل تحتاج إلى <span class="gold-text">تقرير؟</span></h2>
-        <p style="color:var(--text2)">ارفع تقارير الشفافية والإنتاج لمشاركتها مع المستثمرين وبناء الثقة.</p>
-        <button class="btn-gold" onclick="switchAdminTab('reports')">رفع تقرير جديد</button>
-      </div>
-
     </div>
-    <!-- END tab-overview -->
 
-    <!-- ══════════════════════════════════════════════════════════
-         OTHER TABS — UNCHANGED from original admin.html
-         ══════════════════════════════════════════════════════════ -->
-
-    <!-- المستخدمون -->
+    <!-- Users -->
     <div class="admin-tab" id="tab-users" style="display:none">
-      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">إدارة <span class="gold-text">المستخدمين</span></h1>
-      <div class="glass" style="overflow:hidden"><div class="table-wrap"><table>
+      <div class="page-header"><div><h1>إدارة <span class="gold-text-static" style="color:var(--gold)">المستخدمين</span></h1><p class="subtitle">عرض وإدارة حسابات المستخدمين</p></div><div><input class="input" style="width:220px" placeholder="بحث عن مستخدم..."></div></div>
+      <div class="card" style="overflow:hidden"><div class="table-wrap"><table>
         <thead><tr><th>المستخدم</th><th>البريد</th><th>الرصيد</th><th>الهوية</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
         <tbody>
-          <tr><td style="font-weight:700">أحمد حسن</td><td style="color:var(--text3)">ahmed@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);direction:ltr">$24,580</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">تعليق</button></td></tr>
-          <tr><td style="font-weight:700">فاطمة علي</td><td style="color:var(--text3)">fatima@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);direction:ltr">$12,300</td><td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">تعليق</button></td></tr>
-          <tr><td style="font-weight:700">عمر بشير</td><td style="color:var(--text3)">omar@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);direction:ltr">$8,750</td><td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:6px 12px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">تعليق</button></td></tr>
+          <tr><td style="font-weight:600">أحمد حسن</td><td style="color:var(--text-muted)">ahmed@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold-dark);direction:ltr;font-weight:600">$24,580</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--danger);border-color:rgba(192,57,43,.15)">تعليق</button></td></tr>
+          <tr><td style="font-weight:600">فاطمة علي</td><td style="color:var(--text-muted)">fatima@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold-dark);direction:ltr;font-weight:600">$12,300</td><td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--danger);border-color:rgba(192,57,43,.15)">تعليق</button></td></tr>
+          <tr><td style="font-weight:600">عمر بشير</td><td style="color:var(--text-muted)">omar@example.com</td><td style="font-family:'JetBrains Mono',monospace;color:var(--gold-dark);direction:ltr;font-weight:600">$8,750</td><td><span class="badge badge-success">موثّق</span></td><td><span class="badge badge-success">نشط</span></td><td><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--danger);border-color:rgba(192,57,43,.15)">تعليق</button></td></tr>
         </tbody>
       </table></div></div>
     </div>
 
-    <!-- المحافظ -->
+    <!-- Portfolios -->
     <div class="admin-tab" id="tab-portfolios" style="display:none">
-      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">إدارة <span class="gold-text">المحافظ</span></h1>
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">محفظة الإنتاج</h3><p style="font-size:13px;color:var(--text3)">842 استثمار نشط — $4.2M إجمالي</p></div><span class="badge badge-success">نشطة</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><div><p style="font-size:11px;color:var(--text3)">العائد</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">12–18%</p></div><div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">90 يوم</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأدنى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$500</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأقصى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$50,000</p></div></div></div>
-        <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">محفظة التداول</h3><p style="font-size:13px;color:var(--text3)">523 استثمار نشط — $3.1M إجمالي</p></div><span class="badge badge-success">نشطة</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><div><p style="font-size:11px;color:var(--text3)">العائد</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">10–25%</p></div><div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">30 يوم</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأدنى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$200</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأقصى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$25,000</p></div></div></div>
-        <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800">تمويل التشغيل</h3><p style="font-size:13px;color:var(--text3)">312 استثمار نشط — $3.8M إجمالي</p></div><span class="badge badge-success">نشطة</span></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px"><div><p style="font-size:11px;color:var(--text3)">العائد</p><p style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:600;direction:ltr">15–22%</p></div><div><p style="font-size:11px;color:var(--text3)">المدة</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">180 يوم</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأدنى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$1,000</p></div><div><p style="font-size:11px;color:var(--text3)">الحد الأقصى</p><p style="font-family:'JetBrains Mono',monospace;font-weight:600;direction:ltr">$100,000</p></div></div></div>
+      <div class="page-header"><div><h1>إدارة <span class="gold-text-static" style="color:var(--gold)">المحافظ</span></h1><p class="subtitle">إعدادات ومعلومات المحافظ الاستثمارية</p></div></div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="portfolio-card"><div class="pc-header"><div><div class="pc-title">محفظة الإنتاج</div><div class="pc-subtitle">842 استثمار نشط — $4.2M إجمالي</div></div><span class="badge badge-success">نشطة</span></div><div class="pc-stats"><div class="pc-stat-item"><div class="pc-stat-label">العائد</div><div class="pc-stat-value" style="color:var(--gold-dark)">12–18%</div></div><div class="pc-stat-item"><div class="pc-stat-label">المدة</div><div class="pc-stat-value">90 يوم</div></div><div class="pc-stat-item"><div class="pc-stat-label">الحد الأدنى</div><div class="pc-stat-value">$500</div></div><div class="pc-stat-item"><div class="pc-stat-label">الحد الأقصى</div><div class="pc-stat-value">$50,000</div></div></div></div>
+        <div class="portfolio-card"><div class="pc-header"><div><div class="pc-title">محفظة التداول</div><div class="pc-subtitle">523 استثمار نشط — $3.1M إجمالي</div></div><span class="badge badge-success">نشطة</span></div><div class="pc-stats"><div class="pc-stat-item"><div class="pc-stat-label">العائد</div><div class="pc-stat-value" style="color:var(--gold-dark)">10–25%</div></div><div class="pc-stat-item"><div class="pc-stat-label">المدة</div><div class="pc-stat-value">30 يوم</div></div><div class="pc-stat-item"><div class="pc-stat-label">الحد الأدنى</div><div class="pc-stat-value">$200</div></div><div class="pc-stat-item"><div class="pc-stat-label">الحد الأقصى</div><div class="pc-stat-value">$25,000</div></div></div></div>
+        <div class="portfolio-card"><div class="pc-header"><div><div class="pc-title">تمويل التشغيل</div><div class="pc-subtitle">312 استثمار نشط — $3.8M إجمالي</div></div><span class="badge badge-success">نشطة</span></div><div class="pc-stats"><div class="pc-stat-item"><div class="pc-stat-label">العائد</div><div class="pc-stat-value" style="color:var(--gold-dark)">15–22%</div></div><div class="pc-stat-item"><div class="pc-stat-label">المدة</div><div class="pc-stat-value">180 يوم</div></div><div class="pc-stat-item"><div class="pc-stat-label">الحد الأدنى</div><div class="pc-stat-value">$1,000</div></div><div class="pc-stat-item"><div class="pc-stat-label">الحد الأقصى</div><div class="pc-stat-value">$100,000</div></div></div></div>
+        <div class="portfolio-card"><div class="pc-header"><div><div class="pc-title">محفظة الاستكشاف</div><div class="pc-subtitle">165 استثمار نشط — $1.3M إجمالي</div></div><span class="badge badge-success">نشطة</span></div><div class="pc-stats"><div class="pc-stat-item"><div class="pc-stat-label">العائد</div><div class="pc-stat-value" style="color:var(--gold-dark)">20–35%</div></div><div class="pc-stat-item"><div class="pc-stat-label">المدة</div><div class="pc-stat-value">365 يوم</div></div><div class="pc-stat-item"><div class="pc-stat-label">الحد الأدنى</div><div class="pc-stat-value">$2,000</div></div><div class="pc-stat-item"><div class="pc-stat-label">الحد الأقصى</div><div class="pc-stat-value">$200,000</div></div></div></div>
       </div>
     </div>
 
-    <!-- الإيداعات والسحوبات -->
+    <!-- Deposits -->
     <div class="admin-tab" id="tab-deposits" style="display:none">
-      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">الإيداعات <span class="gold-text">والسحوبات</span></h1>
-      <div class="glass" style="overflow:hidden"><div class="table-wrap"><table>
+      <div class="page-header"><div><h1>الإيداعات <span class="gold-text-static" style="color:var(--gold)">والسحوبات</span></h1><p class="subtitle">مراجعة واعتماد طلبات الإيداع والسحب</p></div><div style="display:flex;gap:8px"><select class="input" style="width:auto"><option>قيد الانتظار</option><option>مقبول</option><option>الكل</option></select></div></div>
+      <div class="card" style="overflow:hidden"><div class="table-wrap"><table>
         <thead><tr><th>المستخدم</th><th>النوع</th><th>المبلغ</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
         <tbody>
-          <tr><td>فاطمة علي</td><td style="color:var(--success);font-weight:700">إيداع</td><td style="font-family:'JetBrains Mono',monospace;direction:ltr">$5,500</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td style="display:flex;gap:6px"><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--success);border-color:rgba(34,197,94,.2)" onclick="showToast('تم قبول الإيداع!','success')">قبول</button><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">رفض</button></td></tr>
-          <tr><td>عمر بشير</td><td style="color:var(--danger);font-weight:700">سحب</td><td style="font-family:'JetBrains Mono',monospace;color:var(--danger);direction:ltr">$1,200</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td style="display:flex;gap:6px"><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--success);border-color:rgba(34,197,94,.2)">قبول</button><button class="btn-outline btn-sm" style="padding:5px 10px;font-size:11px;color:var(--danger);border-color:rgba(239,68,68,.2)">رفض</button></td></tr>
+          <tr><td style="font-weight:600">فاطمة علي<br><span style="font-size:10px;color:var(--text-muted)">fatima@example.com</span></td><td><span class="badge badge-success">إيداع</span></td><td style="font-family:'JetBrains Mono',monospace;direction:ltr;font-weight:600">$5,500</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td style="display:flex;gap:5px"><button class="btn-outline btn-sm" style="padding:4px 9px;font-size:10px;color:var(--success);border-color:rgba(45,138,78,.15)" onclick="showToast('تم قبول الإيداع!','success')">قبول</button><button class="btn-outline btn-sm" style="padding:4px 9px;font-size:10px;color:var(--danger);border-color:rgba(192,57,43,.15)">رفض</button></td></tr>
+          <tr><td style="font-weight:600">عمر بشير<br><span style="font-size:10px;color:var(--text-muted)">omar@example.com</span></td><td><span class="badge badge-danger">سحب</span></td><td style="font-family:'JetBrains Mono',monospace;color:var(--danger);direction:ltr;font-weight:600">$1,200</td><td><span class="badge badge-warning">قيد الانتظار</span></td><td style="display:flex;gap:5px"><button class="btn-outline btn-sm" style="padding:4px 9px;font-size:10px;color:var(--success);border-color:rgba(45,138,78,.15)">قبول</button><button class="btn-outline btn-sm" style="padding:4px 9px;font-size:10px;color:var(--danger);border-color:rgba(192,57,43,.15)">رفض</button></td></tr>
         </tbody>
       </table></div></div>
     </div>
 
-    <!-- مراجعة الهوية -->
+    <!-- KYC -->
     <div class="admin-tab" id="tab-kyc" style="display:none">
-      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">مراجعة <span class="gold-text">الهوية</span></h1>
-      <div class="glass" style="padding:24px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><div><h3 style="font-weight:800">أحمد حسن</h3><p style="font-size:13px;color:var(--text3)">ahmed@example.com</p></div><span class="badge badge-warning">قيد الانتظار</span></div>
-        <div style="display:flex;gap:12px;margin-bottom:16px">
+      <div class="page-header"><div><h1>مراجعة <span class="gold-text-static" style="color:var(--gold)">الهوية</span></h1><p class="subtitle">التحقق من هوية المستخدمين</p></div></div>
+      <div class="card" style="padding:22px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px"><div><h3 style="font-weight:700;font-size:15px">أحمد حسن</h3><p style="font-size:12px;color:var(--text-muted)">ahmed@example.com</p></div><span class="badge badge-warning">قيد الانتظار</span></div>
+        <div style="display:flex;gap:10px;margin-bottom:18px">
           <div class="kyc-doc-card"><p class="emoji">🪪</p><p class="doc-name">وثيقة الهوية</p><p class="doc-status" style="color:var(--success)">تم الرفع</p></div>
           <div class="kyc-doc-card"><p class="emoji">📄</p><p class="doc-name">إثبات العنوان</p><p class="doc-status" style="color:var(--success)">تم الرفع</p></div>
           <div class="kyc-doc-card"><p class="emoji">🤳</p><p class="doc-name">سيلفي</p><p class="doc-status" style="color:var(--success)">تم الرفع</p></div>
         </div>
-        <div style="display:flex;gap:12px">
+        <div style="display:flex;gap:10px">
           <button class="btn-gold btn-sm" onclick="showToast('تم اعتماد الهوية!','success')">✓ اعتماد</button>
-          <button class="btn-outline btn-sm" style="color:var(--danger);border-color:rgba(239,68,68,.2)">✕ رفض</button>
+          <button class="btn-outline btn-sm" style="color:var(--danger);border-color:rgba(192,57,43,.15)">✕ رفض</button>
         </div>
       </div>
     </div>
 
-    <!-- التقارير -->
+    <!-- Reports -->
     <div class="admin-tab" id="tab-reports" style="display:none">
-      <h1 style="font-family:'Cairo',serif;font-size:28px;font-weight:800;margin-bottom:24px">تقارير <span class="gold-text">الشفافية</span></h1>
-      <div class="glass" style="padding:24px;margin-bottom:24px">
-        <h3 style="font-family:'Cairo',serif;font-size:18px;font-weight:800;margin-bottom:16px">رفع تقرير جديد</h3>
-        <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">العنوان</label><input class="input" placeholder="تقرير إنتاج الذهب"></div>
-        <div style="margin-bottom:16px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">النوع</label><select class="input"><option>تقرير إنتاج</option><option>تقرير مالي</option><option>صور</option><option>فيديو</option></select></div>
-        <div style="margin-bottom:24px"><label style="display:block;font-size:13px;color:var(--text2);margin-bottom:8px">الملف</label><input type="file" class="input" style="padding:10px"></div>
+      <div class="page-header"><div><h1>تقارير <span class="gold-text-static" style="color:var(--gold)">الشفافية</span></h1><p class="subtitle">رفع ونشر تقارير الإنتاج</p></div></div>
+      <div class="card" style="padding:22px;margin-bottom:20px">
+        <h3 style="font-family:'Cairo',serif;font-size:15px;font-weight:700;margin-bottom:18px">رفع تقرير جديد</h3>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:5px">العنوان</label><input class="input" placeholder="تقرير إنتاج الذهب"></div>
+        <div style="margin-bottom:14px"><label style="display:block;font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:5px">النوع</label><select class="input"><option>تقرير إنتاج</option><option>تقرير مالي</option><option>صور</option><option>فيديو</option></select></div>
+        <div style="margin-bottom:20px"><label style="display:block;font-size:11px;font-weight:600;color:var(--text-secondary);margin-bottom:5px">الملف</label><input type="file" class="input" style="padding:9px"></div>
         <button class="btn-gold" onclick="showToast('تم رفع التقرير!','success')">رفع ونشر</button>
       </div>
     </div>
@@ -536,6 +2182,89 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<script>
+/* ── Navigation between Landing and Admin ── */
+function showSection(section) {
+  var landing = document.getElementById('landing-page');
+  var admin = document.getElementById('admin-panel');
+  var nav = document.getElementById('navbar');
+
+  if (section === 'admin') {
+    landing.style.display = 'none';
+    admin.classList.add('active');
+    nav.classList.add('scrolled');
+  } else {
+    landing.style.display = 'block';
+    admin.classList.remove('active');
+    nav.classList.remove('scrolled');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+/* ── Smooth Scroll ── */
+function scrollToId(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    showSection('landing');
+    setTimeout(function() {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+/* ── Admin Tab Switching ── */
+function switchAdminTab(tab) {
+  document.querySelectorAll('.admin-tab').forEach(function(t) { t.classList.remove('active'); t.style.display = 'none'; });
+  document.querySelectorAll('.sidebar-link').forEach(function(l) { l.classList.remove('active'); });
+
+  var target = document.getElementById('tab-' + tab);
+  if (target) { target.style.display = 'block'; target.classList.add('active'); }
+
+  document.querySelectorAll('.sidebar-link').forEach(function(l) {
+    if (l.getAttribute('onclick') && l.getAttribute('onclick').indexOf(tab) !== -1) {
+      l.classList.add('active');
+    }
+  });
+}
+
+/* ── Toast ── */
+function showToast(msg, type) {
+  var toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = 'toast show toast-' + type;
+  setTimeout(function() { toast.classList.remove('show'); }, 3000);
+}
+
+/* ── Navbar scroll effect ── */
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('navbar');
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    if (!document.getElementById('admin-panel').classList.contains('active')) {
+      nav.classList.remove('scrolled');
+    }
+  }
+});
+
+/* ── Theme toggle (compatibility) ── */
+function toggleTheme() { /* preserved for compatibility */ }
+
+/* ── Scroll reveal animation ── */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(function(el) {
+  observer.observe(el);
+});
+</script>
+
 <script src="js/theme.js"></script>
 <script src="js/app.js"></script>
 </body>
